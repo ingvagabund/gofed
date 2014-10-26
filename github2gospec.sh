@@ -1,7 +1,12 @@
 #!/bin/sh
 
-if [[ -z $1 || -z $2 || -z $3 ]]; then
+if [[ -z $3 ]]; then
     echo "Not enough parameters has been passed. Right syntax is: $0 PROJECT REPO COMMIT"
+    exit 0
+fi
+
+if [[ -n $4 ]]; then
+    echo "Too many parameters has been passed. Right syntax is: $0 PROJECT REPO COMMIT"
     exit 0
 fi
 
