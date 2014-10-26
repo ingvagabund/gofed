@@ -1,9 +1,11 @@
 #!/bin/sh
 
+HELP=0
 SCRATCH=1
 BUILD=2
 PARALLEL=3
 UPDATE=4
+GGI=5
 
 operation=-1
 script_dir=$(dirname $0)
@@ -14,16 +16,20 @@ function printHelp {
 	echo "Synopsis: go2fed command"
 	echo ""
 	echo "command:"
+	echo "	help		 prints this help"
 	echo "	scratch-build	 scratch build all fedora branches"
 	echo "	build 		 build all fedora branches"
 	echo "	update		 update all fedora branches"
+	echo "	ggi		 get golang imports"
 }
 
 
 ################################
 ################################
 # $1 - command
-if [ "$1" == "scratch-build" ]; then
+if [ "$1" == "help" ]; then
+	operation=$HELP
+elif [ "$1" == "scratch-build" ]; then
 	operation=$SCRATCH
 elif [ "$1" == "build" ]; then
 	operation=$BUILD
@@ -31,6 +37,8 @@ elif [ "$1" == "parallel-push" ]; then
 	operation=$PARALLEL
 elif [ "$1" == "update" ]; then
 	operation=$UPDATE
+elif [ "$1" == "ggi" ]; then
+        operation=$GGI
 fi
 
 ################################
@@ -43,7 +51,9 @@ fi
 
 
 
-if [ $operation -eq $SCRATCH ]; then
+if [ $operation -eq $HELP ]; then
+	printHelp
+elif [ $operation -eq $SCRATCH ]; then
 	$script_dir/scratchbuildbranches.sh
 elif [ $operation -eq $BUILD ]; then
 	$script_dir/scratchbuildbranches.sh raw
@@ -51,4 +61,6 @@ elif [ $operation -eq $PARALLEL ]; then
 	$script_dir/push2allbranches.sh
 elif [ $operation -eq $UPDATE ]; then
 	$script_dir/updateallbuilds.sh
+elif [ $operation -eq $GGI ]; then
+	$script_dir/ggi.sh
 fi
