@@ -1,12 +1,17 @@
 #!/bin/sh
 
+if [[ -z $1 || -z $2 || -z $3 ]]; then
+    echo "Not enough parameters has been passed. Right syntax is: $0 PROJECT REPO COMMIT"
+    exit 0
+fi
+
 project=$1
 repo=$2
 provider='github'
 provider_tld='com'
 commit=$3
 shortcommit=${commit:0:7}
-echo https://github.com/$project/$repo
+echo https://${provider}.${provider_tld}/${project}/${repo}
 
 # prepare basic structure
 name=golang-$provider-$project-$repo
@@ -95,7 +100,7 @@ wget https://github.com/$project/$repo/archive/$commit/$repo-$shortcommit.tar.gz
 echo "Inspecting golang"
 tar -xf $repo-$shortcommit.tar.gz
 cd $repo-$commit
-getgoimports $(tree -if | grep "[.]go$")
+getgoimports.py $(tree -if | grep "[.]go$")
 
 cd ..
 pwd
