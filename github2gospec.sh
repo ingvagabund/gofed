@@ -85,7 +85,7 @@ echo "cp -pav *.go %{buildroot}/%{gopath}/src/%{import_path}/" >> $specfile
 echo "cp -pav !!!!FILL!!!! %{buildroot}/%{gopath}/src/%{import_path}/" >> $specfile
 echo "" >> $specfile
 echo "%check" >> $specfile
-echo "GOPATH=%{gopath}:%{buildroot}%{gopath} go test %{import_path}" >> $specfile
+echo "GOPATH=%{buildroot}/%{gopath}:%{gopath} go test %{import_path}" >> $specfile
 echo "" >> $specfile
 echo "%files devel" >> $specfile
 echo "%doc README.md LICENSE CHANGELOG.md " >> $specfile
