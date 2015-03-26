@@ -3,7 +3,7 @@
 %global provider_tld    com
 %global project        	ingvagabund
 %global repo            gofed
-%global commit		90a86655c3618a137d8b50e66ff05dd30851478e
+%global commit		837cc974bd366a2093991a0edb6d3beb6b5b256e
 %global shortcommit	%(c=%{commit}; echo ${c:0:7})
 
 Name:		gofed
@@ -11,8 +11,9 @@ Version:	0
 Release:	0.1.git%{shortcommit}%{?dist}
 Summary:	Tool for development of golang devel packages
 License:	GPLv2+
-URL:		https://github.com/ingvagabund/GolangPackageGenerator
-Source0:	https://github.com/ingvagabund/GolangPackageGenerator/archive/%{commit}/%{repo}-%{shortcommit}.tar.gz
+URL:		https://github.com/%{project}/%{repo}
+Source0:	https://github.com/%{project}/%{repo}/archive/%{commit}/%{repo}-%{shortcommit}.tar.gz
+ExclusiveArch:  %{ix86} x86_64 %{arm}
 
 BuildRequires: golang
 Requires: python >= 2.7.5, bash, wget, rpmdevtools, rpmlint
@@ -54,7 +55,7 @@ cp -r data %{buildroot}/usr/share/%{name}/.
 cp %{name} %{buildroot}/usr/share/%{name}/.
 # directory for local database
 mkdir -p %{buildroot}/var/lib/%{name}
-chmod 0777 %{buildroot}/var/lib/%{name}
+install -m 755 -d %{buildroot}/var/lib/%{name}
 
 %post
 if [ "$1" -eq 1 ]; then

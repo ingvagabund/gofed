@@ -1,4 +1,3 @@
-#!/bin/python
 from Utils import getScriptDir, runCommand, inverseMap
 import re
 import os
@@ -76,12 +75,16 @@ class Package:
 		Expects build in the current directory
 		"""
 
-		_, _, rc = runCommand("mkdir -p build")
+		# create build directory in the current directory
+		cwd = os.getcwd()
+		if os.path.exists("%s/%s" % (cwd, 'build')):
+			return {}
+
+		_, _, rc = runCommand("mkdir build")
 		if rc != 0:
 			return {}
 
 		os.chdir('build')
-		runCommand('rm -rf *')
 		runCommand('rpm2cpio ../%s | cpio -idmv' % name)
 
 		# scan builds using native golang parser

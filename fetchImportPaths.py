@@ -1,5 +1,3 @@
-#!/bin/python
-
 from modules.Packages import Package
 from modules.Packages import loadPackages, savePackageInfo, LocalDB
 import optparse

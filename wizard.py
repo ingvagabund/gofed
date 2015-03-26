@@ -1,5 +1,3 @@
-#!/bin/python
-
 # TODO
 # [  ] - add check I am in a package folder
 

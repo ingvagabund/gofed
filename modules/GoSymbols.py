@@ -1,5 +1,3 @@
-#!/bin/python
-
 ###############################################################################
 # ========exported symbols (package units)========
 # 1) list all directories containing go files

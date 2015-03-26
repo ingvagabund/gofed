@@ -1,5 +1,3 @@
-#!/bin/python
-
 from Utils import runCommand
 from Config import Config
 import os

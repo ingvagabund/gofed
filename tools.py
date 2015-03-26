@@ -1,5 +1,3 @@
-#!/bin/python
-
 import os
 import optparse
 from modules.Tools import cherryPickMaster, resetBranchesToOrigin

@@ -10,26 +10,32 @@ problems arise:
 
 - we have to package all those commits in order to be able to built every tool
 - we have to do this for every branch (5 at the moment)
-- one devel subpackage must be up2date with the latest upstream commit
 - developer usually use "go get" to install the latest source codes (which
-  commit it is?)
-- with update of the dependency you replace its source codes with non
-  back-compatible ones. User can no longer build his local project.
+  commit it is?; should we force a list of commits of each deps for each pkg?)
 - we need latest commits because of kubernetes and other tools being under
-  busy development
+  heavy development (unused subpackages should be deleted; which are used?)
 - we have to keep a number of subpackage as low as possible otherwise we end
   with a packaging nightmare. Having 10 subpackages for one package for all 5
   branches ends with 50 builds. Each branch can require different commits.
   With security patch we have to fix up to 50 subpackages.
+- if we subpackage each commit, how many subpackages are we going to have? In
+  order to minimize this number, we will need a way how to determine which
+  symbols are used from each package (not trivial).
+- name convention for subpackages? Prefix or sufix all subpackages with
+  a commit?
+
 
 ====Suggested solution====
 Bundle all dependencies breaking back-compatibility
 
 ====Notes====
-If different commits of the dependency are subpackaged, maintainer has to fix
-all subpackages on his own. On the other hand if they are bundlel in each tool,
-responsibility for fixing is broken up between each maintainer. At the end we
-still have the sama number of [sub]packages to be fixed.
+- If different commits of the dependency are subpackaged, maintainer has to fix
+  all subpackages on his own. On the other hand if they are bundlel in each
+  tool, responsibility for fixing is broken up between each maintainer.
+  At the end we still have the same number of [sub]packages to be fixed.
+- devel subpackages are used only for building, not developing. Thus we can not
+  guarantee update/upgrade path. Or when you update/upgrade, you can replace
+  your source codes with back-incopattible ones.
 
 ##################################
 # [2] - vendored vs dependencies #

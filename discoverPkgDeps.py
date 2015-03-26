@@ -1,5 +1,3 @@
-#!/bin/python
-
 import optparse
 from modules.Packages import buildRequirementGraph, getSCC, getLeafPackages, getRootPackages, ConnectedComponent, joinGraphs
 from modules.Utils import runCommand

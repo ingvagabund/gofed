@@ -113,7 +113,7 @@ echo "%package devel" >> $specfile
 echo "BuildRequires:  golang >= 1.2.1-3" >> $specfile
 
 # get relevant golang imports (still does not have to be correct)
-deps=$($script_dir/ggi.py | grep -v "$provider.$provider_tld/p/$repo")
+deps=$(python $script_dir/ggi.py | grep -v "$provider.$provider_tld/p/$repo")
 for gimport in $deps; do
 	echo "BuildRequires:  golang($gimport)" >> $specfile
 done
@@ -126,7 +126,7 @@ done
 echo "Summary:        %{summary}" >> $specfile
 
 # list Provides section
-for dir in $($script_dir/inspecttarball.py -p $rrepo-$shortrev | sort); do
+for dir in $(python $script_dir/inspecttarball.py -p $rrepo-$shortrev | sort); do
 	sufix=""
 	if [ "$dir" != "." ]; then
 		sufix="/$dir"
@@ -156,7 +156,7 @@ if [ "$?" -eq 0 ]; then
 fi
 
 # read all dirs in the tarball
-for dir in $($script_dir/inspecttarball.py -d $rrepo-$shortrev); do
+for dir in $(python $script_dir/inspecttarball.py -d $rrepo-$shortrev); do
         echo "cp -rpav $dir %{buildroot}/%{gopath}/src/%{import_path}/" >> $specfile
 done
 
@@ -164,7 +164,7 @@ echo "" >> $specfile
 echo "%check" >> $specfile
 
 # get all dirs containing test files
-for dir in $($script_dir/inspecttarball.py -t $rrepo-$shortrev); do
+for dir in $(python $script_dir/inspecttarball.py -t $rrepo-$shortrev); do
 	sufix="/$dir"
 	if [ "$dir" == "." ]; then
 		sufix=""
@@ -208,7 +208,7 @@ rpmdev-bumpspec $specfile -c "First package for Fedora"
 echo -e "${orange}(5/$total) Discovering golang dependencies$NC"
 cd $rrepo-$shortrev
 echo $name
-$script_dir/ggi.py -c -s -d | grep -v $name
+python $script_dir/ggi.py -c -s -d | grep -v $name
 echo ""
 
 cd ..

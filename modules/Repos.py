@@ -107,7 +107,7 @@ def googlegolangorg2pkgdb(github):
 	# google.golang.org/<repo>
 	parts = github.split('/')
 	if len(parts) == 2:
-		return "golang-github-golang-%s" % parts[1]
+		return "golang-google-golang-%s" % parts[1]
 	else:
 		return ""
 

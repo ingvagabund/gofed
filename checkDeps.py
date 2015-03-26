@@ -1,5 +1,3 @@
-#!/bin/python
-
 import json
 import sys
 import modules.Repos

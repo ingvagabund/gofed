@@ -1,5 +1,3 @@
-#!/bin/python
-
 import tempfile
 import os
 from modules.specParser import fetchProvides

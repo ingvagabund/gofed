@@ -1,4 +1,3 @@
-#!/bin/python
 # Requires: python-PyGithub
 import sys
 from github import Github

@@ -1,5 +1,3 @@
-#!/bin/python
-
 import os
 import re
 from Utils import getScriptDir

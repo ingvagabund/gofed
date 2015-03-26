@@ -16,6 +16,7 @@ gofed-lint,
 gofed-check-commit,
 gofed-check-deps,
 gofed-scan-imports,
+gofed-apidiff,
 scan-packages 
 \- tools to automize packaging of golang devel source codes
 .SH SYNOPSIS
@@ -114,8 +115,68 @@ check if all dependencies are up2date in PkgDB.
 .RS 4
 Command to search for available used and provided import paths across golang devel packages in PkgDB.
 .RE
+
 .PP
 .B gofed scan-packages
 .RS 4
 Scan PkgDB for possible golang packages.
 .RE
+
+.PP
+.B gofed apidiff
+.RS 4
+Compare two commits of the same upstream project/package.
+.RE
+
+.SH EXAMPLES
+
+.SS Example 1: Comparison of two releases of a golang project
+
+Golang project can be download as a tarball.
+In order to compare two releases, unpack corresponding tarballs to two
+directories and run 'gofed apidiff DIR1 DIR2'.
+
+E.g. to compare etcd-2.0.5 and etcd-2.0.7 (assuming their tarballs are already
+unpacked), run:
+
+.nf
+	$ \fBgofed apidiff\fP etcd-2.0.5 etcd-2.0.7
+.fi
+
+The command implicitly outputs a list of packages (import paths) and all
+symbols that has been changed and break back-compatibility.
+
+.nf
+	$ \fBgofed apidiff\fP etcd-2.0.5 etcd-2.0.7
+	Package: etcdserver
+		-VerifyBootstrapConfig func removed
+	Package: wal
+		-WALv2_0_1 variable/constant removed
+		-WALUnknown variable/constant removed
+		-WALv0_4 variable/constant removed
+		-WALNotExist variable/constant removed
+		-WALv2_0Proxy variable/constant removed
+		-WALv2_0 variable/constant removed
+		-WalVersion type removed
+		-DetectVersion func removed
+.fi
+
+Running with \fI--prefix\fP option, all import paths are prefixed:
+
+.nf
+	$ \fBgofed apidiff\fP etcd-2.0.5 etcd-2.0.7 --prefix=github.com/coreos
+	Package: github.com/coreos/etcdserver
+		...
+	Package: github.com/coreos/wal
+		...
+.fi
+
+.SS Example 2: List all symbols for a golang project
+
+To display all exported symbols of all packages of a golang project in DIR
+directory, run 'gofed scansymbols -l DIR'. E.g. for etcd-2.0.5:
+
+.nf
+	$ \fBgofed apidiff\fP -l etcd-2.0.5
+.fi
+

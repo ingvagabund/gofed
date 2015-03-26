@@ -159,15 +159,15 @@ shift
 if [ $operation -eq $HELP ]; then
 	printHelp
 elif [ $operation -eq $SCRATCH ]; then
-	$script_dir/tools.py --scratch $@
+        python $script_dir/tools.py --scratch $@
 elif [ $operation -eq $BUILD ]; then
-	$script_dir/tools.py --build $@
+        python $script_dir/tools.py --build $@
 elif [ $operation -eq $PARALLEL ]; then
-	$script_dir/tools.py --push $@
+        python $script_dir/tools.py --push $@
 elif [ $operation -eq $UPDATE ]; then
-	$script_dir/tools.py --update $@
+        python $script_dir/tools.py --update $@
 elif [ $operation -eq $GGI ]; then
-	$script_dir/ggi.py $@
+        python $script_dir/ggi.py $@
 elif [ $operation -eq $GITHUB2SPEC ]; then
         $script_dir/github2gospec.sh $@
 elif [ $operation -eq $GOOGLECODE2SPEC ]; then
@@ -175,42 +175,42 @@ elif [ $operation -eq $GOOGLECODE2SPEC ]; then
 elif [ $operation -eq $REVIEW ]; then
         $script_dir/preparePackageReview.sh $@
 elif [ $operation -eq $PULL ]; then
-        $script_dir/tools.py --pull $@
+        python $script_dir/tools.py --pull $@
 elif [ $operation -eq $INSPECT ]; then
-        $script_dir/inspecttarball.py $@
+        python $script_dir/inspecttarball.py $@
 elif [ $operation -eq $SCANINFO ]; then
-        $script_dir/xml2info.py $@
+        python $script_dir/xml2info.py $@
 elif [ $operation -eq $SCAN ]; then
         $script_dir/inspectPackages.sh $@
 elif [ $operation -eq $LINT ]; then
-        $script_dir/modules/specParser.py $@
+        python $script_dir/modules/specParser.py $@
 elif [ $operation -eq $BUMP ]; then
-        $script_dir/bumpSpec.py $@
+        python $script_dir/bumpSpec.py $@
 elif [ $operation -eq $CHECK_COMMIT ]; then
-        $script_dir/checkCommit.py $@
+        python $script_dir/checkCommit.py $@
 elif [ $operation -eq $CHECK_DEPS ]; then
-        $script_dir/checkDeps.py $@
+        python $script_dir/checkDeps.py $@
 elif [ $operation -eq $SCAN_IMPORTS ]; then
-        $script_dir/fetchImportPaths.py $@
+        python $script_dir/fetchImportPaths.py $@
 elif [ $operation -eq $SCAN_PACKAGES ]; then
-        $script_dir/getGolangPackages.py $@
+        python $script_dir/getGolangPackages.py $@
 elif [ $operation -eq $BBO ]; then
-	$script_dir/bbobranches.py $@
+        python $script_dir/bbobranches.py $@
 elif [ $operation -eq $INITPKG ]; then
         $script_dir/initPackageInRepo.sh $@
 elif [ $operation -eq $SCANDEPS ]; then
-        $script_dir/discoverPkgDeps.py $@
+        python $script_dir/discoverPkgDeps.py $@
 elif [ $operation -eq $SCANSYMBOLS ]; then
-        $script_dir/scanGoSymbols.py $@
+        python $script_dir/scanGoSymbols.py $@
 elif [ $operation -eq $GCPMASTER ]; then
-        $script_dir/tools.py --gcp $@
+        python $script_dir/tools.py --gcp $@
 elif [ $operation -eq $BITBUCKET2SPEC ]; then
         $script_dir/bitbucket2gospec.sh $@
 elif [ $operation -eq $WIZARD ]; then
-        $script_dir/wizard.py $@
+        python $script_dir/wizard.py $@
 elif [ $operation -eq $APIDIFF ]; then
-        $script_dir/goapidiff.py $@
+        python $script_dir/goapidiff.py $@
 elif [ $operation -eq $TOOLS ]; then
-        $script_dir/tools.py $@
+        python $script_dir/tools.py $@
 fi
 

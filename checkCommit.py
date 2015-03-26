@@ -1,5 +1,3 @@
-#!/bin/python
-
 # for the given package, check, if the commit is already packaged in Fedora
 import modules.Utils
 import re

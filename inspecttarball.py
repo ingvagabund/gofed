@@ -1,5 +1,3 @@
-#!/bin/python
-
 # ####################################################################
 # gofed - set of tools to automize packaging of golang devel codes
 # Copyright (C) 2014  Jan Chaloupka, jchaloup@redhat.com

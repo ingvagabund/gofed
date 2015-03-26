@@ -1,5 +1,3 @@
-#!/bin/python
-
 from Utils import getScriptDir
 
 class Config:

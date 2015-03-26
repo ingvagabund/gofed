@@ -1,5 +1,3 @@
-#!/bin/python
-
 import optparse
 from modules.GoSymbols import getSymbolsForImportPaths, PackageToXml, ProjectToXml
 import json
@@ -54,7 +52,7 @@ def displaySymbols(symbols, all = False, stats = False):
 
 def setOptionParser():
 
-	parser = optparse.OptionParser("%prog [-l] [-p] [-a] [-s] [-x] dir")
+	parser = optparse.OptionParser("%prog -l|-u|-p [-a] [-s] [-x] dir")
 
         parser.add_option_group( optparse.OptionGroup(parser, "dir", "Directory to scan at.") )
 
@@ -103,7 +101,7 @@ if __name__ == "__main__":
 	options, args = parser.parse_args()
 
 	if len(args) < 1:
-		print "Synopsis: prog [-l] [-p] [-a] [-s] [-x] dir"
+		print "Synopsis: prog -l|-u|-p [-a] [-s] [-x] dir"
 		exit(1)
 
 	go_dir = args[0]

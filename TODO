@@ -46,6 +46,10 @@
 ====version-1====
 
 ====TODO===
+[OK] - gofed apidiff: add --prefix to specify import path prefix
+[  ] - do "more good than harm" analysis
+[  ] - gofed apidiff libcontainer-1.2.0 libcontainer-1.4.0 -c: some messages still miss its location (is it parameter, is it type, ...)
+[  ] - api check: if a type is change to its super type, report it but without minus symbol "-" => upgrade the check and for a given type list all its supertypes as well (second walk through go symbols)
 [  ] - run apidiff for all commits of a given package (graph: y #+/-, x commits)
 [  ] - add options to run wizard only for a single branch
 [  ] - /tmp/test/etcd-2.0.3/client/http.go has interface in interface which is not present in exported symbols (type SyncableHTTPClient interface)

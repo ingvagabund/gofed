@@ -1,5 +1,3 @@
-#!/bin/python
-
 # Check difference of APIs of two commits
 
 # Output is number of symbols added and removed.
@@ -16,7 +14,7 @@ MSG_NEG=1
 MSG_POS=2
 MSG_NEUTRAL=4
 
-def displayApiDifference(status, color=True, msg_type=MSG_POS & MSG_NEUTRAL & MSG_NEG):
+def displayApiDifference(status, color=True, msg_type=MSG_POS & MSG_NEUTRAL & MSG_NEG, prefix=""):
 	spkgs = sorted(status.keys())
 	for pkg in spkgs:
 		lines = []
@@ -38,6 +36,11 @@ def displayApiDifference(status, color=True, msg_type=MSG_POS & MSG_NEUTRAL & MS
 					lines.append("\t%s" % msg)
 
 		if lines != []:
+			if prefix != "":
+				if pkg == ".":
+					pkg = prefix
+				else:
+					pkg = "%s/%s" % (prefix, pkg)
 			if color:
 				print "%sPackage: %s%s" % (YELLOW, pkg, ENDC)
 			else:
@@ -70,12 +73,21 @@ if __name__ == "__main__":
 
 	parser.add_option(
 	    "", "-a", "--all", dest="all", action = "store_true", default = False,
-	    help = "Show all differences between APIs."
+	    help = "Show all differences between APIs"
+	)
+
+	parser.add_option(
+	    "", "", "--prefix", dest="p", default = "",
+	    help = "Import paths prefix"
 	)
 
 	options, args = parser.parse_args()
 	if len(args) != 2:
 		print "Missing DIR1 or DIR2"
+		exit(1)
+
+	if options.p != "" and options.p[-1] == '/':
+		print "Error: --prefix can not end with '/'"
 		exit(1)
 
 	go_dir1 = args[0]
@@ -96,4 +108,4 @@ if __name__ == "__main__":
 		elif options.verbose:
 			msg_type = MSG_POS | MSG_NEG
 
-		displayApiDifference(status, options.color, msg_type)
+		displayApiDifference(status, options.color, msg_type, options.p)
