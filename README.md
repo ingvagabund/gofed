@@ -62,7 +62,7 @@ Output:
 
 Running with -d option, the gofed checks if the dependency is already packaged in PkgDB.
 
-#### Check of up2date dependencides in Fedora
+#### Check of up2date dependencies in Fedora
 To check if all dependecies of a package are at least up2date in Fedora (e.g. kubernetes), run the following command on its Godeps.json file:
 
    ```vim
