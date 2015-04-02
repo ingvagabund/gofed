@@ -50,7 +50,11 @@ if __name__ == "__main__":
 
 	json_file = args[0]
 
-	deps = getGoDeps(json_file)
+	try:
+		deps = getGoDeps(json_file)
+	except IOError as e:
+		print >> sys.stderr, e
+		exit(1)
 	if deps == {}:
 		print "%s is corrupted or has no dependencies" % json_file
 		exit(1)
