@@ -92,7 +92,7 @@ In order to create a local database of exported symbols, provided import paths a
    
    This will download every build providing source codes. Each build is parsed and exported symbols are extracted. Every golang project consists of package. Every package in a project is defined by its path and a set of symbols developer can use. Once the scan finished, all symbols are locally saved in xml files. These files can be further analyzed.
    Extracted information can be queried for used or provided import paths. It is aloso used for construction of a dependency graph for a given package.
-   Implicitelly, only outdated packages are scaned so once you have the database, you don't have to regenerate it for all packages again.
+   Implicitly, only outdated packages are scaned so once you have the database, you don't have to regenerate it for all packages again.
    
 #### Golang dependency graph
 
