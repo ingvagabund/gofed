@@ -24,7 +24,7 @@ The repository provides a spec file for Fedora. The package can be build as:
 To generate a spec file for the github https://github.com/stretchr/respond repository, run the following command:
 
    ```vim
-   $ gofed github2spec -p stretchr -r respond --commit fb9c7353c67cdeccb10af1320b978c5a1e401e9b -f
+   $ gofed repo2spec --github -p stretchr -r respond --commit fb9c7353c67cdeccb10af1320b978c5a1e401e9b -f
    ```
 
 Output:
