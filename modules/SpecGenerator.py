@@ -236,7 +236,7 @@ class SpecGenerator:
 
 	def generateUnitTestHeader(self):
 		self.file.write("%if 0%{?with_unit_test} && 0%{?with_devel}\n")
-		self.file.write("%package unit-test\n")
+		self.file.write("%package unit-test-devel\n")
 		self.file.write("Summary:         Unit tests for %{name} package\n")
 		self.file.write("# If go_compiler is not set to 1, there is no virtual provide. Use golang instead.\n")
 		self.file.write("BuildRequires:  %{?go_compiler:compiler(go-compiler)}%{!?go_compiler:golang}\n\n")
@@ -247,7 +247,7 @@ class SpecGenerator:
 		self.file.write("# test subpackage tests code from devel subpackage\n")
 		self.file.write("Requires:        %{name}-devel = %{version}-%{release}\n")
 		self.file.write("\n")
-		self.file.write("%description unit-test\n")
+		self.file.write("%description unit-test-devel\n")
 		self.file.write("%{summary}\n")
 		self.file.write("\n")
 		self.file.write("This package contains unit tests for project\nproviding packages with %{import_path} prefix.\n")
@@ -304,12 +304,12 @@ class SpecGenerator:
 		self.file.write("# testing files for this project\n")
 		self.file.write("%if 0%{?with_unit_test} && 0%{?with_devel}\n")
 		self.file.write("install -d -p %{buildroot}/%{gopath}/src/%{import_path}/\n")
-		self.file.write("# find all *_test.go files and generate unit-test.file-list\n")
+		self.file.write("# find all *_test.go files and generate unit-test-devel.file-list\n")
 		self.file.write("for file in $(find . -iname \"*_test.go\"); do\n")
 		self.file.write("    echo \"%%dir %%{gopath}/src/%%{import_path}/$(dirname $file)\" >> devel.file-list\n")
 		self.file.write("    install -d -p %{buildroot}/%{gopath}/src/%{import_path}/$(dirname $file)\n")
 		self.file.write("    cp -pav $file %{buildroot}/%{gopath}/src/%{import_path}/$file\n")
-		self.file.write("    echo \"%%{gopath}/src/%%{import_path}/$file\" >> unit-test.file-list\n")
+		self.file.write("    echo \"%%{gopath}/src/%%{import_path}/$file\" >> unit-test-devel.file-list\n")
 		self.file.write("done\n")
 		self.file.write("%endif\n\n")
 
@@ -385,7 +385,7 @@ class SpecGenerator:
 		self.file.write("%endif\n\n")
 
 		self.file.write("%if 0%{?with_unit_test} && 0%{?with_devel}\n")
-		self.file.write("%files unit-test -f unit-test.file-list\n")
+		self.file.write("%files unit-test-devel -f unit-test-devel.file-list\n")
 
 		if license != []:
 			self.file.write("%%copying %s\n" % (" ".join(licenses)))
@@ -437,7 +437,7 @@ class SpecGenerator:
 		self.generateDevelHeader(prj_info, prefix)
 		self.file.write("\n")
 
-		# generate unit-test subpackage
+		# generate unit-test-devel subpackage
 		self.generateUnitTestHeader()
 		self.file.write("\n")
 
