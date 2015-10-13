@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-rackspace-gophercloud-1.0.0-7.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-rackspace-gophercloud-1.0.0-8.fc24">
   <packages>
     <package importpath="github.com/rackspace/gophercloud/openstack/compute/v2/extensions/bootfromvolume">
       <types>
@@ -23021,8 +23021,6 @@
     </package>
   </packages>
   <imports>
-    <import path="testing"/>
-    <import path="github.com/rackspace/gophercloud/testhelper"/>
     <import path="errors"/>
     <import path="strings"/>
     <import path="time"/>
@@ -23037,15 +23035,16 @@
     <import path="net/url"/>
     <import path="strconv"/>
     <import path="net/http/httptest"/>
+    <import path="testing"/>
     <import path="path/filepath"/>
     <import path="runtime"/>
     <import path="github.com/rackspace/gophercloud"/>
+    <import path="github.com/rackspace/gophercloud/testhelper"/>
     <import path="github.com/rackspace/gophercloud/openstack"/>
     <import path="github.com/rackspace/gophercloud/openstack/utils"/>
     <import path="github.com/rackspace/gophercloud/rackspace/identity/v2/tokens"/>
     <import path="os"/>
     <import path="github.com/rackspace/gophercloud/pagination"/>
-    <import path="github.com/rackspace/gophercloud/testhelper/client"/>
     <import path="github.com/rackspace/gophercloud/openstack/orchestration/v1/stacktemplates"/>
     <import path="github.com/rackspace/gophercloud/openstack/orchestration/v1/stacks"/>
     <import path="github.com/rackspace/gophercloud/openstack/orchestration/v1/stackresources"/>
@@ -23056,12 +23055,11 @@
     <import path="github.com/rackspace/gophercloud/rackspace/objectstorage/v1/cdncontainers"/>
     <import path="github.com/rackspace/gophercloud/openstack/objectstorage/v1/accounts"/>
     <import path="github.com/rackspace/gophercloud/openstack/networking/v2/subnets"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/networking/v2/common"/>
-    <import path="github.com/rackspace/gophercloud/openstack/networking/v2/common"/>
     <import path="github.com/rackspace/gophercloud/openstack/networking/v2/extensions/security/rules"/>
     <import path="github.com/rackspace/gophercloud/openstack/networking/v2/extensions/security/groups"/>
     <import path="github.com/rackspace/gophercloud/openstack/networking/v2/ports"/>
     <import path="github.com/rackspace/gophercloud/openstack/networking/v2/networks"/>
+    <import path="github.com/rackspace/gophercloud/testhelper/client"/>
     <import path="github.com/rackspace/gophercloud/rackspace/lb/v1/acl"/>
     <import path="github.com/rackspace/gophercloud/rackspace/lb/v1/nodes"/>
     <import path="github.com/rackspace/gophercloud/rackspace/lb/v1/sessions"/>
@@ -23074,8 +23072,8 @@
     <import path="github.com/rackspace/gophercloud/openstack/identity/v2/extensions/admin/roles"/>
     <import path="github.com/rackspace/gophercloud/openstack/common/extensions"/>
     <import path="github.com/rackspace/gophercloud/openstack/compute/v2/extensions/volumeattach"/>
-    <import path="github.com/rackspace/gophercloud/openstack/compute/v2/extensions/diskconfig"/>
     <import path="github.com/rackspace/gophercloud/openstack/compute/v2/extensions/bootfromvolume"/>
+    <import path="github.com/rackspace/gophercloud/openstack/compute/v2/extensions/diskconfig"/>
     <import path="github.com/rackspace/gophercloud/openstack/compute/v2/servers"/>
     <import path="github.com/rackspace/gophercloud/openstack/compute/v2/extensions/keypairs"/>
     <import path="github.com/rackspace/gophercloud/openstack/compute/v2/images"/>
@@ -23095,68 +23093,10 @@
     <import path="github.com/rackspace/gophercloud/openstack/compute/v2/extensions/secgroups"/>
     <import path="crypto/rand"/>
     <import path="math/rand"/>
-    <import path="github.com/rackspace/gophercloud/acceptance/tools"/>
     <import path="github.com/rackspace/gophercloud/rackspace"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/rackconnect/v3/publicips"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/rackconnect/v3/lbpools"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/rackconnect/v3/cloudnetworks"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/orchestration/v1/stacks"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/orchestration/v1/stacktemplates"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/orchestration/v1/stackresources"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/orchestration/v1/stackevents"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/orchestration/v1/buildinfo"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/objectstorage/v1/containers"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/objectstorage/v1/objects"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/objectstorage/v1/cdnobjects"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/objectstorage/v1/bulk"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/objectstorage/v1/accounts"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/networking/v2/networks"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/networking/v2/subnets"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/networking/v2/ports"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/networking/v2/security/groups"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/networking/v2/security/rules"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/lb/v1/lbs"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/compute/v2/servers"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/identity/v2/users"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/identity/v2/tenants"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/identity/v2/roles"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/identity/v2/extensions"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/blockstorage/v1/volumes"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/compute/v2/volumeattach"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/compute/v2/networks"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/compute/v2/virtualinterfaces"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/compute/v2/keypairs"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/compute/v2/images"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/compute/v2/flavors"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/compute/v2/bootfromvolume"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/cdn/v1/serviceassets"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/cdn/v1/services"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/cdn/v1/flavors"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/cdn/v1/base"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/blockstorage/v1/volumetypes"/>
-    <import path="github.com/rackspace/gophercloud/rackspace/blockstorage/v1/snapshots"/>
-    <import path="github.com/rackspace/gophercloud/openstack/networking/v2/extensions"/>
-    <import path="github.com/rackspace/gophercloud/openstack/networking/v2/apiversions"/>
+    <import path="github.com/rackspace/gophercloud/acceptance/tools"/>
     <import path="github.com/rackspace/gophercloud/acceptance/openstack/networking/v2"/>
-    <import path="github.com/rackspace/gophercloud/openstack/networking/v2/extensions/external"/>
-    <import path="github.com/rackspace/gophercloud/openstack/networking/v2/extensions/layer3/floatingips"/>
-    <import path="github.com/rackspace/gophercloud/openstack/networking/v2/extensions/layer3/routers"/>
-    <import path="github.com/rackspace/gophercloud/openstack/networking/v2/extensions/lbaas/vips"/>
-    <import path="github.com/rackspace/gophercloud/openstack/networking/v2/extensions/lbaas/pools"/>
     <import path="github.com/rackspace/gophercloud/openstack/networking/v2/extensions/lbaas/monitors"/>
-    <import path="github.com/rackspace/gophercloud/openstack/networking/v2/extensions/lbaas/members"/>
-    <import path="github.com/rackspace/gophercloud/openstack/networking/v2/extensions/fwaas/rules"/>
-    <import path="github.com/rackspace/gophercloud/openstack/networking/v2/extensions/fwaas/policies"/>
-    <import path="github.com/rackspace/gophercloud/openstack/networking/v2/extensions/fwaas/firewalls"/>
-    <import path="github.com/rackspace/gophercloud/openstack/identity/v3/services"/>
-    <import path="github.com/rackspace/gophercloud/openstack/identity/v3/endpoints"/>
-    <import path="github.com/rackspace/gophercloud/openstack/identity/v2/extensions"/>
-    <import path="github.com/rackspace/gophercloud/openstack/compute/v2/extensions/tenantnetworks"/>
-    <import path="github.com/rackspace/gophercloud/openstack/compute/v2/extensions/servergroups"/>
-    <import path="github.com/rackspace/gophercloud/openstack/compute/v2/extensions/defsecrules"/>
-    <import path="crypto/rsa"/>
-    <import path="golang.org/x/crypto/ssh"/>
-    <import path="github.com/rackspace/gophercloud/openstack/compute/v2/extensions/floatingip"/>
-    <import path="github.com/rackspace/gophercloud/openstack/compute/v2/extensions"/>
+    <import path="github.com/rackspace/gophercloud/openstack/networking/v2/extensions/lbaas/pools"/>
   </imports>
 </project>

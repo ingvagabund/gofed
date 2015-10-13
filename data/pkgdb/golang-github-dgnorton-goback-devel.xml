@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-dgnorton-goback-0-0.2.gita49ca3c.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-dgnorton-goback-0-0.3.gita49ca3c.fc24">
   <packages>
     <package importpath="github.com/dgnorton/goback">
       <types>
@@ -61,8 +61,5 @@
       <names/>
     </package>
   </packages>
-  <imports>
-    <import path="fmt"/>
-    <import path="testing"/>
-  </imports>
+  <imports/>
 </project>

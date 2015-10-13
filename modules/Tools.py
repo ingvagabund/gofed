@@ -701,12 +701,13 @@ STEP_BUILD=8
 STEP_UPDATE=9
 STEP_OVERRIDE=10
 
-STEP_END=10
+STEP_END=9
 
 class PhaseMethods:
 
 	def __init__(self, dry=False, debug=False):
 		self.phase = STEP_END
+		self.endphase = STEP_END
 		self.mc = MultiCommand(dry=dry, debug=debug)
 		self.branches = Config().getBranches()
 
@@ -716,14 +717,26 @@ class PhaseMethods:
 	def startWithScratchBuild(self):
 		self.phase = STEP_SCRATCH_BUILD
 
+	def stopWithScratchBuild(self):
+		self.endphase = STEP_SCRATCH_BUILD
+
 	def startWithPush(self):
 		self.phase = STEP_PUSH
+
+	def stopWithPush(self):
+		self.endphase = STEP_PUSH
 
 	def startWithBuild(self):
 		self.phase = STEP_BUILD
 
+	def stopWithBuild(self):
+		self.endphase = STEP_BUILD
+
 	def startWithUpdate(self):
 		self.phase = STEP_UPDATE
+
+	def stopWithUpdate(self):
+		self.endphase = STEP_UPDATE
 
 	def runPhase(self, phase):
 		if phase == STEP_SCRATCH_BUILD:
@@ -759,7 +772,7 @@ class PhaseMethods:
 
 	def run(self):
 
-		for i in range(1, STEP_END):
+		for i in range(1, self.endphase + 1):
 			if i < self.phase:
 				continue
 

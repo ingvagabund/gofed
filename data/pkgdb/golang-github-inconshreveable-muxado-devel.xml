@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-inconshreveable-muxado-0-0.1.gitf693c7e.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-inconshreveable-muxado-0-0.2.gitf693c7e.fc24">
   <packages>
     <package importpath="github.com/inconshreveable/muxado/proto">
       <types>
@@ -2337,17 +2337,14 @@
     <import path="net"/>
     <import path="github.com/inconshreveable/muxado/proto/frame"/>
     <import path="time"/>
-    <import path="fmt"/>
-    <import path="io"/>
-    <import path="io/ioutil"/>
-    <import path="testing"/>
     <import path="sync"/>
+    <import path="fmt"/>
     <import path="github.com/inconshreveable/muxado/proto/buffer"/>
+    <import path="io"/>
     <import path="sync/atomic"/>
-    <import path="net/http"/>
     <import path="reflect"/>
     <import path="encoding/binary"/>
-    <import path="bytes"/>
     <import path="errors"/>
+    <import path="io/ioutil"/>
   </imports>
 </project>

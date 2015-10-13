@@ -31,6 +31,27 @@ from modules.ImportPathsDecomposer import ImportPathsDecomposer
 from modules.GoSymbolsExtractor import GoSymbolsExtractor
 from modules.Config import Config
 
+def show_main(occurrences):
+	not_just_main = False
+	main_pkgs = []
+	for occurrence in occurrences:
+		parts = occurrence.split(":")
+		if len(parts) != 2:
+			continue
+
+		if parts[1] != "main":
+			not_just_main = True
+		else:
+			main_pkgs.append(occurrence)
+
+	if not main_pkgs:
+		return ""
+
+	if not_just_main:
+		return "+(%s)" % ", ".join(main_pkgs)
+	else:
+		return "(%s)" % ", ".join(main_pkgs)
+
 if __name__ == "__main__":
 	parser = optparse.OptionParser("%prog [-a] [-c] [-d [-v]] [directory]")
 
@@ -101,6 +122,11 @@ if __name__ == "__main__":
             help = "Show occurence of import paths."
         )
 
+	parser.add_option(
+            "", "", "--show-main", dest="showmain", action = "store_true", default = False,
+            help = "Show occurence of import paths in main packages only (+means not just main)."
+        )
+
 	options, args = parser.parse_args()
 
 	path = "."
@@ -158,6 +184,11 @@ if __name__ == "__main__":
 			gimports.append(gimport)
 
 		for gimport in gimports:
+			if options.showmain:
+				main_occ = show_main(package_imports_occurence[gimport])
+				if main_occ == "":
+					continue
+
 			import_len = len(gimport)
 			if import_len > max_len:
 				max_len = import_len
@@ -213,7 +244,12 @@ if __name__ == "__main__":
 				if not options.short:
 					for gimport in gimports:
 						if options.showoccurrence:
-							print "\t%s (%s)" % (gimport, ", ".join(package_imports_occurence[gimport]))
+							if options.showmain:
+								main_occ = show_main(package_imports_occurence[gimport])
+								if main_occ != "":
+									print "\t%s %s" % (gimport, main_occ)
+							else:
+								print "\t%s (%s)" % (gimport, ", ".join(package_imports_occurence[gimport]))
 						else:
 							print "\t%s" % gimport
 				continue
@@ -242,7 +278,12 @@ if __name__ == "__main__":
 			if not options.short:
 				for gimport in sorted(gimports):
 					if options.showoccurrence:
-						print "\t%s (%s)" % (gimport, ", ".join(package_imports_occurence[gimport]))
+						if options.showmain:
+							main_occ = show_main(package_imports_occurence[gimport])
+							if main_occ != "":
+								print "\t%s %s" % (gimport, main_occ)
+						else:
+							print "\t%s (%s)" % (gimport, ", ".join(package_imports_occurence[gimport]))
 					else:
 						print "\t%s" % gimport
 			continue
@@ -268,7 +309,12 @@ if __name__ == "__main__":
 		for gimport in sorted(classes[element]):
 			if options.showoccurrence:
 				import_len = len(gimport)
-				print "\t%s %s(%s)" % (gimport, (max_len - import_len)*" ", ", ".join(package_imports_occurence[gimport]))
+				if options.showmain:
+					main_occ = show_main(package_imports_occurence[gimport])
+					if main_occ != "":
+						print "\t%s %s %s" % (gimport, (max_len - import_len)*" ", main_occ)
+				else:
+					print "\t%s %s(%s)" % (gimport, (max_len - import_len)*" ", ", ".join(package_imports_occurence[gimport]))
 			else:
 				print "\t%s" % gimport
 

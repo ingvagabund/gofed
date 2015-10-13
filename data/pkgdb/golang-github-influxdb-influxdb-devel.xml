@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-influxdb-influxdb-0.8.5-0.2.git9485e99.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-influxdb-influxdb-0.8.5-0.4.git9485e99.fc24">
   <packages>
     <package importpath="github.com/influxdb/influxdb/integration">
       <types/>
@@ -11408,6 +11408,11 @@
         <name value="FromClauseMergeRegex"/>
       </names>
     </package>
+    <package importpath="github.com/influxdb/influxdb/statik">
+      <types/>
+      <functions/>
+      <names/>
+    </package>
     <package importpath="github.com/influxdb/influxdb/metastore">
       <types>
         <type type="struct" name="Store">
@@ -14921,16 +14926,12 @@
     <import path="math"/>
     <import path="os"/>
     <import path="path"/>
-    <import path="testing"/>
-    <import path="time"/>
-    <import path="code.google.com/p/goprotobuf/proto"/>
-    <import path="code.google.com/p/log4go"/>
-    <import path="github.com/influxdb/influxdb/checkers"/>
-    <import path="github.com/influxdb/influxdb/configuration"/>
-    <import path="github.com/influxdb/influxdb/protocol"/>
-    <import path="launchpad.net/gocheck"/>
     <import path="sort"/>
     <import path="strings"/>
+    <import path="code.google.com/p/goprotobuf/proto"/>
+    <import path="code.google.com/p/log4go"/>
+    <import path="github.com/influxdb/influxdb/configuration"/>
+    <import path="github.com/influxdb/influxdb/protocol"/>
     <import path="github.com/influxdb/influxdb/common"/>
     <import path="io"/>
     <import path="strconv"/>
@@ -14938,19 +14939,21 @@
     <import path="bufio"/>
     <import path="encoding/gob"/>
     <import path="encoding/binary"/>
-    <import path="bytes"/>
-    <import path="flag"/>
-    <import path="math/rand"/>
-    <import path="os/exec"/>
-    <import path="sync"/>
-    <import path="github.com/influxdb/influxdb/datastore/storage"/>
-    <import path="github.com/influxdb/influxdb/client"/>
     <import path="crypto/rand"/>
     <import path="crypto/tls"/>
+    <import path="flag"/>
+    <import path="math/rand"/>
     <import path="net"/>
     <import path="net/http"/>
     <import path="runtime"/>
+    <import path="sync"/>
+    <import path="time"/>
     <import path="github.com/BurntSushi/toml"/>
+    <import path="github.com/influxdb/influxdb/client"/>
+    <import path="bytes"/>
+    <import path="os/exec"/>
+    <import path="github.com/influxdb/influxdb/datastore/storage"/>
+    <import path="github.com/rakyll/statik/fs"/>
     <import path="github.com/influxdb/influxdb/admin"/>
     <import path="github.com/influxdb/influxdb/api/collectd"/>
     <import path="github.com/influxdb/influxdb/api/graphite"/>
@@ -14966,10 +14969,9 @@
     <import path="reflect"/>
     <import path="unsafe"/>
     <import path="encoding/json"/>
-    <import path="github.com/influxdb/influxdb/integration/helpers"/>
     <import path="net/url"/>
-    <import path="github.com/influxdb/influxdb/engine"/>
     <import path="path/filepath"/>
+    <import path="launchpad.net/gocheck"/>
     <import path="container/heap"/>
     <import path="github.com/influxdb/influxdb/parser"/>
     <import path="errors"/>
@@ -14982,6 +14984,7 @@
     <import path="github.com/gorilla/mux"/>
     <import path="github.com/influxdb/influxdb/_vendor/raft"/>
     <import path="sync/atomic"/>
+    <import path="github.com/influxdb/influxdb/engine"/>
     <import path="math/big"/>
     <import path="code.google.com/p/go.crypto/bcrypt"/>
     <import path="github.com/influxdb/go-cache"/>
@@ -14992,9 +14995,7 @@
     <import path="compress/zlib"/>
     <import path="encoding/base64"/>
     <import path="github.com/bmizerany/pat"/>
-    <import path="encoding/hex"/>
     <import path="github.com/kimor79/gollectd"/>
-    <import path="github.com/rakyll/statik/fs"/>
     <import path="github.com/influxdb/influxdb/statik"/>
   </imports>
 </project>

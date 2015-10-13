@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-hashicorp-consul-migrate-0-0.1.git4977886.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-hashicorp-consul-migrate-0-0.2.git4977886.fc24">
   <packages>
     <package importpath="github.com/hashicorp/consul-migrate/migrator">
       <types>
@@ -54,19 +54,13 @@
     </package>
   </packages>
   <imports>
-    <import path="io/ioutil"/>
-    <import path="os"/>
-    <import path="strings"/>
-    <import path="testing"/>
     <import path="fmt"/>
+    <import path="os"/>
     <import path="time"/>
     <import path="github.com/hashicorp/consul-migrate/migrator"/>
-    <import path="bytes"/>
-    <import path="io"/>
     <import path="path/filepath"/>
-    <import path="reflect"/>
-    <import path="github.com/hashicorp/raft"/>
     <import path="runtime"/>
+    <import path="github.com/hashicorp/raft"/>
     <import path="github.com/hashicorp/raft-boltdb"/>
     <import path="github.com/hashicorp/raft-mdb"/>
   </imports>

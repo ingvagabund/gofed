@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-mreiferson-go-httpclient-0-0.2.gitc121dfe.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-mreiferson-go-httpclient-0-0.3.gitc121dfe.fc24">
   <packages>
     <package importpath="github.com/mreiferson/go-httpclient">
       <types>
@@ -206,12 +206,10 @@
   <imports>
     <import path="crypto/tls"/>
     <import path="io"/>
-    <import path="io/ioutil"/>
     <import path="net"/>
     <import path="net/http"/>
-    <import path="sync"/>
-    <import path="testing"/>
-    <import path="time"/>
     <import path="net/url"/>
+    <import path="sync"/>
+    <import path="time"/>
   </imports>
 </project>

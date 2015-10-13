@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-abbot-go-http-auth-0-0.2.gitc0ef453.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-abbot-go-http-auth-0-0.3.gitc0ef453.fc24">
   <packages>
     <package importpath="github.com/abbot/go-http-auth">
       <types>
@@ -428,7 +428,6 @@
     </package>
   </packages>
   <imports>
-    <import path="testing"/>
     <import path="encoding/csv"/>
     <import path="os"/>
     <import path="encoding/base64"/>
@@ -438,10 +437,10 @@
     <import path="strings"/>
     <import path="net/http"/>
     <import path="net/url"/>
-    <import path="time"/>
     <import path="sort"/>
     <import path="strconv"/>
     <import path="sync"/>
+    <import path="time"/>
     <import path="crypto/sha1"/>
   </imports>
 </project>

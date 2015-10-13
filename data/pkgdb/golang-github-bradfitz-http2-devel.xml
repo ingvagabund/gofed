@@ -1,0 +1,1488 @@
+<?xml version='1.0' encoding='ASCII'?>
+<project ipprefix="" commit="commit" nvr="golang-github-bradfitz-http2-0-0.1.gitf8202bc.fc24">
+  <packages>
+    <package importpath="github.com/bradfitz/http2/hpack">
+      <types>
+        <type type="struct" name="DecodingError">
+          <field type="ident" def="error" name="Err"/>
+        </type>
+        <type name="InvalidIndexError" type="ident">
+          <type type="ident" def="int"/>
+        </type>
+        <type type="struct" name="HeaderField">
+          <field type="ident" def="string" name="Name"/>
+          <field type="ident" def="string" name="Value"/>
+          <field type="ident" def="bool" name="Sensitive"/>
+        </type>
+        <type type="struct" name="Decoder">
+          <field type="ident" def="dynamicTable" name="dynTab"/>
+          <field type="func" name="emit">
+            <paramsList>
+              <type type="ident" def="HeaderField"/>
+            </paramsList>
+            <resultsList/>
+          </field>
+          <field type="slice" name="buf">
+            <elmtype type="ident" def="byte"/>
+          </field>
+          <field type="selector" name="saveBuf">
+            <prefix value="bytes"/>
+            <item value="Buffer"/>
+          </field>
+        </type>
+        <type type="struct" name="Encoder">
+          <field type="ident" def="dynamicTable" name="dynTab"/>
+          <field type="ident" def="uint32" name="minSize"/>
+          <field type="ident" def="uint32" name="maxSizeLimit"/>
+          <field type="ident" def="bool" name="tableSizeUpdate"/>
+          <field type="selector" name="w">
+            <prefix value="io"/>
+            <item value="Writer"/>
+          </field>
+          <field type="slice" name="buf">
+            <elmtype type="ident" def="byte"/>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="HuffmanDecode">
+          <recvList/>
+          <paramsList>
+            <type type="selector">
+              <prefix value="io"/>
+              <item value="Writer"/>
+            </type>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AppendHuffmanString">
+          <recvList/>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="HuffmanEncodeLength">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="uint64"/>
+          </resultsList>
+        </function>
+        <function name="Error">
+          <recvList>
+            <type type="ident" def="DecodingError"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Error">
+          <recvList>
+            <type type="ident" def="InvalidIndexError"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="NewDecoder">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="uint32"/>
+            <type type="func">
+              <paramsList>
+                <type type="ident" def="HeaderField"/>
+              </paramsList>
+              <resultsList/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Decoder"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="SetMaxDynamicTableSize">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Decoder"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="uint32"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="SetAllowedMaxDynamicTableSize">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Decoder"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="uint32"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="DecodeFull">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Decoder"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="HeaderField"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Decoder"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Write">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Decoder"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="NewEncoder">
+          <recvList/>
+          <paramsList>
+            <type type="selector">
+              <prefix value="io"/>
+              <item value="Writer"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Encoder"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="WriteField">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Encoder"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="HeaderField"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="SetMaxDynamicTableSize">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Encoder"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="uint32"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="SetMaxDynamicTableSizeLimit">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Encoder"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="uint32"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+      </functions>
+      <names/>
+    </package>
+    <package importpath="github.com/bradfitz/http2">
+      <types>
+        <type type="struct" name="Transport">
+          <field type="selector" name="Fallback">
+            <prefix value="http"/>
+            <item value="RoundTripper"/>
+          </field>
+          <field type="ident" def="bool" name="InsecureTLSDial"/>
+          <field type="selector" name="connMu">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+          <field type="map" name="conns">
+            <keytype type="ident" def="string"/>
+            <valtype type="slice">
+              <elmtype type="pointer">
+                <type type="ident" def="clientConn"/>
+              </elmtype>
+            </valtype>
+          </field>
+        </type>
+        <type type="struct" name="Server">
+          <field type="ident" def="int" name="MaxHandlers"/>
+          <field type="ident" def="uint32" name="MaxConcurrentStreams"/>
+          <field type="ident" def="uint32" name="MaxReadFrameSize"/>
+          <field type="ident" def="bool" name="PermitProhibitedCipherSuites"/>
+        </type>
+        <type type="struct" name="Setting">
+          <field type="ident" def="SettingID" name="ID"/>
+          <field type="ident" def="uint32" name="Val"/>
+        </type>
+        <type name="SettingID" type="ident">
+          <type type="ident" def="uint16"/>
+        </type>
+        <type name="FrameType" type="ident">
+          <type type="ident" def="uint8"/>
+        </type>
+        <type name="Flags" type="ident">
+          <type type="ident" def="uint8"/>
+        </type>
+        <type type="struct" name="FrameHeader">
+          <field type="ident" def="bool" name="valid"/>
+          <field type="ident" def="FrameType" name="Type"/>
+          <field type="ident" def="Flags" name="Flags"/>
+          <field type="ident" def="uint32" name="Length"/>
+          <field type="ident" def="uint32" name="StreamID"/>
+        </type>
+        <type name="Frame" type="interface">
+          <method name="Header">
+            <paramsList/>
+            <resultsList>
+              <type type="ident" def="FrameHeader"/>
+            </resultsList>
+          </method>
+          <method name="invalidate">
+            <paramsList/>
+            <resultsList/>
+          </method>
+        </type>
+        <type type="struct" name="Framer">
+          <field type="selector" name="r">
+            <prefix value="io"/>
+            <item value="Reader"/>
+          </field>
+          <field type="ident" def="Frame" name="lastFrame"/>
+          <field type="ident" def="uint32" name="maxReadSize"/>
+          <field type="array" name="headerBuf">
+            <elmtype type="ident" def="byte"/>
+          </field>
+          <field type="func" name="getReadBuf">
+            <paramsList>
+              <type type="ident" def="uint32"/>
+            </paramsList>
+            <resultsList>
+              <type type="slice">
+                <elmtype type="ident" def="byte"/>
+              </type>
+            </resultsList>
+          </field>
+          <field type="slice" name="readBuf">
+            <elmtype type="ident" def="byte"/>
+          </field>
+          <field type="ident" def="uint32" name="maxWriteSize"/>
+          <field type="selector" name="w">
+            <prefix value="io"/>
+            <item value="Writer"/>
+          </field>
+          <field type="slice" name="wbuf">
+            <elmtype type="ident" def="byte"/>
+          </field>
+          <field type="ident" def="bool" name="AllowIllegalWrites"/>
+        </type>
+        <type type="struct" name="DataFrame">
+          <field type="ident" def="FrameHeader" name=""/>
+          <field type="slice" name="data">
+            <elmtype type="ident" def="byte"/>
+          </field>
+        </type>
+        <type type="struct" name="SettingsFrame">
+          <field type="ident" def="FrameHeader" name=""/>
+          <field type="slice" name="p">
+            <elmtype type="ident" def="byte"/>
+          </field>
+        </type>
+        <type type="struct" name="PingFrame">
+          <field type="ident" def="FrameHeader" name=""/>
+          <field type="array" name="Data">
+            <elmtype type="ident" def="byte"/>
+          </field>
+        </type>
+        <type type="struct" name="GoAwayFrame">
+          <field type="ident" def="FrameHeader" name=""/>
+          <field type="ident" def="uint32" name="LastStreamID"/>
+          <field type="ident" def="ErrCode" name="ErrCode"/>
+          <field type="slice" name="debugData">
+            <elmtype type="ident" def="byte"/>
+          </field>
+        </type>
+        <type type="struct" name="UnknownFrame">
+          <field type="ident" def="FrameHeader" name=""/>
+          <field type="slice" name="p">
+            <elmtype type="ident" def="byte"/>
+          </field>
+        </type>
+        <type type="struct" name="WindowUpdateFrame">
+          <field type="ident" def="FrameHeader" name=""/>
+          <field type="ident" def="uint32" name="Increment"/>
+        </type>
+        <type type="struct" name="HeadersFrame">
+          <field type="ident" def="FrameHeader" name=""/>
+          <field type="ident" def="PriorityParam" name="Priority"/>
+          <field type="slice" name="headerFragBuf">
+            <elmtype type="ident" def="byte"/>
+          </field>
+        </type>
+        <type type="struct" name="HeadersFrameParam">
+          <field type="ident" def="uint32" name="StreamID"/>
+          <field type="slice" name="BlockFragment">
+            <elmtype type="ident" def="byte"/>
+          </field>
+          <field type="ident" def="bool" name="EndStream"/>
+          <field type="ident" def="bool" name="EndHeaders"/>
+          <field type="ident" def="uint8" name="PadLength"/>
+          <field type="ident" def="PriorityParam" name="Priority"/>
+        </type>
+        <type type="struct" name="PriorityFrame">
+          <field type="ident" def="FrameHeader" name=""/>
+          <field type="ident" def="PriorityParam" name=""/>
+        </type>
+        <type type="struct" name="PriorityParam">
+          <field type="ident" def="uint32" name="StreamDep"/>
+          <field type="ident" def="bool" name="Exclusive"/>
+          <field type="ident" def="uint8" name="Weight"/>
+        </type>
+        <type type="struct" name="RSTStreamFrame">
+          <field type="ident" def="FrameHeader" name=""/>
+          <field type="ident" def="ErrCode" name="ErrCode"/>
+        </type>
+        <type type="struct" name="ContinuationFrame">
+          <field type="ident" def="FrameHeader" name=""/>
+          <field type="slice" name="headerFragBuf">
+            <elmtype type="ident" def="byte"/>
+          </field>
+        </type>
+        <type type="struct" name="PushPromiseFrame">
+          <field type="ident" def="FrameHeader" name=""/>
+          <field type="ident" def="uint32" name="PromiseID"/>
+          <field type="slice" name="headerFragBuf">
+            <elmtype type="ident" def="byte"/>
+          </field>
+        </type>
+        <type type="struct" name="PushPromiseParam">
+          <field type="ident" def="uint32" name="StreamID"/>
+          <field type="ident" def="uint32" name="PromiseID"/>
+          <field type="slice" name="BlockFragment">
+            <elmtype type="ident" def="byte"/>
+          </field>
+          <field type="ident" def="bool" name="EndHeaders"/>
+          <field type="ident" def="uint8" name="PadLength"/>
+        </type>
+        <type name="ErrCode" type="ident">
+          <type type="ident" def="uint32"/>
+        </type>
+        <type name="ConnectionError" type="ident">
+          <type type="ident" def="ErrCode"/>
+        </type>
+        <type type="struct" name="StreamError">
+          <field type="ident" def="uint32" name="StreamID"/>
+          <field type="ident" def="ErrCode" name="Code"/>
+        </type>
+      </types>
+      <functions>
+        <function name="String">
+          <recvList>
+            <type type="ident" def="frameWriteMsg"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="writeData"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Write">
+          <recvList>
+            <type type="ident" def="stickyErrWriter"/>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="RoundTrip">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Transport"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="http"/>
+                <item value="Request"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="http"/>
+                <item value="Response"/>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="CloseIdleConnections">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Transport"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+        <function name="ConfigureServer">
+          <recvList/>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="http"/>
+                <item value="Server"/>
+              </type>
+            </type>
+            <type type="pointer">
+              <type type="ident" def="Server"/>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Framer">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="serverConn"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="CloseConn">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="serverConn"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Flush">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="serverConn"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="HeaderEncoder">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="serverConn"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="hpack"/>
+                <item value="Encoder"/>
+              </type>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="bytes"/>
+                <item value="Buffer"/>
+              </type>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="requestBody"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Read">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="requestBody"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Write">
+          <recvList>
+            <type type="ident" def="chunkWriter"/>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Flush">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="responseWriter"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+        <function name="CloseNotify">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="responseWriter"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="channel" dir="2">
+              <type type="ident" def="bool"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Header">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="responseWriter"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="selector">
+              <prefix value="http"/>
+              <item value="Header"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="WriteHeader">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="responseWriter"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="int"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Write">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="responseWriter"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="WriteString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="responseWriter"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Read">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="pipe"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Write">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="pipe"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="pipe"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="error"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="ident" def="streamState"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="ident" def="Setting"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Valid">
+          <recvList>
+            <type type="ident" def="Setting"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="ident" def="SettingID"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Done">
+          <recvList>
+            <type type="ident" def="gate"/>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+        <function name="Wait">
+          <recvList>
+            <type type="ident" def="gate"/>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+        <function name="Init">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="closeWaiter"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="ident" def="closeWaiter"/>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+        <function name="Wait">
+          <recvList>
+            <type type="ident" def="closeWaiter"/>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+        <function name="Write">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="bufferedWriter"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Flush">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="bufferedWriter"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="ident" def="FrameType"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Has">
+          <recvList>
+            <type type="ident" def="Flags"/>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="Flags"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="Header">
+          <recvList>
+            <type type="ident" def="FrameHeader"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="FrameHeader"/>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="ident" def="FrameHeader"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="ReadFrameHeader">
+          <recvList/>
+          <paramsList>
+            <type type="selector">
+              <prefix value="io"/>
+              <item value="Reader"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="FrameHeader"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="NewFramer">
+          <recvList/>
+          <paramsList>
+            <type type="selector">
+              <prefix value="io"/>
+              <item value="Writer"/>
+            </type>
+            <type type="selector">
+              <prefix value="io"/>
+              <item value="Reader"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="SetMaxReadFrameSize">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="uint32"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="ReadFrame">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="Frame"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="StreamEnded">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="DataFrame"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="Data">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="DataFrame"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="WriteData">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="uint32"/>
+            <type type="ident" def="bool"/>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="IsAck">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="SettingsFrame"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="Value">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="SettingsFrame"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="SettingID"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="uint32"/>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="ForeachSetting">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="SettingsFrame"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="func">
+              <paramsList>
+                <type type="ident" def="Setting"/>
+              </paramsList>
+              <resultsList>
+                <type type="ident" def="error"/>
+              </resultsList>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="WriteSettings">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ellipsis">
+              <type type="ident" def="Setting"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="WriteSettingsAck">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="WritePing">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="bool"/>
+            <type type="array">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="DebugData">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="GoAwayFrame"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="WriteGoAway">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="uint32"/>
+            <type type="ident" def="ErrCode"/>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Payload">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="UnknownFrame"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="WriteWindowUpdate">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="uint32"/>
+            <type type="ident" def="uint32"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="HeaderBlockFragment">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="HeadersFrame"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="HeadersEnded">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="HeadersFrame"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="StreamEnded">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="HeadersFrame"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="HasPriority">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="HeadersFrame"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="WriteHeaders">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="HeadersFrameParam"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="IsZero">
+          <recvList>
+            <type type="ident" def="PriorityParam"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="WritePriority">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="uint32"/>
+            <type type="ident" def="PriorityParam"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="WriteRSTStream">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="uint32"/>
+            <type type="ident" def="ErrCode"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="StreamEnded">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ContinuationFrame"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="HeaderBlockFragment">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ContinuationFrame"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="HeadersEnded">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ContinuationFrame"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="WriteContinuation">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="uint32"/>
+            <type type="ident" def="bool"/>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="HeaderBlockFragment">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="PushPromiseFrame"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="HeadersEnded">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="PushPromiseFrame"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="WritePushPromise">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="PushPromiseParam"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="WriteRawFrame">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="FrameType"/>
+            <type type="ident" def="Flags"/>
+            <type type="ident" def="uint32"/>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="ident" def="ErrCode"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Error">
+          <recvList>
+            <type type="ident" def="ConnectionError"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Error">
+          <recvList>
+            <type type="ident" def="StreamError"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Error">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Read">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="buffer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Len">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="buffer"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="int"/>
+          </resultsList>
+        </function>
+        <function name="Write">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="buffer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="buffer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="error"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+      </functions>
+      <names>
+        <name value="VerboseLogs"/>
+        <name value="ClientPreface"/>
+        <name value="NextProtoTLS"/>
+        <name value="SettingHeaderTableSize"/>
+        <name value="SettingEnablePush"/>
+        <name value="SettingMaxConcurrentStreams"/>
+        <name value="SettingInitialWindowSize"/>
+        <name value="SettingMaxFrameSize"/>
+        <name value="SettingMaxHeaderListSize"/>
+        <name value="DebugGoroutines"/>
+        <name value="FrameData"/>
+        <name value="FrameHeaders"/>
+        <name value="FramePriority"/>
+        <name value="FrameRSTStream"/>
+        <name value="FrameSettings"/>
+        <name value="FramePushPromise"/>
+        <name value="FramePing"/>
+        <name value="FrameGoAway"/>
+        <name value="FrameWindowUpdate"/>
+        <name value="FrameContinuation"/>
+        <name value="FlagDataEndStream"/>
+        <name value="FlagDataPadded"/>
+        <name value="FlagHeadersEndStream"/>
+        <name value="FlagHeadersEndHeaders"/>
+        <name value="FlagHeadersPadded"/>
+        <name value="FlagHeadersPriority"/>
+        <name value="FlagSettingsAck"/>
+        <name value="FlagPingAck"/>
+        <name value="FlagContinuationEndHeaders"/>
+        <name value="FlagPushPromiseEndHeaders"/>
+        <name value="FlagPushPromisePadded"/>
+        <name value="ErrFrameTooLarge"/>
+        <name value="ErrCodeNo"/>
+        <name value="ErrCodeProtocol"/>
+        <name value="ErrCodeInternal"/>
+        <name value="ErrCodeFlowControl"/>
+        <name value="ErrCodeSettingsTimeout"/>
+        <name value="ErrCodeStreamClosed"/>
+        <name value="ErrCodeFrameSize"/>
+        <name value="ErrCodeRefusedStream"/>
+        <name value="ErrCodeCancel"/>
+        <name value="ErrCodeCompression"/>
+        <name value="ErrCodeConnect"/>
+        <name value="ErrCodeEnhanceYourCalm"/>
+        <name value="ErrCodeInadequateSecurity"/>
+        <name value="ErrCodeHTTP11Required"/>
+      </names>
+    </package>
+  </packages>
+  <imports>
+    <import path="fmt"/>
+    <import path="bytes"/>
+    <import path="net/http"/>
+    <import path="time"/>
+    <import path="github.com/bradfitz/http2/hpack"/>
+    <import path="bufio"/>
+    <import path="crypto/tls"/>
+    <import path="errors"/>
+    <import path="io"/>
+    <import path="log"/>
+    <import path="net"/>
+    <import path="strconv"/>
+    <import path="strings"/>
+    <import path="sync"/>
+    <import path="net/url"/>
+    <import path="os"/>
+    <import path="runtime"/>
+    <import path="encoding/binary"/>
+    <import path="flag"/>
+    <import path="regexp"/>
+    <import path="github.com/bradfitz/http2"/>
+    <import path="golang.org/x/crypto/ssh/terminal"/>
+    <import path="encoding/json"/>
+    <import path="io/ioutil"/>
+    <import path="golang.org/x/oauth2"/>
+    <import path="golang.org/x/oauth2/google"/>
+    <import path="google.golang.org/api/compute/v1"/>
+    <import path="hash/crc32"/>
+    <import path="image"/>
+    <import path="image/jpeg"/>
+    <import path="os/exec"/>
+    <import path="path"/>
+    <import path="camlistore.org/pkg/googlestorage"/>
+    <import path="camlistore.org/pkg/singleflight"/>
+  </imports>
+</project>

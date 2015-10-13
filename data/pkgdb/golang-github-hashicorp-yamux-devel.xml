@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-hashicorp-yamux-0-0.1.gitb2e5585.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-hashicorp-yamux-0-0.2.gitb2e5585.fc24">
   <packages>
     <package importpath="github.com/hashicorp/yamux">
       <types>
@@ -584,16 +584,14 @@
     </package>
   </packages>
   <imports>
-    <import path="testing"/>
     <import path="bytes"/>
     <import path="io"/>
     <import path="sync"/>
     <import path="sync/atomic"/>
     <import path="time"/>
+    <import path="bufio"/>
     <import path="fmt"/>
     <import path="io/ioutil"/>
-    <import path="runtime"/>
-    <import path="bufio"/>
     <import path="log"/>
     <import path="math"/>
     <import path="net"/>

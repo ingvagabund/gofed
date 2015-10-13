@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-googlecode-log4go-0-0.2.hgc3294304d93f.fc23">
+<project ipprefix="" commit="commit" nvr="golang-googlecode-log4go-0-0.3.hgc3294304d93f.fc24">
   <packages>
     <package importpath="code.google.com/p/log4go">
       <types>

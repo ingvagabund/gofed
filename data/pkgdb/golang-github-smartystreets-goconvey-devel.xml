@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-smartystreets-goconvey-0-0.1.git43652d6.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-smartystreets-goconvey-0-0.2.git43652d6.fc24">
   <packages>
     <package importpath="github.com/smartystreets/goconvey/convey/gotest">
       <types/>
@@ -2694,24 +2694,18 @@
     <import path="github.com/smartystreets/goconvey/web/server/watch"/>
     <import path="github.com/jtolds/gls"/>
     <import path="github.com/smartystreets/assertions"/>
-    <import path="io"/>
+    <import path="sync"/>
     <import path="io/ioutil"/>
     <import path="os/exec"/>
-    <import path="testing"/>
-    <import path="github.com/smartystreets/goconvey/convey"/>
-    <import path="sync"/>
-    <import path="errors"/>
     <import path="regexp"/>
     <import path="math"/>
     <import path="encoding/json"/>
     <import path="strconv"/>
     <import path="github.com/smartystreets/goconvey/convey/reporting"/>
     <import path="sort"/>
-    <import path="net/http/httptest"/>
-    <import path="net/url"/>
-    <import path="bytes"/>
-    <import path="reflect"/>
-    <import path="path"/>
+    <import path="errors"/>
     <import path="github.com/smartystreets/goconvey/convey/gotest"/>
+    <import path="io"/>
+    <import path="bytes"/>
   </imports>
 </project>

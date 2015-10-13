@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-gopkg-check-0-5.fc23">
+<project ipprefix="" commit="commit" nvr="golang-gopkg-check-0-6.fc24">
   <packages>
     <package importpath="launchpad.net/gocheck">
       <types>
@@ -2740,13 +2740,10 @@
     </package>
   </packages>
   <imports>
-    <import path="errors"/>
-    <import path="gopkg.in/check.v1"/>
-    <import path="os"/>
-    <import path="sync"/>
     <import path="bufio"/>
     <import path="flag"/>
     <import path="fmt"/>
+    <import path="os"/>
     <import path="testing"/>
     <import path="time"/>
     <import path="bytes"/>
@@ -2754,16 +2751,16 @@
     <import path="go/parser"/>
     <import path="go/printer"/>
     <import path="go/token"/>
-    <import path="reflect"/>
-    <import path="runtime"/>
     <import path="strings"/>
-    <import path="log"/>
+    <import path="reflect"/>
     <import path="regexp"/>
+    <import path="errors"/>
     <import path="io"/>
     <import path="math/rand"/>
     <import path="path"/>
     <import path="path/filepath"/>
+    <import path="runtime"/>
     <import path="strconv"/>
-    <import path="launchpad.net/gocheck"/>
+    <import path="sync"/>
   </imports>
 </project>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-hashicorp-go-multierror-0-0.1.gitfcdddc3.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-hashicorp-go-multierror-0-0.2.gitfcdddc3.fc24">
   <packages>
     <package importpath="github.com/hashicorp/go-multierror">
       <types>
@@ -97,9 +97,6 @@
     </package>
   </packages>
   <imports>
-    <import path="errors"/>
-    <import path="reflect"/>
-    <import path="testing"/>
     <import path="fmt"/>
     <import path="strings"/>
   </imports>

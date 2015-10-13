@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-vmware-govcloudair-0-0.1.git0d7be90.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-vmware-govcloudair-0-0.2.git0d7be90.fc24">
   <packages>
     <package importpath="github.com/vmware/govcloudair/testutil">
       <types>
@@ -2099,8 +2099,6 @@
     </package>
   </packages>
   <imports>
-    <import path="github.com/vmware/govcloudair/testutil"/>
-    <import path="gopkg.in/check.v1"/>
     <import path="fmt"/>
     <import path="net/url"/>
     <import path="strings"/>
@@ -2110,7 +2108,6 @@
     <import path="os"/>
     <import path="strconv"/>
     <import path="time"/>
-    <import path="testing"/>
     <import path="io"/>
     <import path="io/ioutil"/>
     <import path="net/http"/>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-googlecode-gcfg-0-0.5.gitc2d3050.fc23">
+<project ipprefix="" commit="commit" nvr="golang-googlecode-gcfg-0-0.7.git5866678.fc24">
   <packages>
     <package importpath="code.google.com/p/gcfg">
       <types/>
@@ -730,18 +730,13 @@
     <import path="unicode"/>
     <import path="unicode/utf8"/>
     <import path="code.google.com/p/gcfg/types"/>
-    <import path="os"/>
-    <import path="testing"/>
     <import path="io"/>
     <import path="io/ioutil"/>
+    <import path="os"/>
     <import path="code.google.com/p/gcfg/scanner"/>
     <import path="code.google.com/p/gcfg/token"/>
     <import path="encoding"/>
-    <import path="log"/>
-    <import path="code.google.com/p/gcfg"/>
     <import path="strconv"/>
-    <import path="bytes"/>
-    <import path="encoding/gob"/>
     <import path="sort"/>
     <import path="sync"/>
     <import path="path/filepath"/>

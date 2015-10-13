@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-openshift-go-systemd-0-0.5.git3e62c31.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-openshift-go-systemd-0-0.6.git3e62c31.fc24">
   <packages>
     <package importpath="github.com/openshift/go-systemd/dbus">
       <types>
@@ -879,14 +879,12 @@
     </package>
   </packages>
   <imports>
-    <import path="testing"/>
     <import path="time"/>
     <import path="errors"/>
     <import path="fmt"/>
     <import path="path/filepath"/>
     <import path="strings"/>
     <import path="github.com/godbus/dbus"/>
-    <import path="os"/>
     <import path="sync"/>
   </imports>
 </project>

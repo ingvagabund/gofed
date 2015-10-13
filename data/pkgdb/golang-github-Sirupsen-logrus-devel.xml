@@ -1,6 +1,227 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-Sirupsen-logrus-0.6.4-2.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-Sirupsen-logrus-0.8.4-2.fc24">
   <packages>
+    <package importpath="github.com/Sirupsen/logrus/hooks/syslog">
+      <types>
+        <type type="struct" name="SyslogHook">
+          <field type="pointer" name="Writer">
+            <type type="selector">
+              <prefix value="syslog"/>
+              <item value="Writer"/>
+            </type>
+          </field>
+          <field type="ident" def="string" name="SyslogNetwork"/>
+          <field type="ident" def="string" name="SyslogRaddr"/>
+        </type>
+      </types>
+      <functions>
+        <function name="NewSyslogHook">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+            <type type="selector">
+              <prefix value="syslog"/>
+              <item value="Priority"/>
+            </type>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="SyslogHook"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Fire">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="SyslogHook"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="logrus"/>
+                <item value="Entry"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Levels">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="SyslogHook"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="selector">
+                <prefix value="logrus"/>
+                <item value="Level"/>
+              </elmtype>
+            </type>
+          </resultsList>
+        </function>
+      </functions>
+      <names/>
+    </package>
+    <package importpath="github.com/Sirupsen/logrus/hooks/sentry">
+      <types>
+        <type type="struct" name="SentryHook">
+          <field type="selector" name="Timeout">
+            <prefix value="time"/>
+            <item value="Duration"/>
+          </field>
+          <field type="pointer" name="client">
+            <type type="selector">
+              <prefix value="raven"/>
+              <item value="Client"/>
+            </type>
+          </field>
+          <field type="slice" name="levels">
+            <elmtype type="selector">
+              <prefix value="logrus"/>
+              <item value="Level"/>
+            </elmtype>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="NewSentryHook">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="slice">
+              <elmtype type="selector">
+                <prefix value="logrus"/>
+                <item value="Level"/>
+              </elmtype>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="SentryHook"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="NewWithTagsSentryHook">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="map">
+              <keytype type="ident" def="string"/>
+              <valtype type="ident" def="string"/>
+            </type>
+            <type type="slice">
+              <elmtype type="selector">
+                <prefix value="logrus"/>
+                <item value="Level"/>
+              </elmtype>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="SentryHook"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Fire">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="SentryHook"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="logrus"/>
+                <item value="Entry"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Levels">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="SentryHook"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="selector">
+                <prefix value="logrus"/>
+                <item value="Level"/>
+              </elmtype>
+            </type>
+          </resultsList>
+        </function>
+      </functions>
+      <names/>
+    </package>
+    <package importpath="github.com/Sirupsen/logrus/hooks/airbrake">
+      <types/>
+      <functions>
+        <function name="NewHook">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="airbrakeHook"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Fire">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="airbrakeHook"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="logrus"/>
+                <item value="Entry"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Levels">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="airbrakeHook"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="selector">
+                <prefix value="logrus"/>
+                <item value="Level"/>
+              </elmtype>
+            </type>
+          </resultsList>
+        </function>
+      </functions>
+      <names/>
+    </package>
     <package importpath="github.com/Sirupsen/logrus/hooks/papertrail">
       <types>
         <type type="struct" name="PapertrailHook">
@@ -65,104 +286,19 @@
       </functions>
       <names/>
     </package>
-    <package importpath="github.com/Sirupsen/logrus/hooks/sentry">
-      <types>
-        <type type="struct" name="SentryHook">
-          <field type="selector" name="Timeout">
-            <prefix value="time"/>
-            <item value="Duration"/>
-          </field>
-          <field type="pointer" name="client">
-            <type type="selector">
-              <prefix value="raven"/>
-              <item value="Client"/>
-            </type>
-          </field>
-          <field type="slice" name="levels">
-            <elmtype type="selector">
-              <prefix value="logrus"/>
-              <item value="Level"/>
-            </elmtype>
-          </field>
-        </type>
-      </types>
-      <functions>
-        <function name="NewSentryHook">
-          <recvList/>
-          <paramsList>
-            <type type="ident" def="string"/>
-            <type type="slice">
-              <elmtype type="selector">
-                <prefix value="logrus"/>
-                <item value="Level"/>
-              </elmtype>
-            </type>
-          </paramsList>
-          <resultsList>
-            <type type="pointer">
-              <type type="ident" def="SentryHook"/>
-            </type>
-            <type type="ident" def="error"/>
-          </resultsList>
-        </function>
-        <function name="Fire">
-          <recvList>
-            <type type="pointer">
-              <type type="ident" def="SentryHook"/>
-            </type>
-          </recvList>
-          <paramsList>
-            <type type="pointer">
-              <type type="selector">
-                <prefix value="logrus"/>
-                <item value="Entry"/>
-              </type>
-            </type>
-          </paramsList>
-          <resultsList>
-            <type type="ident" def="error"/>
-          </resultsList>
-        </function>
-        <function name="Levels">
-          <recvList>
-            <type type="pointer">
-              <type type="ident" def="SentryHook"/>
-            </type>
-          </recvList>
-          <paramsList/>
-          <resultsList>
-            <type type="slice">
-              <elmtype type="selector">
-                <prefix value="logrus"/>
-                <item value="Level"/>
-              </elmtype>
-            </type>
-          </resultsList>
-        </function>
-      </functions>
-      <names/>
-    </package>
     <package importpath="github.com/Sirupsen/logrus">
       <types>
         <type type="struct" name="TextFormatter">
           <field type="ident" def="bool" name="ForceColors"/>
           <field type="ident" def="bool" name="DisableColors"/>
           <field type="ident" def="bool" name="DisableTimestamp"/>
+          <field type="ident" def="bool" name="FullTimestamp"/>
+          <field type="ident" def="string" name="TimestampFormat"/>
+          <field type="ident" def="bool" name="DisableSorting"/>
         </type>
         <type name="Termios" type="selector">
           <prefix value="syscall"/>
           <item value="Termios"/>
-        </type>
-        <type type="struct" name="Termios">
-          <field type="ident" def="uint32" name="Iflag"/>
-          <field type="ident" def="uint32" name="Oflag"/>
-          <field type="ident" def="uint32" name="Cflag"/>
-          <field type="ident" def="uint32" name="Lflag"/>
-          <field type="array" name="Cc">
-            <elmtype type="ident" def="uint8"/>
-          </field>
-          <field type="ident" def="uint32" name="Ispeed"/>
-          <field type="ident" def="uint32" name="Ospeed"/>
         </type>
         <type name="Termios" type="selector">
           <prefix value="syscall"/>
@@ -257,7 +393,7 @@
             <prefix value="io"/>
             <item value="Writer"/>
           </field>
-          <field type="ident" def="levelHooks" name="Hooks"/>
+          <field type="ident" def="LevelHooks" name="Hooks"/>
           <field type="ident" def="Formatter" name="Formatter"/>
           <field type="ident" def="Level" name="Level"/>
           <field type="selector" name="mu">
@@ -265,7 +401,9 @@
             <item value="Mutex"/>
           </field>
         </type>
-        <type type="struct" name="JSONFormatter"/>
+        <type type="struct" name="JSONFormatter">
+          <field type="ident" def="string" name="TimestampFormat"/>
+        </type>
         <type name="Hook" type="interface">
           <method name="Levels">
             <paramsList/>
@@ -285,6 +423,12 @@
               <type type="ident" def="error"/>
             </resultsList>
           </method>
+        </type>
+        <type name="LevelHooks" type="map">
+          <keytype type="ident" def="Level"/>
+          <valtype type="slice">
+            <elmtype type="ident" def="Hook"/>
+          </valtype>
         </type>
         <type name="Formatter" type="interface">
           <method name="Format">
@@ -315,6 +459,22 @@
         </type>
       </types>
       <functions>
+        <function name="Writer">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Logger"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="io"/>
+                <item value="PipeWriter"/>
+              </type>
+            </type>
+          </resultsList>
+        </function>
         <function name="Format">
           <recvList>
             <type type="pointer">
@@ -746,7 +906,7 @@
         </function>
         <function name="Add">
           <recvList>
-            <type type="ident" def="levelHooks"/>
+            <type type="ident" def="LevelHooks"/>
           </recvList>
           <paramsList>
             <type type="ident" def="Hook"/>
@@ -755,7 +915,7 @@
         </function>
         <function name="Fire">
           <recvList>
-            <type type="ident" def="levelHooks"/>
+            <type type="ident" def="LevelHooks"/>
           </recvList>
           <paramsList>
             <type type="ident" def="Level"/>
@@ -765,6 +925,15 @@
           </paramsList>
           <resultsList>
             <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="StandardLogger">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Logger"/>
+            </type>
           </resultsList>
         </function>
         <function name="SetOutput">
@@ -1177,6 +1346,19 @@
           </paramsList>
           <resultsList/>
         </function>
+        <function name="Warning">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Entry"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ellipsis">
+              <type type="interface"/>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
         <function name="Error">
           <recvList>
             <type type="pointer">
@@ -1440,17 +1622,39 @@
         <name value="WarnLevel"/>
         <name value="InfoLevel"/>
         <name value="DebugLevel"/>
+        <name value="DefaultTimestampFormat"/>
       </names>
     </package>
-    <package importpath="github.com/Sirupsen/logrus/hooks/airbrake">
+    <package importpath="github.com/Sirupsen/logrus/hooks/bugsnag">
       <types>
-        <type type="struct" name="AirbrakeHook"/>
+        <type type="struct" name="ErrBugsnagSendFailed">
+          <field type="ident" def="error" name="err"/>
+        </type>
       </types>
       <functions>
+        <function name="Error">
+          <recvList>
+            <type type="ident" def="ErrBugsnagSendFailed"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="NewBugsnagHook">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="bugsnagHook"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
         <function name="Fire">
           <recvList>
             <type type="pointer">
-              <type type="ident" def="AirbrakeHook"/>
+              <type type="ident" def="bugsnagHook"/>
             </type>
           </recvList>
           <paramsList>
@@ -1468,7 +1672,7 @@
         <function name="Levels">
           <recvList>
             <type type="pointer">
-              <type type="ident" def="AirbrakeHook"/>
+              <type type="ident" def="bugsnagHook"/>
             </type>
           </recvList>
           <paramsList/>
@@ -1482,44 +1686,22 @@
           </resultsList>
         </function>
       </functions>
-      <names/>
+      <names>
+        <name value="ErrBugsnagUnconfigured"/>
+      </names>
     </package>
-    <package importpath="github.com/Sirupsen/logrus/hooks/syslog">
+    <package importpath="github.com/Sirupsen/logrus/formatters/logstash">
       <types>
-        <type type="struct" name="SyslogHook">
-          <field type="pointer" name="Writer">
-            <type type="selector">
-              <prefix value="syslog"/>
-              <item value="Writer"/>
-            </type>
-          </field>
-          <field type="ident" def="string" name="SyslogNetwork"/>
-          <field type="ident" def="string" name="SyslogRaddr"/>
+        <type type="struct" name="LogstashFormatter">
+          <field type="ident" def="string" name="Type"/>
+          <field type="ident" def="string" name="TimestampFormat"/>
         </type>
       </types>
       <functions>
-        <function name="NewSyslogHook">
-          <recvList/>
-          <paramsList>
-            <type type="ident" def="string"/>
-            <type type="ident" def="string"/>
-            <type type="selector">
-              <prefix value="syslog"/>
-              <item value="Priority"/>
-            </type>
-            <type type="ident" def="string"/>
-          </paramsList>
-          <resultsList>
-            <type type="pointer">
-              <type type="ident" def="SyslogHook"/>
-            </type>
-            <type type="ident" def="error"/>
-          </resultsList>
-        </function>
-        <function name="Fire">
+        <function name="Format">
           <recvList>
             <type type="pointer">
-              <type type="ident" def="SyslogHook"/>
+              <type type="ident" def="LogstashFormatter"/>
             </type>
           </recvList>
           <paramsList>
@@ -1531,23 +1713,10 @@
             </type>
           </paramsList>
           <resultsList>
-            <type type="ident" def="error"/>
-          </resultsList>
-        </function>
-        <function name="Levels">
-          <recvList>
-            <type type="pointer">
-              <type type="ident" def="SyslogHook"/>
-            </type>
-          </recvList>
-          <paramsList/>
-          <resultsList>
             <type type="slice">
-              <elmtype type="selector">
-                <prefix value="logrus"/>
-                <item value="Level"/>
-              </elmtype>
+              <elmtype type="ident" def="byte"/>
             </type>
+            <type type="ident" def="error"/>
           </resultsList>
         </function>
       </functions>
@@ -1555,31 +1724,27 @@
     </package>
   </packages>
   <imports>
+    <import path="bufio"/>
+    <import path="io"/>
+    <import path="runtime"/>
     <import path="bytes"/>
-    <import path="errors"/>
-    <import path="testing"/>
     <import path="fmt"/>
-    <import path="regexp"/>
     <import path="sort"/>
     <import path="strings"/>
     <import path="time"/>
     <import path="syscall"/>
     <import path="unsafe"/>
-    <import path="encoding/json"/>
-    <import path="strconv"/>
-    <import path="github.com/stretchr/testify/assert"/>
     <import path="log"/>
-    <import path="io"/>
     <import path="os"/>
     <import path="sync"/>
+    <import path="encoding/json"/>
     <import path="github.com/Sirupsen/logrus"/>
     <import path="log/syslog"/>
-    <import path="io/ioutil"/>
     <import path="net/http"/>
-    <import path="net/http/httptest"/>
     <import path="github.com/getsentry/raven-go"/>
-    <import path="github.com/stvp/go-udp-testing"/>
     <import path="net"/>
+    <import path="errors"/>
+    <import path="github.com/bugsnag/bugsnag-go"/>
     <import path="github.com/tobi/airbrake-go"/>
     <import path="github.com/Sirupsen/logrus/hooks/airbrake"/>
   </imports>

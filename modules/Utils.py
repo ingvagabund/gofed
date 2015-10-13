@@ -31,7 +31,7 @@ class Logger:
 		self.log_file = sys.stderr
 
 	#def __del__(self):
-	#	self.log_file.close()	
+	#	self.log_file.close()
 
 	def log(self, msg, level=""):
 		print msg
@@ -41,7 +41,7 @@ class Logger:
 			self.log_file.write("%s: %s\n" % (self.level, msg))
 		else:
 			self.log_file.write("%s: %s\n" % (level, msg))
-		
+
 class FormatedPrint:
 
 	def __init__(self, formated=True):
@@ -97,4 +97,47 @@ def inverseMap(mfnc):
 			else:
 				imap[image].append(key)
 	return imap
+
+def format_output(fmt, out, fancy = False):
+	def format_filter(fmt, line):
+		column = []
+		for pattern in fmt:
+			if pattern in line:
+				column.append(line[pattern])
+		return column
+
+	def normal_format_str(fmt):
+			ret = ''.join(['{} ' for num in xrange(len(fmt))])
+			return ret[:-1] # omit space at the end of line
+
+	ret = ""
+	fmt = fmt.split(':')
+
+	if type(out) is list:
+		row_format = ""
+		if fancy:
+			for pattern in fmt:
+				l = 0
+				for item in out:
+					if pattern in item:
+						if l < len(str(item[pattern])) + 1:
+							l = len(str(item[pattern])) + 1
+				if len(row_format) > 0 and l > 0:
+					row_format  += "{:>%d}" % l # first row is left aligned
+				elif l > 0: # do not add non existing key -- STFU and ignore it
+					row_format  += "{:<%d}" % l
+		else:
+			row_format = normal_format_str(fmt)
+
+		for line in out:
+			column = format_filter(fmt, line)
+			if column:
+				ret += row_format.format(*tuple(column)) + '\n'
+	else: # actually we don't need to be fancy with one-liners
+		row_format = normal_format_str(fmt)
+		column = format_filter(fmt, out)
+		if column:
+			ret = row_format.format(*tuple(column)) + '\n'
+
+	return ret[:-1] # omit confusing blank line in output
 

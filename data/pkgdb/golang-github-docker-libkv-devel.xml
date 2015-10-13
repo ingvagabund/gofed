@@ -1,0 +1,1609 @@
+<?xml version='1.0' encoding='ASCII'?>
+<project ipprefix="" commit="commit" nvr="golang-github-docker-libkv-0-0.1.gitb68985b.fc24">
+  <packages>
+    <package importpath="github.com/docker/libkv/testutils">
+      <types/>
+      <functions>
+        <function name="RunTestStore">
+          <recvList/>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="testing"/>
+                <item value="T"/>
+              </type>
+            </type>
+            <type type="selector">
+              <prefix value="store"/>
+              <item value="Store"/>
+            </type>
+            <type type="selector">
+              <prefix value="store"/>
+              <item value="Store"/>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+      </functions>
+      <names/>
+    </package>
+    <package importpath="github.com/docker/libkv/store/etcd">
+      <types>
+        <type type="struct" name="Etcd">
+          <field type="pointer" name="client">
+            <type type="selector">
+              <prefix value="etcd"/>
+              <item value="Client"/>
+            </type>
+          </field>
+          <field type="selector" name="ephemeralTTL">
+            <prefix value="time"/>
+            <item value="Duration"/>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="New">
+          <recvList/>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="string"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="Config"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="selector">
+              <prefix value="store"/>
+              <item value="Store"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Get">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Etcd"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Put">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Etcd"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="WriteOptions"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Delete">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Etcd"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Exists">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Etcd"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Watch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Etcd"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="channel" dir="2">
+              <type type="struct" name=""/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="channel" dir="2">
+              <type type="pointer">
+                <type type="selector">
+                  <prefix value="store"/>
+                  <item value="KVPair"/>
+                </type>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="WatchTree">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Etcd"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="channel" dir="2">
+              <type type="struct" name=""/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="channel" dir="2">
+              <type type="slice">
+                <elmtype type="pointer">
+                  <type type="selector">
+                    <prefix value="store"/>
+                    <item value="KVPair"/>
+                  </type>
+                </elmtype>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AtomicPut">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Etcd"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="WriteOptions"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AtomicDelete">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Etcd"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="List">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Etcd"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="pointer">
+                <type type="selector">
+                  <prefix value="store"/>
+                  <item value="KVPair"/>
+                </type>
+              </elmtype>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="DeleteTree">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Etcd"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="NewLock">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Etcd"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="LockOptions"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="selector">
+              <prefix value="store"/>
+              <item value="Locker"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Lock">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="etcdLock"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="channel" dir="2">
+              <type type="struct" name=""/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Unlock">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="etcdLock"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Etcd"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+      </functions>
+      <names/>
+    </package>
+    <package importpath="github.com/docker/libkv/store/consul">
+      <types>
+        <type type="struct" name="Consul">
+          <field type="selector" name="">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+          <field type="pointer" name="config">
+            <type type="selector">
+              <prefix value="api"/>
+              <item value="Config"/>
+            </type>
+          </field>
+          <field type="pointer" name="client">
+            <type type="selector">
+              <prefix value="api"/>
+              <item value="Client"/>
+            </type>
+          </field>
+          <field type="selector" name="ephemeralTTL">
+            <prefix value="time"/>
+            <item value="Duration"/>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="New">
+          <recvList/>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="string"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="Config"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="selector">
+              <prefix value="store"/>
+              <item value="Store"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Get">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Consul"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Put">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Consul"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="WriteOptions"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Delete">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Consul"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Exists">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Consul"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="List">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Consul"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="pointer">
+                <type type="selector">
+                  <prefix value="store"/>
+                  <item value="KVPair"/>
+                </type>
+              </elmtype>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="DeleteTree">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Consul"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Watch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Consul"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="channel" dir="2">
+              <type type="struct" name=""/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="channel" dir="2">
+              <type type="pointer">
+                <type type="selector">
+                  <prefix value="store"/>
+                  <item value="KVPair"/>
+                </type>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="WatchTree">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Consul"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="channel" dir="2">
+              <type type="struct" name=""/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="channel" dir="2">
+              <type type="slice">
+                <elmtype type="pointer">
+                  <type type="selector">
+                    <prefix value="store"/>
+                    <item value="KVPair"/>
+                  </type>
+                </elmtype>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="NewLock">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Consul"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="LockOptions"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="selector">
+              <prefix value="store"/>
+              <item value="Locker"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Lock">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="consulLock"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="channel" dir="2">
+              <type type="struct" name=""/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Unlock">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="consulLock"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AtomicPut">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Consul"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="WriteOptions"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AtomicDelete">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Consul"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Consul"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+      </functions>
+      <names>
+        <name value="DefaultWatchWaitTime"/>
+      </names>
+    </package>
+    <package importpath="github.com/docker/libkv/store/mock">
+      <types>
+        <type type="struct" name="Mock">
+          <field type="selector" name="">
+            <prefix value="mock"/>
+            <item value="Mock"/>
+          </field>
+          <field type="slice" name="Endpoints">
+            <elmtype type="ident" def="string"/>
+          </field>
+          <field type="pointer" name="Options">
+            <type type="selector">
+              <prefix value="store"/>
+              <item value="Config"/>
+            </type>
+          </field>
+        </type>
+        <type type="struct" name="Lock">
+          <field type="selector" name="">
+            <prefix value="mock"/>
+            <item value="Mock"/>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="New">
+          <recvList/>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="string"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="Config"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="selector">
+              <prefix value="store"/>
+              <item value="Store"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Put">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Mock"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="WriteOptions"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Get">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Mock"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Delete">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Mock"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Exists">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Mock"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Watch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Mock"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="channel" dir="2">
+              <type type="struct" name=""/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="channel" dir="2">
+              <type type="pointer">
+                <type type="selector">
+                  <prefix value="store"/>
+                  <item value="KVPair"/>
+                </type>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="WatchTree">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Mock"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="channel" dir="2">
+              <type type="struct" name=""/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="channel" dir="2">
+              <type type="slice">
+                <elmtype type="pointer">
+                  <type type="selector">
+                    <prefix value="store"/>
+                    <item value="KVPair"/>
+                  </type>
+                </elmtype>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="NewLock">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Mock"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="LockOptions"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="selector">
+              <prefix value="store"/>
+              <item value="Locker"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="List">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Mock"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="pointer">
+                <type type="selector">
+                  <prefix value="store"/>
+                  <item value="KVPair"/>
+                </type>
+              </elmtype>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="DeleteTree">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Mock"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AtomicPut">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Mock"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="WriteOptions"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AtomicDelete">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Mock"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Lock">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Lock"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="channel" dir="2">
+              <type type="struct" name=""/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Unlock">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Lock"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Mock"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+      </functions>
+      <names/>
+    </package>
+    <package importpath="github.com/docker/libkv/store/zookeeper">
+      <types>
+        <type type="struct" name="Zookeeper">
+          <field type="selector" name="timeout">
+            <prefix value="time"/>
+            <item value="Duration"/>
+          </field>
+          <field type="pointer" name="client">
+            <type type="selector">
+              <prefix value="zk"/>
+              <item value="Conn"/>
+            </type>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="New">
+          <recvList/>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="string"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="Config"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="selector">
+              <prefix value="store"/>
+              <item value="Store"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Get">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Zookeeper"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Put">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Zookeeper"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="WriteOptions"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Delete">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Zookeeper"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Exists">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Zookeeper"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Watch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Zookeeper"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="channel" dir="2">
+              <type type="struct" name=""/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="channel" dir="2">
+              <type type="pointer">
+                <type type="selector">
+                  <prefix value="store"/>
+                  <item value="KVPair"/>
+                </type>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="WatchTree">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Zookeeper"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="channel" dir="2">
+              <type type="struct" name=""/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="channel" dir="2">
+              <type type="slice">
+                <elmtype type="pointer">
+                  <type type="selector">
+                    <prefix value="store"/>
+                    <item value="KVPair"/>
+                  </type>
+                </elmtype>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="List">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Zookeeper"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="pointer">
+                <type type="selector">
+                  <prefix value="store"/>
+                  <item value="KVPair"/>
+                </type>
+              </elmtype>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="DeleteTree">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Zookeeper"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AtomicPut">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Zookeeper"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="WriteOptions"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AtomicDelete">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Zookeeper"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="KVPair"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="NewLock">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Zookeeper"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="LockOptions"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="selector">
+              <prefix value="store"/>
+              <item value="Locker"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Lock">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="zookeeperLock"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="channel" dir="2">
+              <type type="struct" name=""/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Unlock">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="zookeeperLock"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Zookeeper"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+      </functions>
+      <names>
+        <name value="SOH"/>
+      </names>
+    </package>
+    <package importpath="github.com/docker/libkv/store">
+      <types>
+        <type name="Backend" type="ident">
+          <type type="ident" def="string"/>
+        </type>
+        <type type="struct" name="Config">
+          <field type="pointer" name="TLS">
+            <type type="selector">
+              <prefix value="tls"/>
+              <item value="Config"/>
+            </type>
+          </field>
+          <field type="selector" name="ConnectionTimeout">
+            <prefix value="time"/>
+            <item value="Duration"/>
+          </field>
+          <field type="selector" name="EphemeralTTL">
+            <prefix value="time"/>
+            <item value="Duration"/>
+          </field>
+        </type>
+        <type name="Store" type="interface">
+          <method name="Put">
+            <paramsList>
+              <type type="ident" def="string"/>
+              <type type="slice">
+                <elmtype type="ident" def="byte"/>
+              </type>
+              <type type="pointer">
+                <type type="ident" def="WriteOptions"/>
+              </type>
+            </paramsList>
+            <resultsList>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+          <method name="Get">
+            <paramsList>
+              <type type="ident" def="string"/>
+            </paramsList>
+            <resultsList>
+              <type type="pointer">
+                <type type="ident" def="KVPair"/>
+              </type>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+          <method name="Delete">
+            <paramsList>
+              <type type="ident" def="string"/>
+            </paramsList>
+            <resultsList>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+          <method name="Exists">
+            <paramsList>
+              <type type="ident" def="string"/>
+            </paramsList>
+            <resultsList>
+              <type type="ident" def="bool"/>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+          <method name="Watch">
+            <paramsList>
+              <type type="ident" def="string"/>
+              <type type="channel" dir="2">
+                <type type="struct" name=""/>
+              </type>
+            </paramsList>
+            <resultsList>
+              <type type="channel" dir="2">
+                <type type="pointer">
+                  <type type="ident" def="KVPair"/>
+                </type>
+              </type>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+          <method name="WatchTree">
+            <paramsList>
+              <type type="ident" def="string"/>
+              <type type="channel" dir="2">
+                <type type="struct" name=""/>
+              </type>
+            </paramsList>
+            <resultsList>
+              <type type="channel" dir="2">
+                <type type="slice">
+                  <elmtype type="pointer">
+                    <type type="ident" def="KVPair"/>
+                  </elmtype>
+                </type>
+              </type>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+          <method name="NewLock">
+            <paramsList>
+              <type type="ident" def="string"/>
+              <type type="pointer">
+                <type type="ident" def="LockOptions"/>
+              </type>
+            </paramsList>
+            <resultsList>
+              <type type="ident" def="Locker"/>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+          <method name="List">
+            <paramsList>
+              <type type="ident" def="string"/>
+            </paramsList>
+            <resultsList>
+              <type type="slice">
+                <elmtype type="pointer">
+                  <type type="ident" def="KVPair"/>
+                </elmtype>
+              </type>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+          <method name="DeleteTree">
+            <paramsList>
+              <type type="ident" def="string"/>
+            </paramsList>
+            <resultsList>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+          <method name="AtomicPut">
+            <paramsList>
+              <type type="ident" def="string"/>
+              <type type="slice">
+                <elmtype type="ident" def="byte"/>
+              </type>
+              <type type="pointer">
+                <type type="ident" def="KVPair"/>
+              </type>
+              <type type="pointer">
+                <type type="ident" def="WriteOptions"/>
+              </type>
+            </paramsList>
+            <resultsList>
+              <type type="ident" def="bool"/>
+              <type type="pointer">
+                <type type="ident" def="KVPair"/>
+              </type>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+          <method name="AtomicDelete">
+            <paramsList>
+              <type type="ident" def="string"/>
+              <type type="pointer">
+                <type type="ident" def="KVPair"/>
+              </type>
+            </paramsList>
+            <resultsList>
+              <type type="ident" def="bool"/>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+          <method name="Close">
+            <paramsList/>
+            <resultsList/>
+          </method>
+        </type>
+        <type type="struct" name="KVPair">
+          <field type="ident" def="string" name="Key"/>
+          <field type="slice" name="Value">
+            <elmtype type="ident" def="byte"/>
+          </field>
+          <field type="ident" def="uint64" name="LastIndex"/>
+        </type>
+        <type type="struct" name="WriteOptions">
+          <field type="selector" name="Heartbeat">
+            <prefix value="time"/>
+            <item value="Duration"/>
+          </field>
+          <field type="ident" def="bool" name="Ephemeral"/>
+        </type>
+        <type type="struct" name="LockOptions">
+          <field type="slice" name="Value">
+            <elmtype type="ident" def="byte"/>
+          </field>
+          <field type="selector" name="TTL">
+            <prefix value="time"/>
+            <item value="Duration"/>
+          </field>
+        </type>
+        <type name="Locker" type="interface">
+          <method name="Lock">
+            <paramsList/>
+            <resultsList>
+              <type type="channel" dir="2">
+                <type type="struct" name=""/>
+              </type>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+          <method name="Unlock">
+            <paramsList/>
+            <resultsList>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+        </type>
+      </types>
+      <functions>
+        <function name="CreateEndpoints">
+          <recvList/>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="string"/>
+            </type>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="string"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Normalize">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="GetDirectory">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="SplitKey">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="string"/>
+            </type>
+          </resultsList>
+        </function>
+      </functions>
+      <names>
+        <name value="CONSUL"/>
+        <name value="ETCD"/>
+        <name value="ZK"/>
+        <name value="ErrNotSupported"/>
+        <name value="ErrNotImplemented"/>
+        <name value="ErrNotReachable"/>
+        <name value="ErrCannotLock"/>
+        <name value="ErrKeyModified"/>
+        <name value="ErrKeyNotFound"/>
+        <name value="ErrPreviousNotSpecified"/>
+      </names>
+    </package>
+    <package importpath="github.com/docker/libkv">
+      <types>
+        <type name="Initialize" type="func">
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="string"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="Config"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="selector">
+              <prefix value="store"/>
+              <item value="Store"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </type>
+      </types>
+      <functions>
+        <function name="NewStore">
+          <recvList/>
+          <paramsList>
+            <type type="selector">
+              <prefix value="store"/>
+              <item value="Backend"/>
+            </type>
+            <type type="slice">
+              <elmtype type="ident" def="string"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="store"/>
+                <item value="Config"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="selector">
+              <prefix value="store"/>
+              <item value="Store"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names/>
+    </package>
+  </packages>
+  <imports>
+    <import path="github.com/docker/libkv/store"/>
+    <import path="github.com/docker/libkv/store/consul"/>
+    <import path="github.com/docker/libkv/store/etcd"/>
+    <import path="github.com/docker/libkv/store/zookeeper"/>
+    <import path="testing"/>
+    <import path="time"/>
+    <import path="github.com/stretchr/testify/assert"/>
+    <import path="crypto/tls"/>
+    <import path="errors"/>
+    <import path="strings"/>
+    <import path="github.com/samuel/go-zookeeper/zk"/>
+    <import path="github.com/stretchr/testify/mock"/>
+    <import path="net"/>
+    <import path="net/http"/>
+    <import path="github.com/coreos/go-etcd/etcd"/>
+    <import path="sync"/>
+    <import path="github.com/hashicorp/consul/api"/>
+  </imports>
+</project>

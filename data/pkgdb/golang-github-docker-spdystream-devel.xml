@@ -1,6 +1,259 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-docker-spdystream-0-0.5.git83ae67e.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-docker-spdystream-0-0.7.gitb2c3287.fc24">
   <packages>
+    <package importpath="github.com/docker/spdystream/spdy">
+      <types>
+        <type name="ControlFrameType" type="ident">
+          <type type="ident" def="uint16"/>
+        </type>
+        <type name="ControlFlags" type="ident">
+          <type type="ident" def="uint8"/>
+        </type>
+        <type name="DataFlags" type="ident">
+          <type type="ident" def="uint8"/>
+        </type>
+        <type name="Frame" type="interface">
+          <method name="write">
+            <paramsList>
+              <type type="pointer">
+                <type type="ident" def="Framer"/>
+              </type>
+            </paramsList>
+            <resultsList>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+        </type>
+        <type type="struct" name="ControlFrameHeader">
+          <field type="ident" def="uint16" name="version"/>
+          <field type="ident" def="ControlFrameType" name="frameType"/>
+          <field type="ident" def="ControlFlags" name="Flags"/>
+          <field type="ident" def="uint32" name="length"/>
+        </type>
+        <type name="StreamId" type="ident">
+          <type type="ident" def="uint32"/>
+        </type>
+        <type type="struct" name="SynStreamFrame">
+          <field type="ident" def="ControlFrameHeader" name="CFHeader"/>
+          <field type="ident" def="StreamId" name="StreamId"/>
+          <field type="ident" def="StreamId" name="AssociatedToStreamId"/>
+          <field type="ident" def="uint8" name="Priority"/>
+          <field type="ident" def="uint8" name="Slot"/>
+          <field type="selector" name="Headers">
+            <prefix value="http"/>
+            <item value="Header"/>
+          </field>
+        </type>
+        <type type="struct" name="SynReplyFrame">
+          <field type="ident" def="ControlFrameHeader" name="CFHeader"/>
+          <field type="ident" def="StreamId" name="StreamId"/>
+          <field type="selector" name="Headers">
+            <prefix value="http"/>
+            <item value="Header"/>
+          </field>
+        </type>
+        <type name="RstStreamStatus" type="ident">
+          <type type="ident" def="uint32"/>
+        </type>
+        <type type="struct" name="RstStreamFrame">
+          <field type="ident" def="ControlFrameHeader" name="CFHeader"/>
+          <field type="ident" def="StreamId" name="StreamId"/>
+          <field type="ident" def="RstStreamStatus" name="Status"/>
+        </type>
+        <type name="SettingsFlag" type="ident">
+          <type type="ident" def="uint8"/>
+        </type>
+        <type name="SettingsId" type="ident">
+          <type type="ident" def="uint32"/>
+        </type>
+        <type type="struct" name="SettingsFlagIdValue">
+          <field type="ident" def="SettingsFlag" name="Flag"/>
+          <field type="ident" def="SettingsId" name="Id"/>
+          <field type="ident" def="uint32" name="Value"/>
+        </type>
+        <type type="struct" name="SettingsFrame">
+          <field type="ident" def="ControlFrameHeader" name="CFHeader"/>
+          <field type="slice" name="FlagIdValues">
+            <elmtype type="ident" def="SettingsFlagIdValue"/>
+          </field>
+        </type>
+        <type type="struct" name="PingFrame">
+          <field type="ident" def="ControlFrameHeader" name="CFHeader"/>
+          <field type="ident" def="uint32" name="Id"/>
+        </type>
+        <type name="GoAwayStatus" type="ident">
+          <type type="ident" def="uint32"/>
+        </type>
+        <type type="struct" name="GoAwayFrame">
+          <field type="ident" def="ControlFrameHeader" name="CFHeader"/>
+          <field type="ident" def="StreamId" name="LastGoodStreamId"/>
+          <field type="ident" def="GoAwayStatus" name="Status"/>
+        </type>
+        <type type="struct" name="HeadersFrame">
+          <field type="ident" def="ControlFrameHeader" name="CFHeader"/>
+          <field type="ident" def="StreamId" name="StreamId"/>
+          <field type="selector" name="Headers">
+            <prefix value="http"/>
+            <item value="Header"/>
+          </field>
+        </type>
+        <type type="struct" name="WindowUpdateFrame">
+          <field type="ident" def="ControlFrameHeader" name="CFHeader"/>
+          <field type="ident" def="StreamId" name="StreamId"/>
+          <field type="ident" def="uint32" name="DeltaWindowSize"/>
+        </type>
+        <type type="struct" name="DataFrame">
+          <field type="ident" def="StreamId" name="StreamId"/>
+          <field type="ident" def="DataFlags" name="Flags"/>
+          <field type="slice" name="Data">
+            <elmtype type="ident" def="byte"/>
+          </field>
+        </type>
+        <type name="ErrorCode" type="ident">
+          <type type="ident" def="string"/>
+        </type>
+        <type type="struct" name="Error">
+          <field type="ident" def="ErrorCode" name="Err"/>
+          <field type="ident" def="StreamId" name="StreamId"/>
+        </type>
+        <type type="struct" name="Framer">
+          <field type="ident" def="bool" name="headerCompressionDisabled"/>
+          <field type="selector" name="w">
+            <prefix value="io"/>
+            <item value="Writer"/>
+          </field>
+          <field type="pointer" name="headerBuf">
+            <type type="selector">
+              <prefix value="bytes"/>
+              <item value="Buffer"/>
+            </type>
+          </field>
+          <field type="pointer" name="headerCompressor">
+            <type type="selector">
+              <prefix value="zlib"/>
+              <item value="Writer"/>
+            </type>
+          </field>
+          <field type="selector" name="r">
+            <prefix value="io"/>
+            <item value="Reader"/>
+          </field>
+          <field type="selector" name="headerReader">
+            <prefix value="io"/>
+            <item value="LimitedReader"/>
+          </field>
+          <field type="selector" name="headerDecompressor">
+            <prefix value="io"/>
+            <item value="ReadCloser"/>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="WriteFrame">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="Frame"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Error">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Error"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="NewFramer">
+          <recvList/>
+          <paramsList>
+            <type type="selector">
+              <prefix value="io"/>
+              <item value="Writer"/>
+            </type>
+            <type type="selector">
+              <prefix value="io"/>
+              <item value="Reader"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="ReadFrame">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Framer"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="Frame"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names>
+        <name value="Version"/>
+        <name value="TypeSynStream"/>
+        <name value="TypeSynReply"/>
+        <name value="TypeRstStream"/>
+        <name value="TypeSettings"/>
+        <name value="TypePing"/>
+        <name value="TypeGoAway"/>
+        <name value="TypeHeaders"/>
+        <name value="TypeWindowUpdate"/>
+        <name value="ControlFlagFin"/>
+        <name value="ControlFlagUnidirectional"/>
+        <name value="ControlFlagSettingsClearSettings"/>
+        <name value="DataFlagFin"/>
+        <name value="MaxDataLength"/>
+        <name value="ProtocolError"/>
+        <name value="InvalidStream"/>
+        <name value="RefusedStream"/>
+        <name value="UnsupportedVersion"/>
+        <name value="Cancel"/>
+        <name value="InternalError"/>
+        <name value="FlowControlError"/>
+        <name value="StreamInUse"/>
+        <name value="StreamAlreadyClosed"/>
+        <name value="InvalidCredentials"/>
+        <name value="FrameTooLarge"/>
+        <name value="FlagSettingsPersistValue"/>
+        <name value="FlagSettingsPersisted"/>
+        <name value="SettingsUploadBandwidth"/>
+        <name value="SettingsDownloadBandwidth"/>
+        <name value="SettingsRoundTripTime"/>
+        <name value="SettingsMaxConcurrentStreams"/>
+        <name value="SettingsCurrentCwnd"/>
+        <name value="SettingsDownloadRetransRate"/>
+        <name value="SettingsInitialWindowSize"/>
+        <name value="SettingsClientCretificateVectorSize"/>
+        <name value="GoAwayOK"/>
+        <name value="GoAwayProtocolError"/>
+        <name value="GoAwayInternalError"/>
+        <name value="UnlowercasedHeaderName"/>
+        <name value="DuplicateHeaders"/>
+        <name value="WrongCompressedPayloadSize"/>
+        <name value="UnknownFrameType"/>
+        <name value="InvalidControlFrame"/>
+        <name value="InvalidDataFrame"/>
+        <name value="InvalidHeaderPresent"/>
+        <name value="ZeroStreamId"/>
+      </names>
+    </package>
     <package importpath="github.com/docker/spdystream/ws">
       <types>
         <type type="struct" name="Conn">
@@ -980,14 +1233,12 @@
     <import path="net/http"/>
     <import path="sync"/>
     <import path="time"/>
-    <import path="golang.org/x/net/spdy"/>
-    <import path="bufio"/>
-    <import path="bytes"/>
-    <import path="net/http/httptest"/>
-    <import path="testing"/>
+    <import path="github.com/docker/spdystream/spdy"/>
     <import path="container/heap"/>
-    <import path="github.com/docker/spdystream"/>
     <import path="github.com/gorilla/websocket"/>
+    <import path="encoding/binary"/>
     <import path="strings"/>
+    <import path="bytes"/>
+    <import path="compress/zlib"/>
   </imports>
 </project>

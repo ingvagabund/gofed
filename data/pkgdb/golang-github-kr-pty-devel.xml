@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-kr-pty-0-0.23.git05017fc.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-kr-pty-0-0.24.git05017fc.fc24">
   <packages>
     <package importpath="github.com/kr/pty">
       <types/>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-kr-pretty-0-0.3.gitf31442d.fc22">
+<project ipprefix="" commit="commit" nvr="golang-github-kr-pretty-0-0.5.gitf31442d.fc24">
   <packages>
     <package importpath="github.com/kr/pretty">
       <types/>
@@ -12,9 +12,9 @@
               <type type="interface"/>
             </type>
           </paramsList>
-          <returnsList>
+          <resultsList>
             <type type="ident" def="error"/>
-          </returnsList>
+          </resultsList>
         </function>
         <function name="Fprintf">
           <recvList/>
@@ -28,10 +28,10 @@
               <type type="interface"/>
             </type>
           </paramsList>
-          <returnsList>
+          <resultsList>
             <type type="ident" def="int"/>
             <type type="ident" def="error"/>
-          </returnsList>
+          </resultsList>
         </function>
         <function name="Log">
           <recvList/>
@@ -40,7 +40,7 @@
               <type type="interface"/>
             </type>
           </paramsList>
-          <returnsList/>
+          <resultsList/>
         </function>
         <function name="Logf">
           <recvList/>
@@ -50,7 +50,7 @@
               <type type="interface"/>
             </type>
           </paramsList>
-          <returnsList/>
+          <resultsList/>
         </function>
         <function name="Logln">
           <recvList/>
@@ -59,7 +59,7 @@
               <type type="interface"/>
             </type>
           </paramsList>
-          <returnsList/>
+          <resultsList/>
         </function>
         <function name="Print">
           <recvList/>
@@ -68,10 +68,10 @@
               <type type="interface"/>
             </type>
           </paramsList>
-          <returnsList>
+          <resultsList>
             <type type="ident" def="int"/>
             <type type="ident" def="error"/>
-          </returnsList>
+          </resultsList>
         </function>
         <function name="Printf">
           <recvList/>
@@ -81,10 +81,10 @@
               <type type="interface"/>
             </type>
           </paramsList>
-          <returnsList>
+          <resultsList>
             <type type="ident" def="int"/>
             <type type="ident" def="error"/>
-          </returnsList>
+          </resultsList>
         </function>
         <function name="Println">
           <recvList/>
@@ -93,10 +93,10 @@
               <type type="interface"/>
             </type>
           </paramsList>
-          <returnsList>
+          <resultsList>
             <type type="ident" def="int"/>
             <type type="ident" def="error"/>
-          </returnsList>
+          </resultsList>
         </function>
         <function name="Sprintf">
           <recvList/>
@@ -106,30 +106,30 @@
               <type type="interface"/>
             </type>
           </paramsList>
-          <returnsList>
+          <resultsList>
             <type type="ident" def="string"/>
-          </returnsList>
+          </resultsList>
         </function>
         <function name="Formatter">
           <recvList/>
           <paramsList>
             <type type="interface"/>
           </paramsList>
-          <returnsList>
+          <resultsList>
             <type type="selector">
               <prefix value="fmt"/>
               <item value="Formatter"/>
             </type>
-          </returnsList>
+          </resultsList>
         </function>
         <function name="String">
           <recvList>
             <type type="ident" def="formatter"/>
           </recvList>
           <paramsList/>
-          <returnsList>
+          <resultsList>
             <type type="ident" def="string"/>
-          </returnsList>
+          </resultsList>
         </function>
         <function name="Format">
           <recvList>
@@ -142,7 +142,7 @@
             </type>
             <type type="ident" def="rune"/>
           </paramsList>
-          <returnsList/>
+          <resultsList/>
         </function>
         <function name="Write">
           <recvList>
@@ -155,10 +155,10 @@
               <elmtype type="ident" def="byte"/>
             </type>
           </paramsList>
-          <returnsList>
+          <resultsList>
             <type type="ident" def="int"/>
             <type type="ident" def="error"/>
-          </returnsList>
+          </resultsList>
         </function>
         <function name="Diff">
           <recvList/>
@@ -166,11 +166,11 @@
             <type type="interface"/>
             <type type="interface"/>
           </paramsList>
-          <returnsList>
+          <resultsList>
             <type type="slice">
               <elmtype type="ident" def="string"/>
             </type>
-          </returnsList>
+          </resultsList>
         </function>
         <function name="Fdiff">
           <recvList/>
@@ -182,7 +182,7 @@
             <type type="interface"/>
             <type type="interface"/>
           </paramsList>
-          <returnsList/>
+          <resultsList/>
         </function>
       </functions>
       <names/>
@@ -193,12 +193,8 @@
     <import path="fmt"/>
     <import path="io"/>
     <import path="log"/>
-    <import path="strings"/>
-    <import path="testing"/>
-    <import path="unsafe"/>
     <import path="strconv"/>
     <import path="text/tabwriter"/>
     <import path="github.com/kr/text"/>
-    <import path="github.com/kr/pretty"/>
   </imports>
 </project>

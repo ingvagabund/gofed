@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-hashicorp-memberlist-0-0.1.gitdad1009.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-hashicorp-memberlist-0-0.2.gitdad1009.fc24">
   <packages>
     <package importpath="github.com/hashicorp/memberlist">
       <types>
@@ -805,18 +805,16 @@
     </package>
   </packages>
   <imports>
-    <import path="fmt"/>
-    <import path="reflect"/>
-    <import path="testing"/>
-    <import path="time"/>
     <import path="bytes"/>
     <import path="compress/lzw"/>
     <import path="encoding/binary"/>
+    <import path="fmt"/>
     <import path="github.com/hashicorp/go-msgpack/codec"/>
     <import path="io"/>
     <import path="math"/>
     <import path="math/rand"/>
     <import path="net"/>
+    <import path="time"/>
     <import path="sync/atomic"/>
     <import path="github.com/armon/go-metrics"/>
     <import path="crypto/aes"/>

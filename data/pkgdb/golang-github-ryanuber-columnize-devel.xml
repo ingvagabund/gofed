@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-ryanuber-columnize-0-0.1.git44cb478.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-ryanuber-columnize-0-0.1.git44cb478.fc24">
   <packages>
     <package importpath="github.com/ryanuber/columnize">
       <types>
@@ -65,7 +65,6 @@
     </package>
   </packages>
   <imports>
-    <import path="testing"/>
     <import path="fmt"/>
     <import path="strings"/>
   </imports>

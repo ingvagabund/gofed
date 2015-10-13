@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-BurntSushi-toml-0-0.4.git2ceedfe.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-BurntSushi-toml-0-0.4.git2ceedfe.fc24">
   <packages>
     <package importpath="github.com/BurntSushi/toml">
       <types>
@@ -336,13 +336,16 @@
     <import path="time"/>
     <import path="unicode/utf8"/>
     <import path="encoding"/>
-    <import path="bytes"/>
-    <import path="net"/>
-    <import path="testing"/>
     <import path="bufio"/>
     <import path="errors"/>
     <import path="io"/>
     <import path="io/ioutil"/>
     <import path="math"/>
+    <import path="flag"/>
+    <import path="os"/>
+    <import path="path"/>
+    <import path="text/tabwriter"/>
+    <import path="github.com/BurntSushi/toml"/>
+    <import path="encoding/json"/>
   </imports>
 </project>

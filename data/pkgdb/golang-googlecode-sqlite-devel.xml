@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-googlecode-sqlite-0-0.12.hg74691fb6f837.fc23">
+<project ipprefix="" commit="commit" nvr="golang-googlecode-sqlite-0-0.15.hg74691fb6f837.fc24">
   <packages>
     <package importpath="code.google.com/p/gosqlite/sqlite">
       <types>

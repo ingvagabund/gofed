@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-jonboulle-clockwork-0-0.2.git3f831b6.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-jonboulle-clockwork-0-0.3.git3f831b6.fc24">
   <packages>
     <package importpath="github.com/jonboulle/clockwork">
       <types>
@@ -201,8 +201,6 @@
   </packages>
   <imports>
     <import path="sync"/>
-    <import path="testing"/>
     <import path="time"/>
-    <import path="reflect"/>
   </imports>
 </project>

@@ -1,0 +1,284 @@
+<?xml version='1.0' encoding='ASCII'?>
+<project ipprefix="" commit="commit" nvr="golang-github-julienschmidt-httprouter-1.1-1.fc24">
+  <packages>
+    <package importpath="github.com/julienschmidt/httprouter">
+      <types>
+        <type name="Handle" type="func">
+          <paramsList>
+            <type type="selector">
+              <prefix value="http"/>
+              <item value="ResponseWriter"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="http"/>
+                <item value="Request"/>
+              </type>
+            </type>
+            <type type="ident" def="Params"/>
+          </paramsList>
+          <resultsList/>
+        </type>
+        <type type="struct" name="Param">
+          <field type="ident" def="string" name="Key"/>
+          <field type="ident" def="string" name="Value"/>
+        </type>
+        <type name="Params" type="slice">
+          <elmtype type="ident" def="Param"/>
+        </type>
+        <type type="struct" name="Router">
+          <field type="map" name="trees">
+            <keytype type="ident" def="string"/>
+            <valtype type="pointer">
+              <type type="ident" def="node"/>
+            </valtype>
+          </field>
+          <field type="ident" def="bool" name="RedirectTrailingSlash"/>
+          <field type="ident" def="bool" name="RedirectFixedPath"/>
+          <field type="ident" def="bool" name="HandleMethodNotAllowed"/>
+          <field type="selector" name="NotFound">
+            <prefix value="http"/>
+            <item value="Handler"/>
+          </field>
+          <field type="selector" name="MethodNotAllowed">
+            <prefix value="http"/>
+            <item value="Handler"/>
+          </field>
+          <field type="func" name="PanicHandler">
+            <paramsList>
+              <type type="selector">
+                <prefix value="http"/>
+                <item value="ResponseWriter"/>
+              </type>
+              <type type="pointer">
+                <type type="selector">
+                  <prefix value="http"/>
+                  <item value="Request"/>
+                </type>
+              </type>
+              <type type="interface"/>
+            </paramsList>
+            <resultsList/>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="ByName">
+          <recvList>
+            <type type="ident" def="Params"/>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="New">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Router"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="GET">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Router"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="Handle"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="HEAD">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Router"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="Handle"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="OPTIONS">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Router"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="Handle"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="POST">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Router"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="Handle"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="PUT">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Router"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="Handle"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="PATCH">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Router"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="Handle"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="DELETE">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Router"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="Handle"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Handle">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Router"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+            <type type="ident" def="Handle"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Handler">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Router"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+            <type type="selector">
+              <prefix value="http"/>
+              <item value="Handler"/>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="HandlerFunc">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Router"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+            <type type="selector">
+              <prefix value="http"/>
+              <item value="HandlerFunc"/>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="ServeFiles">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Router"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="selector">
+              <prefix value="http"/>
+              <item value="FileSystem"/>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Lookup">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Router"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="Handle"/>
+            <type type="ident" def="Params"/>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="ServeHTTP">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Router"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="selector">
+              <prefix value="http"/>
+              <item value="ResponseWriter"/>
+            </type>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="http"/>
+                <item value="Request"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="CleanPath">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names/>
+    </package>
+  </packages>
+  <imports>
+    <import path="strings"/>
+    <import path="unicode"/>
+    <import path="net/http"/>
+  </imports>
+</project>

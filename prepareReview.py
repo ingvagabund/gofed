@@ -25,12 +25,47 @@ if __name__ == "__main__":
 	    help = "skip rpmlint errors if any"
         )
 
+	parser.add_option(
+	    "", "", "--just-update", dest="justupdate", action = "store_true", default = False,
+	    help = "Update only spec file, no build, no rpmlint"
+        )
+
+	parser.add_option(
+	    "", "", "--just-build", dest="justbuild", action = "store_true", default = False,
+	    help = "Build spec file only"
+        )
+
 	options, args = parser.parse_args()
 
-	if len(args) != 1:
-		print "Synopsis: [--user=USER|-u USER] [--skip-koji] SPEC"
-		exit(1)
-	specfile = args[0]
+	phase_build = True
+	srpm_only = False
+	phase_koji = True
+	phase_upload = True
+	phase_review = True
+
+	if options.justbuild:
+		phase_koji = False
+		phase_upload = False
+		phase_review = False
+
+	if options.justupdate:
+		phase_build = False
+		phase_koji = False
+		srpm_only = True
+		phase_review = False
+
+	if options.skipkoji:
+		phase_koji = False
+
+	# no args => take the spec file from the current directory
+	if len(args) == 0:
+		specfiles = glob("*.spec")
+		if len(specfiles) != 1:
+			print "Synopsis: [--user=USER|-u USER] [--skip-koji] SPEC"
+			exit(1)
+		specfile = specfiles[0]
+	else:
+		specfile = args[0]
 
 	user = options.user
 	if user == "":
@@ -89,57 +124,61 @@ if __name__ == "__main__":
 	if spec_dir == "":
 		spec_dir = "."
 
-	# copy tarball to ~/rpmbuild/SOURCES
-	print "Copying tarball %s to %s/rpmbuild/SOURCES" % ("%s/%s" % (spec_dir, tarball), expanduser("~"))
-	try:
-		shutil.copyfile("%s/%s" % (spec_dir, tarball), '%s/rpmbuild/SOURCES/%s' % (expanduser("~"), tarball))
-	except IOError, e:
-		print "Unable to copy tarball %s: %s" % (tarball, e)
-		exit(1)
-
-	# copy patches if available
-	for patch in glob("%s/*.patch" % spec_dir):
-		print "Copying patch %s to %s/rpmbuild/SOURCES" % (patch, expanduser("~"))
+	if phase_build or srpm_only:
+		# copy tarball to ~/rpmbuild/SOURCES
+		print "Copying tarball %s to %s/rpmbuild/SOURCES" % ("%s/%s" % (spec_dir, tarball), expanduser("~"))
 		try:
-			shutil.copyfile(patch, '%s/rpmbuild/SOURCES/%s' % (expanduser("~"), patch))
+			shutil.copyfile("%s/%s" % (spec_dir, tarball), '%s/rpmbuild/SOURCES/%s' % (expanduser("~"), tarball))
 		except IOError, e:
-			print "Unable to copy patch %s: %s" % (patch, e)
+			print "Unable to copy tarball %s: %s" % (tarball, e)
 			exit(1)
 
-	print ""
+		# copy patches if available
+		for patch in glob("%s/*.patch" % spec_dir):
+			print "Copying patch %s to %s/rpmbuild/SOURCES" % (patch, expanduser("~"))
+			try:
+				shutil.copyfile(patch, '%s/rpmbuild/SOURCES/%s' % (expanduser("~"), patch))
+			except IOError, e:
+				print "Unable to copy patch %s: %s" % (patch, e)
+				exit(1)
 
-	# build spec file
-	print "Building spec file using rpmbuild"
-	so, se, rc = runCommand("rpmbuild -ba %s" % specfile)
-	if rc != 0:
-		print "  Build failed. Check build.log."
-		print "  Error: %s" % se
-		exit(1)
+		print ""
 
-	# line with builds end with .rpm sufix and consists of two columns seperated by whitespace
-	# in a form "text: pathtorpm.rpm"
-	builds = filter(lambda l: l.endswith(".rpm") and len(l.split(" ")) == 2, so.split("\n"))
-	builds = map(lambda l: l.split(" ")[1], builds)
-	srpm = filter(lambda l: l.endswith("src.rpm"), builds)[0]
+		# build spec file
+		print "Building spec file using rpmbuild"
+		if srpm_only:
+			so, se, rc = runCommand("rpmbuild -bs %s" % specfile)
+		else:
+			so, se, rc = runCommand("rpmbuild -ba %s" % specfile)
 
-	for build in builds:
-		print "  %s" % build
-	print ""
+		if rc != 0:
+			print "  Build failed. Check build.log."
+			print "  Error: %s" % se
+			exit(1)
 
-	# rpmlint
-	print "Running rpmlint %s" % " ".join(builds)
-	so, se, rc = runCommand("rpmlint %s" % " ".join(builds))
+		# line with builds end with .rpm sufix and consists of two columns seperated by whitespace
+		# in a form "text: pathtorpm.rpm"
+		builds = filter(lambda l: l.endswith(".rpm") and len(l.split(" ")) == 2, so.split("\n"))
+		builds = map(lambda l: l.split(" ")[1], builds)
+		srpm = filter(lambda l: l.endswith("src.rpm"), builds)[0]
 
-	rpmlint = so
-	print so
+		for build in builds:
+			print "  %s" % build
+		print ""
 
-	if rc != 0 and not options.skiprpmlint:
-		print "Unable to run rpmlint: %s" % se
-		exit(1)
+		# rpmlint
+		print "Running rpmlint %s" % " ".join(builds)
+		so, se, rc = runCommand("rpmlint %s" % " ".join(builds))
 
+		rpmlint = so
+		print so
+
+		if rc != 0 and not options.skiprpmlint:
+			print "Unable to run rpmlint: %s" % se
+			exit(1)
 
 	# build in koji
-	if not options.skipkoji:
+	if phase_koji:
 		print "Running koji scratch build on srpm"
 		print "koji build --scratch rawhide %s --nowait" % srpm
 		so, se, rc = runCommand("koji build --scratch rawhide %s --nowait" % srpm)
@@ -177,66 +216,69 @@ if __name__ == "__main__":
 			print "  koji scratch build failed"
 			exit(1)
 
-	# parse data for review request for bugzilla
-	so, se, rc = runCommand("rpm -qpi %s" % srpm)
-	if rc != 0:
-		print "Unable to get info from srpm: %s" % se
-		exit(1)
+	if phase_build:
+		# parse data for review request for bugzilla
+		so, se, rc = runCommand("rpm -qpi %s" % srpm)
+		if rc != 0:
+			print "Unable to get info from srpm: %s" % se
+			exit(1)
 
-	# description is the last item
-	index = 0
-	lines = so.split("\n")
-	for line in lines:
-		if not line.startswith("Description"):
-			index +=1
-			continue
-		break
+		# description is the last item
+		index = 0
+		lines = so.split("\n")
+		for line in lines:
+			if not line.startswith("Description"):
+				index +=1
+				continue
+			break
 
-	description = "\n".join(lines[index+1:-1])
+		description = "\n".join(lines[index+1:-1])
 
-	# upload the srpm to my fedora account
-	rc = 0
-	print "Uploading srpm and spec file to @fedorapeople.org"
-	print '%s@fedorapeople.org "mkdir -p public_html/reviews/%s"' % (user, name)
-	so, se, rc = runCommand('ssh %s@fedorapeople.org "mkdir -p public_html/reviews/%s"' % (user, name))
-	if rc != 0:
-		print "Unable to create public_html/reviews/%s dir: %s" % (name, se)
-		exit(1)
+	if phase_upload:
+		# upload the srpm to my fedora account
+		rc = 0
+		print "Uploading srpm and spec file to @fedorapeople.org"
+		print '%s@fedorapeople.org "mkdir -p public_html/reviews/%s"' % (user, name)
+		so, se, rc = runCommand('ssh %s@fedorapeople.org "mkdir -p public_html/reviews/%s"' % (user, name))
+		if rc != 0:
+			print "Unable to create public_html/reviews/%s dir: %s" % (name, se)
+			exit(1)
 
-	print "scp %s %s@fedorapeople.org:public_html/reviews/%s/." % (srpm, user, name)
-	so, se, rc = runCommand("scp %s %s@fedorapeople.org:public_html/reviews/%s/." % (srpm, user, name))
-	if rc != 0:
-		print "Unable to copy srpm to fedorapeople.org: %s" % se
-		exit(1)
+		print "scp %s %s@fedorapeople.org:public_html/reviews/%s/." % (srpm, user, name)
+		so, se, rc = runCommand("scp %s %s@fedorapeople.org:public_html/reviews/%s/." % (srpm, user, name))
+		if rc != 0:
+			print "Unable to copy srpm to fedorapeople.org: %s" % se
+			exit(1)
 
-	print "scp %s %s@fedorapeople.org:public_html/reviews/%s/." % (specfile, user, name)
-	so, se, rc = runCommand("scp %s %s@fedorapeople.org:public_html/reviews/%s/." % (specfile, user, name))
-	if rc != 0:
-		print "Unable to copy spec file to fedorapeople: %s" % se
-		exit(1)
+		print "scp %s %s@fedorapeople.org:public_html/reviews/%s/." % (specfile, user, name)
+		so, se, rc = runCommand("scp %s %s@fedorapeople.org:public_html/reviews/%s/." % (specfile, user, name))
+		if rc != 0:
+			print "Unable to copy spec file to fedorapeople: %s" % se
+			exit(1)
 
-	print ""
-	print ""
-
-	# generate summary and header information
-	print "Generating Review Request"
-	print "###############################################################"
-	print "Review Request: %s - %s" % (name, summary)
-	print "###############################################################"
-	print "Spec URL: https://%s.fedorapeople.org/reviews/%s/%s" % (user, name, os.path.basename(specfile))
-	print ""
-	print "SRPM URL: https://%s.fedorapeople.org/reviews/%s/%s" % (user, name, os.path.basename(srpm))
-	print ""
-	print "Description: %s" % description
-	print ""
-	print "Fedora Account System Username: %s" % user 
-	print ""
-	if not options.skipkoji:
-		print "Koji: http://koji.fedoraproject.org/koji/taskinfo?taskID=%s" % task_id
 		print ""
-	print "$ rpmlint %s" % " ".join(map(lambda l: os.path.basename(l), builds))
-	print rpmlint
-	print "###############################################################"
-	print ""
-	print ""
-	print "Enter values at: https://bugzilla.redhat.com/enter_bug.cgi?product=Fedora&format=fedora-review"
+		print ""
+
+	if phase_review:
+		# generate summary and header information
+		print "Generating Review Request"
+		print "###############################################################"
+		print "Review Request: %s - %s" % (name, summary)
+		print "###############################################################"
+		print "Spec URL: https://%s.fedorapeople.org/reviews/%s/%s" % (user, name, os.path.basename(specfile))
+		print ""
+		print "SRPM URL: https://%s.fedorapeople.org/reviews/%s/%s" % (user, name, os.path.basename(srpm))
+		print ""
+		print "Description: %s" % description
+		print ""
+		print "Fedora Account System Username: %s" % user
+		print ""
+		if not options.skipkoji:
+			print "Koji: http://koji.fedoraproject.org/koji/taskinfo?taskID=%s" % task_id
+			print ""
+		print "$ rpmlint %s" % " ".join(map(lambda l: os.path.basename(l), builds))
+		print rpmlint
+		print "###############################################################"
+		print ""
+		print ""
+		print "Enter values at: https://bugzilla.redhat.com/enter_bug.cgi?product=Fedora&format=fedora-review"

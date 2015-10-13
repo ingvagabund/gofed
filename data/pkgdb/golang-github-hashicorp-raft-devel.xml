@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-hashicorp-raft-0-0.1.git6c2c8a2.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-hashicorp-raft-0-0.2.git6c2c8a2.fc24">
   <packages>
     <package importpath="github.com/hashicorp/raft/bench">
       <types/>
@@ -2762,27 +2762,24 @@
     </package>
   </packages>
   <imports>
-    <import path="net"/>
-    <import path="reflect"/>
-    <import path="regexp"/>
-    <import path="testing"/>
-    <import path="time"/>
     <import path="bytes"/>
     <import path="crypto/rand"/>
     <import path="encoding/binary"/>
     <import path="fmt"/>
     <import path="math/rand"/>
+    <import path="net"/>
+    <import path="time"/>
     <import path="github.com/hashicorp/go-msgpack/codec"/>
     <import path="io"/>
     <import path="errors"/>
     <import path="sync/atomic"/>
     <import path="sync"/>
     <import path="github.com/armon/go-metrics"/>
-    <import path="io/ioutil"/>
     <import path="log"/>
     <import path="os"/>
     <import path="strconv"/>
     <import path="encoding/json"/>
+    <import path="io/ioutil"/>
     <import path="path/filepath"/>
     <import path="bufio"/>
     <import path="container/list"/>
@@ -2791,5 +2788,6 @@
     <import path="sort"/>
     <import path="strings"/>
     <import path="github.com/hashicorp/raft"/>
+    <import path="testing"/>
   </imports>
 </project>

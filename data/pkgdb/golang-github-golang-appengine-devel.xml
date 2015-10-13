@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-golang-appengine-0-0.2.git1c3fdc5.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-golang-appengine-0-0.3.git1c3fdc5.fc24">
   <packages>
     <package importpath="google.golang.org/appengine/file">
       <types/>
@@ -27289,7 +27289,6 @@
     </package>
   </packages>
   <imports>
-    <import path="testing"/>
     <import path="fmt"/>
     <import path="regexp"/>
     <import path="github.com/golang/protobuf/proto"/>
@@ -27300,43 +27299,40 @@
     <import path="google.golang.org/appengine/internal/app_identity"/>
     <import path="google.golang.org/appengine/internal/modules"/>
     <import path="net/http"/>
-    <import path="reflect"/>
-    <import path="google.golang.org/appengine"/>
-    <import path="google.golang.org/appengine/internal/aetesting"/>
-    <import path="google.golang.org/appengine/internal/xmpp"/>
     <import path="errors"/>
-    <import path="google.golang.org/appengine/internal/user"/>
+    <import path="google.golang.org/appengine"/>
+    <import path="google.golang.org/appengine/internal/xmpp"/>
     <import path="strings"/>
+    <import path="google.golang.org/appengine/internal/user"/>
     <import path="io"/>
     <import path="io/ioutil"/>
     <import path="net/url"/>
     <import path="strconv"/>
     <import path="google.golang.org/appengine/internal/urlfetch"/>
-    <import path="google.golang.org/appengine/internal/taskqueue"/>
     <import path="google.golang.org/appengine/internal/datastore"/>
-    <import path="google.golang.org/appengine/internal/search"/>
+    <import path="google.golang.org/appengine/internal/taskqueue"/>
+    <import path="reflect"/>
     <import path="unicode/utf8"/>
+    <import path="google.golang.org/appengine/internal/search"/>
     <import path="google.golang.org/appengine/internal/remote_api"/>
     <import path="google.golang.org/appengine/log"/>
     <import path="google.golang.org/appengine/user"/>
     <import path="bytes"/>
     <import path="log"/>
     <import path="math/rand"/>
-    <import path="google.golang.org/appengine/internal/memcache"/>
     <import path="encoding/gob"/>
     <import path="encoding/json"/>
-    <import path="google.golang.org/appengine/internal/mail"/>
+    <import path="google.golang.org/appengine/internal/memcache"/>
     <import path="net/mail"/>
+    <import path="google.golang.org/appengine/internal/mail"/>
     <import path="google.golang.org/appengine/internal/log"/>
-    <import path="sync"/>
     <import path="net"/>
     <import path="runtime"/>
-    <import path="net/http/httptest"/>
+    <import path="sync"/>
     <import path="os"/>
-    <import path="bufio"/>
-    <import path="os/exec"/>
     <import path="sync/atomic"/>
     <import path="math"/>
+    <import path="testing"/>
     <import path="google.golang.org/appengine/internal/image"/>
     <import path="html/template"/>
     <import path="google.golang.org/appengine/datastore"/>

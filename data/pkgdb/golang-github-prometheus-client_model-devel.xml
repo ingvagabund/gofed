@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-prometheus-client_model-0-0.4.gitfa8ad6f.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-prometheus-client_model-0-0.5.gitfa8ad6f.fc24">
   <packages>
     <package importpath="github.com/prometheus/client_model/go">
       <types>

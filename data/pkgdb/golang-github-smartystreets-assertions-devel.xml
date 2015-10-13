@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-smartystreets-assertions-0-0.1.git4727d76.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-smartystreets-assertions-0-0.4.git4727d76.fc24">
   <packages>
     <package importpath="github.com/smartystreets/assertions/internal/oglematchers">
       <types>
@@ -3730,15 +3730,9 @@
   </packages>
   <imports>
     <import path="fmt"/>
-    <import path="path"/>
-    <import path="runtime"/>
-    <import path="strings"/>
-    <import path="testing"/>
-    <import path="bytes"/>
-    <import path="io"/>
-    <import path="net/http"/>
     <import path="reflect"/>
     <import path="time"/>
+    <import path="strings"/>
     <import path="encoding/json"/>
     <import path="github.com/smartystreets/goconvey/convey/reporting"/>
     <import path="github.com/smartystreets/assertions/internal/oglematchers"/>
@@ -3747,8 +3741,12 @@
     <import path="github.com/smartystreets/assertions"/>
     <import path="sync"/>
     <import path="github.com/smartystreets/assertions/internal/oglemock"/>
+    <import path="bytes"/>
     <import path="flag"/>
+    <import path="path"/>
     <import path="regexp"/>
+    <import path="runtime"/>
+    <import path="testing"/>
     <import path="sort"/>
     <import path="github.com/smartystreets/assertions/internal/ogletest"/>
     <import path="image/color"/>
@@ -3756,6 +3754,7 @@
     <import path="image"/>
     <import path="unsafe"/>
     <import path="log"/>
+    <import path="io"/>
     <import path="go/ast"/>
     <import path="go/parser"/>
     <import path="go/printer"/>

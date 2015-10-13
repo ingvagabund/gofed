@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-jmhodges-levigo-0-0.2.git253793d.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-jmhodges-levigo-0-0.4.git253793d.fc24">
   <packages>
     <package importpath="github.com/jmhodges/levigo">
       <types>
@@ -844,13 +844,6 @@
   </packages>
   <imports>
     <import path="C"/>
-    <import path="bytes"/>
-    <import path="fmt"/>
-    <import path="math/rand"/>
-    <import path="os"/>
-    <import path="path/filepath"/>
-    <import path="testing"/>
-    <import path="time"/>
     <import path="unsafe"/>
   </imports>
 </project>

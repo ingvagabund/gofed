@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-godbus-dbus-2-0.2.git939230d.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-godbus-dbus-2-0.3.git939230d.fc24">
   <packages>
     <package importpath="github.com/godbus/dbus/prop">
       <types>
@@ -1836,12 +1836,11 @@
     </package>
   </packages>
   <imports>
-    <import path="reflect"/>
-    <import path="testing"/>
     <import path="bytes"/>
     <import path="errors"/>
     <import path="fmt"/>
     <import path="io"/>
+    <import path="reflect"/>
     <import path="strconv"/>
     <import path="strings"/>
     <import path="unicode/utf8"/>
@@ -1852,8 +1851,6 @@
     <import path="unsafe"/>
     <import path="encoding/binary"/>
     <import path="net"/>
-    <import path="io/ioutil"/>
-    <import path="math"/>
     <import path="bufio"/>
     <import path="os/user"/>
     <import path="sync"/>

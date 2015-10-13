@@ -1,0 +1,744 @@
+<?xml version='1.0' encoding='ASCII'?>
+<project ipprefix="" commit="commit" nvr="golang-googlecode-gcfg-0-0.7.git5866678.fc24">
+  <packages>
+    <package importpath="gopkg.in/gcfg.v1/types">
+      <types>
+        <type name="IntMode" type="ident">
+          <type type="ident" def="uint8"/>
+        </type>
+        <type type="struct" name="EnumParser">
+          <field type="ident" def="string" name="Type"/>
+          <field type="ident" def="bool" name="CaseMatch"/>
+          <field type="map" name="vals">
+            <keytype type="ident" def="string"/>
+            <valtype type="interface"/>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="ScanFully">
+          <recvList/>
+          <paramsList>
+            <type type="interface"/>
+            <type type="ident" def="string"/>
+            <type type="ident" def="byte"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="ident" def="IntMode"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="ParseInt">
+          <recvList/>
+          <paramsList>
+            <type type="interface"/>
+            <type type="ident" def="string"/>
+            <type type="ident" def="IntMode"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AddVals">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="EnumParser"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="map">
+              <keytype type="ident" def="string"/>
+              <valtype type="interface"/>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Parse">
+          <recvList>
+            <type type="ident" def="EnumParser"/>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="interface"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="ParseBool">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names>
+        <name value="Dec"/>
+        <name value="Hex"/>
+        <name value="Oct"/>
+        <name value="BoolValues"/>
+      </names>
+    </package>
+    <package importpath="gopkg.in/gcfg.v1">
+      <types/>
+      <functions>
+        <function name="ReadInto">
+          <recvList/>
+          <paramsList>
+            <type type="interface"/>
+            <type type="selector">
+              <prefix value="io"/>
+              <item value="Reader"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="ReadStringInto">
+          <recvList/>
+          <paramsList>
+            <type type="interface"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="ReadFileInto">
+          <recvList/>
+          <paramsList>
+            <type type="interface"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names/>
+    </package>
+    <package importpath="gopkg.in/gcfg.v1/token">
+      <types>
+        <type name="Token" type="ident">
+          <type type="ident" def="int"/>
+        </type>
+        <type type="struct" name="Position">
+          <field type="ident" def="string" name="Filename"/>
+          <field type="ident" def="int" name="Offset"/>
+          <field type="ident" def="int" name="Line"/>
+          <field type="ident" def="int" name="Column"/>
+        </type>
+        <type name="Pos" type="ident">
+          <type type="ident" def="int"/>
+        </type>
+        <type type="struct" name="File">
+          <field type="pointer" name="set">
+            <type type="ident" def="FileSet"/>
+          </field>
+          <field type="ident" def="string" name="name"/>
+          <field type="ident" def="int" name="base"/>
+          <field type="ident" def="int" name="size"/>
+          <field type="slice" name="lines">
+            <elmtype type="ident" def="int"/>
+          </field>
+          <field type="slice" name="infos">
+            <elmtype type="ident" def="lineInfo"/>
+          </field>
+        </type>
+        <type type="struct" name="FileSet">
+          <field type="selector" name="mutex">
+            <prefix value="sync"/>
+            <item value="RWMutex"/>
+          </field>
+          <field type="ident" def="int" name="base"/>
+          <field type="slice" name="files">
+            <elmtype type="pointer">
+              <type type="ident" def="File"/>
+            </elmtype>
+          </field>
+          <field type="pointer" name="last">
+            <type type="ident" def="File"/>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="String">
+          <recvList>
+            <type type="ident" def="Token"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="IsLiteral">
+          <recvList>
+            <type type="ident" def="Token"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="IsOperator">
+          <recvList>
+            <type type="ident" def="Token"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="Read">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileSet"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="func">
+              <paramsList>
+                <type type="interface"/>
+              </paramsList>
+              <resultsList>
+                <type type="ident" def="error"/>
+              </resultsList>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Write">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileSet"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="func">
+              <paramsList>
+                <type type="interface"/>
+              </paramsList>
+              <resultsList>
+                <type type="ident" def="error"/>
+              </resultsList>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="IsValid">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Position"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="ident" def="Position"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="IsValid">
+          <recvList>
+            <type type="ident" def="Pos"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="Name">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="File"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Base">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="File"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="int"/>
+          </resultsList>
+        </function>
+        <function name="Size">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="File"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="int"/>
+          </resultsList>
+        </function>
+        <function name="LineCount">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="File"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="int"/>
+          </resultsList>
+        </function>
+        <function name="AddLine">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="File"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="int"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="SetLines">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="File"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="int"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="SetLinesForContent">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="File"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="AddLineInfo">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="File"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="string"/>
+            <type type="ident" def="int"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Pos">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="File"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="int"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="Pos"/>
+          </resultsList>
+        </function>
+        <function name="Offset">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="File"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="Pos"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+          </resultsList>
+        </function>
+        <function name="Line">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="File"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="Pos"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+          </resultsList>
+        </function>
+        <function name="Position">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="File"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="Pos"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="Position"/>
+          </resultsList>
+        </function>
+        <function name="NewFileSet">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="FileSet"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Base">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileSet"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="int"/>
+          </resultsList>
+        </function>
+        <function name="AddFile">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileSet"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="int"/>
+            <type type="ident" def="int"/>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="File"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Iterate">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileSet"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="func">
+              <paramsList>
+                <type type="pointer">
+                  <type type="ident" def="File"/>
+                </type>
+              </paramsList>
+              <resultsList>
+                <type type="ident" def="bool"/>
+              </resultsList>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="File">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileSet"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="Pos"/>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="File"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Position">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileSet"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="Pos"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="Position"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names>
+        <name value="ILLEGAL"/>
+        <name value="EOF"/>
+        <name value="COMMENT"/>
+        <name value="IDENT"/>
+        <name value="STRING"/>
+        <name value="ASSIGN"/>
+        <name value="LBRACK"/>
+        <name value="RBRACK"/>
+        <name value="EOL"/>
+        <name value="NoPos"/>
+      </names>
+    </package>
+    <package importpath="gopkg.in/gcfg.v1/scanner">
+      <types>
+        <type name="ErrorHandler" type="func">
+          <paramsList>
+            <type type="selector">
+              <prefix value="token"/>
+              <item value="Position"/>
+            </type>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </type>
+        <type type="struct" name="Scanner">
+          <field type="pointer" name="file">
+            <type type="selector">
+              <prefix value="token"/>
+              <item value="File"/>
+            </type>
+          </field>
+          <field type="ident" def="string" name="dir"/>
+          <field type="slice" name="src">
+            <elmtype type="ident" def="byte"/>
+          </field>
+          <field type="ident" def="ErrorHandler" name="err"/>
+          <field type="ident" def="Mode" name="mode"/>
+          <field type="ident" def="rune" name="ch"/>
+          <field type="ident" def="int" name="offset"/>
+          <field type="ident" def="int" name="rdOffset"/>
+          <field type="ident" def="int" name="lineOffset"/>
+          <field type="ident" def="bool" name="nextVal"/>
+          <field type="ident" def="int" name="ErrorCount"/>
+        </type>
+        <type name="Mode" type="ident">
+          <type type="ident" def="uint"/>
+        </type>
+        <type type="struct" name="Error">
+          <field type="selector" name="Pos">
+            <prefix value="token"/>
+            <item value="Position"/>
+          </field>
+          <field type="ident" def="string" name="Msg"/>
+        </type>
+        <type name="ErrorList" type="slice">
+          <elmtype type="pointer">
+            <type type="ident" def="Error"/>
+          </elmtype>
+        </type>
+      </types>
+      <functions>
+        <function name="Init">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Scanner"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="token"/>
+                <item value="File"/>
+              </type>
+            </type>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="ident" def="ErrorHandler"/>
+            <type type="ident" def="Mode"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Scan">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Scanner"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="selector">
+              <prefix value="token"/>
+              <item value="Pos"/>
+            </type>
+            <type type="selector">
+              <prefix value="token"/>
+              <item value="Token"/>
+            </type>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Error">
+          <recvList>
+            <type type="ident" def="Error"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Add">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ErrorList"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="selector">
+              <prefix value="token"/>
+              <item value="Position"/>
+            </type>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Reset">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ErrorList"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+        <function name="Len">
+          <recvList>
+            <type type="ident" def="ErrorList"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="int"/>
+          </resultsList>
+        </function>
+        <function name="Swap">
+          <recvList>
+            <type type="ident" def="ErrorList"/>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="int"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Less">
+          <recvList>
+            <type type="ident" def="ErrorList"/>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="int"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="Sort">
+          <recvList>
+            <type type="ident" def="ErrorList"/>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+        <function name="RemoveMultiples">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ErrorList"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+        <function name="Error">
+          <recvList>
+            <type type="ident" def="ErrorList"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Err">
+          <recvList>
+            <type type="ident" def="ErrorList"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="PrintError">
+          <recvList/>
+          <paramsList>
+            <type type="selector">
+              <prefix value="io"/>
+              <item value="Writer"/>
+            </type>
+            <type type="ident" def="error"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+      </functions>
+      <names>
+        <name value="ScanComments"/>
+      </names>
+    </package>
+  </packages>
+  <imports>
+    <import path="fmt"/>
+    <import path="math/big"/>
+    <import path="reflect"/>
+    <import path="strings"/>
+    <import path="unicode"/>
+    <import path="unicode/utf8"/>
+    <import path="gopkg.in/gcfg.v1/types"/>
+    <import path="io"/>
+    <import path="io/ioutil"/>
+    <import path="os"/>
+    <import path="gopkg.in/gcfg.v1/scanner"/>
+    <import path="gopkg.in/gcfg.v1/token"/>
+    <import path="encoding"/>
+    <import path="strconv"/>
+    <import path="sort"/>
+    <import path="sync"/>
+    <import path="path/filepath"/>
+  </imports>
+</project>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-10gen-openssl-0-0.2.git4c6dbaf.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-10gen-openssl-0-0.4.git4c6dbaf.fc24">
   <packages>
     <package importpath="github.com/10gen/openssl">
       <types>
@@ -3358,32 +3358,22 @@
     </package>
   </packages>
   <imports>
-    <import path="bytes"/>
-    <import path="crypto/rand"/>
-    <import path="crypto/tls"/>
-    <import path="io"/>
-    <import path="io/ioutil"/>
-    <import path="net"/>
-    <import path="sync"/>
-    <import path="testing"/>
-    <import path="time"/>
-    <import path="github.com/10gen/openssl/utils"/>
-    <import path="crypto/sha256"/>
     <import path="C"/>
     <import path="errors"/>
     <import path="runtime"/>
     <import path="unsafe"/>
-    <import path="crypto/sha1"/>
     <import path="regexp"/>
-    <import path="crypto/rsa"/>
-    <import path="crypto/x509"/>
-    <import path="encoding/hex"/>
-    <import path="encoding/pem"/>
+    <import path="net"/>
+    <import path="time"/>
+    <import path="io/ioutil"/>
     <import path="fmt"/>
     <import path="strings"/>
+    <import path="sync"/>
     <import path="net/http"/>
     <import path="os"/>
     <import path="github.com/spacemonkeygo/spacelog"/>
+    <import path="io"/>
+    <import path="github.com/10gen/openssl/utils"/>
     <import path="reflect"/>
   </imports>
 </project>

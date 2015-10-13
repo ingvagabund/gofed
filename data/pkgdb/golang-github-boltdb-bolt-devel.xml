@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-boltdb-bolt-0-0.1.git3b44955.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-boltdb-bolt-1.0-0.2.git980670a.fc24">
   <packages>
     <package importpath="github.com/boltdb/bolt">
       <types>
@@ -59,6 +59,7 @@
         <type type="struct" name="DB">
           <field type="ident" def="bool" name="StrictMode"/>
           <field type="ident" def="bool" name="NoSync"/>
+          <field type="ident" def="bool" name="NoGrowSync"/>
           <field type="ident" def="int" name="MaxBatchSize"/>
           <field type="selector" name="MaxBatchDelay">
             <prefix value="time"/>
@@ -137,12 +138,15 @@
               </resultsList>
             </field>
           </field>
+          <field type="ident" def="bool" name="readOnly"/>
         </type>
         <type type="struct" name="Options">
           <field type="selector" name="Timeout">
             <prefix value="time"/>
             <item value="Duration"/>
           </field>
+          <field type="ident" def="bool" name="NoGrowSync"/>
+          <field type="ident" def="bool" name="ReadOnly"/>
         </type>
         <type type="struct" name="Stats">
           <field type="ident" def="int" name="FreePageN"/>
@@ -718,6 +722,17 @@
             <type type="ident" def="error"/>
           </resultsList>
         </function>
+        <function name="Sync">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="DB"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
         <function name="Stats">
           <recvList>
             <type type="pointer">
@@ -740,6 +755,17 @@
             <type type="pointer">
               <type type="ident" def="Info"/>
             </type>
+          </resultsList>
+        </function>
+        <function name="IsReadOnly">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="DB"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
           </resultsList>
         </function>
         <function name="Sub">
@@ -1131,6 +1157,7 @@
         <name value="ErrTimeout"/>
         <name value="ErrTxNotWritable"/>
         <name value="ErrTxClosed"/>
+        <name value="ErrDatabaseReadOnly"/>
         <name value="ErrBucketNotFound"/>
         <name value="ErrBucketExists"/>
         <name value="ErrBucketNameRequired"/>
@@ -1149,37 +1176,28 @@
     </package>
   </packages>
   <imports>
-    <import path="errors"/>
     <import path="fmt"/>
-    <import path="os"/>
-    <import path="testing"/>
-    <import path="github.com/boltdb/bolt"/>
     <import path="io"/>
+    <import path="os"/>
     <import path="sort"/>
     <import path="time"/>
     <import path="unsafe"/>
     <import path="bytes"/>
-    <import path="math/rand"/>
-    <import path="sync"/>
-    <import path="flag"/>
-    <import path="reflect"/>
-    <import path="testing/quick"/>
-    <import path="encoding/binary"/>
-    <import path="io/ioutil"/>
-    <import path="regexp"/>
-    <import path="runtime"/>
-    <import path="strings"/>
+    <import path="errors"/>
     <import path="hash/fnv"/>
+    <import path="runtime"/>
     <import path="runtime/debug"/>
-    <import path="strconv"/>
+    <import path="strings"/>
+    <import path="sync"/>
     <import path="syscall"/>
-    <import path="path/filepath"/>
-    <import path="log"/>
-    <import path="net/http"/>
-    <import path="net/http/httptest"/>
-    <import path="github.com/boltdb/bolt/cmd/bolt"/>
-    <import path="github.com/codegangsta/cli"/>
-    <import path="encoding/json"/>
+    <import path="encoding/binary"/>
+    <import path="flag"/>
+    <import path="io/ioutil"/>
+    <import path="math/rand"/>
     <import path="runtime/pprof"/>
+    <import path="strconv"/>
+    <import path="unicode"/>
+    <import path="unicode/utf8"/>
+    <import path="github.com/boltdb/bolt"/>
   </imports>
 </project>

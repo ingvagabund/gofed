@@ -1,6 +1,129 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-googlecode-goauth2-0-0.10.hgb5adcc2.fc23">
+<project ipprefix="" commit="commit" nvr="golang-googlecode-goauth2-0-0.12.gitb5adcc2.fc24">
   <packages>
+    <package importpath="golang.org/x/oauth2/github">
+      <types/>
+      <functions/>
+      <names>
+        <name value="Endpoint"/>
+      </names>
+    </package>
+    <package importpath="golang.org/x/oauth2/paypal">
+      <types/>
+      <functions/>
+      <names>
+        <name value="Endpoint"/>
+        <name value="SandboxEndpoint"/>
+      </names>
+    </package>
+    <package importpath="golang.org/x/oauth2/linkedin">
+      <types/>
+      <functions/>
+      <names>
+        <name value="Endpoint"/>
+      </names>
+    </package>
+    <package importpath="golang.org/x/oauth2/vk">
+      <types/>
+      <functions/>
+      <names>
+        <name value="Endpoint"/>
+      </names>
+    </package>
+    <package importpath="golang.org/x/oauth2/clientcredentials">
+      <types>
+        <type type="struct" name="Config">
+          <field type="ident" def="string" name="ClientID"/>
+          <field type="ident" def="string" name="ClientSecret"/>
+          <field type="ident" def="string" name="TokenURL"/>
+          <field type="slice" name="Scopes">
+            <elmtype type="ident" def="string"/>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="Token">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Config"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="selector">
+              <prefix value="context"/>
+              <item value="Context"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="oauth2"/>
+                <item value="Token"/>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Client">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Config"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="selector">
+              <prefix value="context"/>
+              <item value="Context"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="http"/>
+                <item value="Client"/>
+              </type>
+            </type>
+          </resultsList>
+        </function>
+        <function name="TokenSource">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Config"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="selector">
+              <prefix value="context"/>
+              <item value="Context"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="selector">
+              <prefix value="oauth2"/>
+              <item value="TokenSource"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Token">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="tokenSource"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="oauth2"/>
+                <item value="Token"/>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names/>
+    </package>
     <package importpath="golang.org/x/oauth2/internal">
       <types>
         <type type="struct" name="ContextKey"/>
@@ -482,78 +605,19 @@
         <name value="JWTTokenURL"/>
       </names>
     </package>
-    <package importpath="golang.org/x/oauth2/jwt">
-      <types>
-        <type type="struct" name="Config">
-          <field type="ident" def="string" name="Email"/>
-          <field type="slice" name="PrivateKey">
-            <elmtype type="ident" def="byte"/>
-          </field>
-          <field type="ident" def="string" name="Subject"/>
-          <field type="slice" name="Scopes">
-            <elmtype type="ident" def="string"/>
-          </field>
-          <field type="ident" def="string" name="TokenURL"/>
-        </type>
-      </types>
-      <functions>
-        <function name="TokenSource">
-          <recvList>
-            <type type="pointer">
-              <type type="ident" def="Config"/>
-            </type>
-          </recvList>
-          <paramsList>
-            <type type="selector">
-              <prefix value="context"/>
-              <item value="Context"/>
-            </type>
-          </paramsList>
-          <resultsList>
-            <type type="selector">
-              <prefix value="oauth2"/>
-              <item value="TokenSource"/>
-            </type>
-          </resultsList>
-        </function>
-        <function name="Client">
-          <recvList>
-            <type type="pointer">
-              <type type="ident" def="Config"/>
-            </type>
-          </recvList>
-          <paramsList>
-            <type type="selector">
-              <prefix value="context"/>
-              <item value="Context"/>
-            </type>
-          </paramsList>
-          <resultsList>
-            <type type="pointer">
-              <type type="selector">
-                <prefix value="http"/>
-                <item value="Client"/>
-              </type>
-            </type>
-          </resultsList>
-        </function>
-        <function name="Token">
-          <recvList>
-            <type type="ident" def="jwtSource"/>
-          </recvList>
-          <paramsList/>
-          <resultsList>
-            <type type="pointer">
-              <type type="selector">
-                <prefix value="oauth2"/>
-                <item value="Token"/>
-              </type>
-            </type>
-            <type type="ident" def="error"/>
-          </resultsList>
-        </function>
-      </functions>
-      <names/>
+    <package importpath="golang.org/x/oauth2/facebook">
+      <types/>
+      <functions/>
+      <names>
+        <name value="Endpoint"/>
+      </names>
+    </package>
+    <package importpath="golang.org/x/oauth2/odnoklassniki">
+      <types/>
+      <functions/>
+      <names>
+        <name value="Endpoint"/>
+      </names>
     </package>
     <package importpath="golang.org/x/oauth2">
       <types>
@@ -962,43 +1026,104 @@
         <name value="HTTPClient"/>
       </names>
     </package>
-    <package importpath="golang.org/x/oauth2/github">
-      <types/>
-      <functions/>
-      <names>
-        <name value="Endpoint"/>
-      </names>
+    <package importpath="golang.org/x/oauth2/jwt">
+      <types>
+        <type type="struct" name="Config">
+          <field type="ident" def="string" name="Email"/>
+          <field type="slice" name="PrivateKey">
+            <elmtype type="ident" def="byte"/>
+          </field>
+          <field type="ident" def="string" name="Subject"/>
+          <field type="slice" name="Scopes">
+            <elmtype type="ident" def="string"/>
+          </field>
+          <field type="ident" def="string" name="TokenURL"/>
+        </type>
+      </types>
+      <functions>
+        <function name="TokenSource">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Config"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="selector">
+              <prefix value="context"/>
+              <item value="Context"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="selector">
+              <prefix value="oauth2"/>
+              <item value="TokenSource"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Client">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Config"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="selector">
+              <prefix value="context"/>
+              <item value="Context"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="http"/>
+                <item value="Client"/>
+              </type>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Token">
+          <recvList>
+            <type type="ident" def="jwtSource"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="oauth2"/>
+                <item value="Token"/>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names/>
     </package>
   </packages>
   <imports>
-    <import path="net/http"/>
-    <import path="net/http/httptest"/>
-    <import path="testing"/>
-    <import path="time"/>
     <import path="errors"/>
     <import path="io"/>
+    <import path="net/http"/>
     <import path="sync"/>
     <import path="net/url"/>
     <import path="strings"/>
+    <import path="time"/>
     <import path="golang.org/x/net/context"/>
     <import path="golang.org/x/oauth2/internal"/>
+    <import path="bytes"/>
+    <import path="google.golang.org/appengine/urlfetch"/>
+    <import path="golang.org/x/oauth2"/>
     <import path="encoding/json"/>
     <import path="fmt"/>
     <import path="io/ioutil"/>
-    <import path="reflect"/>
-    <import path="strconv"/>
-    <import path="bytes"/>
-    <import path="log"/>
-    <import path="golang.org/x/oauth2"/>
-    <import path="google.golang.org/appengine/urlfetch"/>
     <import path="golang.org/x/oauth2/jws"/>
-    <import path="golang.org/x/oauth2/jwt"/>
     <import path="crypto"/>
     <import path="crypto/rand"/>
     <import path="crypto/rsa"/>
     <import path="crypto/sha256"/>
     <import path="encoding/base64"/>
     <import path="mime"/>
+    <import path="strconv"/>
     <import path="bufio"/>
     <import path="crypto/x509"/>
     <import path="encoding/pem"/>
@@ -1006,8 +1131,8 @@
     <import path="os/user"/>
     <import path="path/filepath"/>
     <import path="runtime"/>
+    <import path="golang.org/x/oauth2/jwt"/>
     <import path="google.golang.org/cloud/compute/metadata"/>
-    <import path="golang.org/x/oauth2/google"/>
     <import path="google.golang.org/appengine"/>
     <import path="sort"/>
   </imports>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-shurcooL-sanitized_anchor_name-0-0.3.git8e87604.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-shurcooL-sanitized_anchor_name-0-0.5.git8e87604.fc24">
   <packages>
     <package importpath="github.com/shurcooL/sanitized_anchor_name">
       <types/>
@@ -18,8 +18,6 @@
     </package>
   </packages>
   <imports>
-    <import path="fmt"/>
-    <import path="github.com/shurcooL/sanitized_anchor_name"/>
     <import path="unicode"/>
   </imports>
 </project>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-cenkalti-backoff-0-0.1.git9831e1e.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-cenkalti-backoff-0-0.2.git9831e1e.fc24">
   <packages>
     <package importpath="github.com/cenkalti/backoff">
       <types>
@@ -300,13 +300,9 @@
     </package>
   </packages>
   <imports>
-    <import path="errors"/>
-    <import path="log"/>
-    <import path="testing"/>
     <import path="runtime"/>
     <import path="sync"/>
     <import path="time"/>
-    <import path="math"/>
     <import path="math/rand"/>
   </imports>
 </project>

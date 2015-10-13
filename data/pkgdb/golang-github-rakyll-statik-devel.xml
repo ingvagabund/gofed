@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-rakyll-statik-0-0.2.gitf19d7c2.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-rakyll-statik-0-0.4.gitf19d7c2.fc24">
   <packages>
     <package importpath="github.com/rakyll/statik/fs">
       <types/>

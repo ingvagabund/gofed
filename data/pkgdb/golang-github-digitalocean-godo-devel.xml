@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-digitalocean-godo-0-0.1.git8dc1f54.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-digitalocean-godo-0-0.2.git8dc1f54.fc24">
   <packages>
     <package importpath="github.com/digitalocean/godo/util">
       <types/>
@@ -2022,19 +2022,16 @@
     </package>
   </packages>
   <imports>
-    <import path="encoding/json"/>
-    <import path="fmt"/>
-    <import path="testing"/>
-    <import path="time"/>
     <import path="strconv"/>
+    <import path="time"/>
     <import path="bytes"/>
+    <import path="fmt"/>
     <import path="reflect"/>
-    <import path="net/http"/>
     <import path="net/url"/>
-    <import path="io/ioutil"/>
-    <import path="net/http/httptest"/>
-    <import path="strings"/>
+    <import path="encoding/json"/>
     <import path="io"/>
+    <import path="io/ioutil"/>
+    <import path="net/http"/>
     <import path="github.com/google/go-querystring/query"/>
     <import path="github.com/tent/http-link-go"/>
     <import path="github.com/digitalocean/godo"/>

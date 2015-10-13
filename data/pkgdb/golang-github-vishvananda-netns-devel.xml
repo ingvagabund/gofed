@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-vishvananda-netns-0-0.3.git5478c06.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-vishvananda-netns-0-0.5.git604eaf1.fc24">
   <packages>
     <package importpath="github.com/vishvananda/netns">
       <types>
@@ -93,6 +93,16 @@
         <function name="Get">
           <recvList/>
           <paramsList/>
+          <resultsList>
+            <type type="ident" def="NsHandle"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="GetFromPath">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
           <resultsList>
             <type type="ident" def="NsHandle"/>
             <type type="ident" def="error"/>
@@ -193,6 +203,8 @@
         <name value="SYS_SETNS"/>
         <name value="SYS_SETNS"/>
         <name value="SYS_SETNS"/>
+        <name value="SYS_SETNS"/>
+        <name value="SYS_SETNS"/>
         <name value="CLONE_NEWUTS"/>
         <name value="CLONE_NEWIPC"/>
         <name value="CLONE_NEWUSER"/>
@@ -204,9 +216,6 @@
   </packages>
   <imports>
     <import path="errors"/>
-    <import path="runtime"/>
-    <import path="sync"/>
-    <import path="testing"/>
     <import path="fmt"/>
     <import path="io/ioutil"/>
     <import path="os"/>

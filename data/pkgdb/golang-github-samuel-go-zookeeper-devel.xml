@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-samuel-go-zookeeper-0-0.1.gitd0e0d8e.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-samuel-go-zookeeper-0-0.3.gitd0e0d8e.fc24">
   <packages>
     <package importpath="github.com/samuel/go-zookeeper/zk">
       <types>
@@ -1039,22 +1039,20 @@
     </package>
   </packages>
   <imports>
-    <import path="fmt"/>
-    <import path="io"/>
-    <import path="net"/>
-    <import path="strings"/>
-    <import path="testing"/>
-    <import path="time"/>
-    <import path="camlistore.org/pkg/throttle"/>
     <import path="crypto/sha1"/>
     <import path="encoding/base64"/>
+    <import path="fmt"/>
     <import path="math/rand"/>
     <import path="strconv"/>
+    <import path="strings"/>
     <import path="encoding/binary"/>
+    <import path="io"/>
+    <import path="net"/>
     <import path="sync"/>
-    <import path="reflect"/>
     <import path="errors"/>
+    <import path="reflect"/>
     <import path="runtime"/>
+    <import path="time"/>
     <import path="os"/>
     <import path="os/exec"/>
     <import path="path/filepath"/>

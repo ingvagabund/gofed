@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-googlecode-text-0-0.4.hg5b2527008a4c.fc23">
+<project ipprefix="" commit="commit" nvr="golang-googlecode-text-0-0.6.hg5b2527008a4c.fc24">
   <packages>
     <package importpath="code.google.com/p/go.text/collate/build">
       <types>
@@ -8212,11 +8212,10 @@
   <imports>
     <import path="fmt"/>
     <import path="io"/>
-    <import path="testing"/>
-    <import path="code.google.com/p/go.text/transform"/>
     <import path="unicode/utf8"/>
-    <import path="bytes"/>
+    <import path="code.google.com/p/go.text/transform"/>
     <import path="bufio"/>
+    <import path="bytes"/>
     <import path="flag"/>
     <import path="log"/>
     <import path="net/http"/>
@@ -8233,37 +8232,29 @@
     <import path="code.google.com/p/go.text/internal/triegen"/>
     <import path="code.google.com/p/go.text/internal/ucd"/>
     <import path="errors"/>
-    <import path="io/ioutil"/>
     <import path="code.google.com/p/go.text/cldr"/>
     <import path="hash"/>
     <import path="hash/fnv"/>
+    <import path="io/ioutil"/>
     <import path="math"/>
     <import path="os/exec"/>
     <import path="reflect"/>
-    <import path="code.google.com/p/go.text/language"/>
     <import path="encoding/binary"/>
     <import path="hash/crc64"/>
     <import path="text/template"/>
-    <import path="math/rand"/>
-    <import path="code.google.com/p/go.text/encoding"/>
-    <import path="code.google.com/p/go.text/encoding/charmap"/>
-    <import path="code.google.com/p/go.text/encoding/japanese"/>
-    <import path="code.google.com/p/go.text/encoding/korean"/>
-    <import path="code.google.com/p/go.text/encoding/simplifiedchinese"/>
-    <import path="code.google.com/p/go.text/encoding/traditionalchinese"/>
-    <import path="code.google.com/p/go.text/encoding/unicode"/>
     <import path="unicode/utf16"/>
+    <import path="code.google.com/p/go.text/encoding"/>
     <import path="go/format"/>
     <import path="path/filepath"/>
-    <import path="code.google.com/p/go.text/display"/>
+    <import path="code.google.com/p/go.text/language"/>
+    <import path="archive/zip"/>
+    <import path="code.google.com/p/go.text/collate"/>
     <import path="code.google.com/p/go.text/collate/build"/>
     <import path="code.google.com/p/go.text/collate/colltab"/>
-    <import path="code.google.com/p/go.text/collate"/>
-    <import path="archive/zip"/>
     <import path="C"/>
     <import path="unsafe"/>
+    <import path="math/rand"/>
     <import path="runtime/pprof"/>
     <import path="encoding/xml"/>
-    <import path="code.google.com/p/go.text/cases"/>
   </imports>
 </project>

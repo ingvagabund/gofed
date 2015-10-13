@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-gorilla-context-0-0.29.git215affd.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-gorilla-context-0-0.30.git215affd.fc24">
   <packages>
     <package importpath="github.com/gorilla/context">
       <types/>
@@ -139,7 +139,6 @@
   </packages>
   <imports>
     <import path="net/http"/>
-    <import path="testing"/>
     <import path="sync"/>
     <import path="time"/>
   </imports>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-syndtr-goleveldb-0-0.3.git012f65f.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-syndtr-goleveldb-0-0.4.git012f65f.fc24">
   <packages>
     <package importpath="github.com/syndtr/goleveldb/leveldb/cache">
       <types>
@@ -7105,24 +7105,22 @@
     <import path="unsafe"/>
     <import path="github.com/syndtr/goleveldb/leveldb/iterator"/>
     <import path="sort"/>
-    <import path="github.com/onsi/gomega"/>
-    <import path="github.com/syndtr/goleveldb/leveldb/testutil"/>
     <import path="github.com/syndtr/goleveldb/leveldb/cache"/>
-    <import path="errors"/>
-    <import path="io"/>
-    <import path="io/ioutil"/>
-    <import path="testing"/>
     <import path="github.com/syndtr/goleveldb/leveldb/journal"/>
+    <import path="io"/>
     <import path="github.com/syndtr/goleveldb/leveldb/filter"/>
-    <import path="github.com/syndtr/goleveldb/leveldb/comparer"/>
-    <import path="github.com/onsi/ginkgo"/>
     <import path="github.com/syndtr/goleveldb/leveldb/memdb"/>
     <import path="container/list"/>
+    <import path="errors"/>
+    <import path="github.com/syndtr/goleveldb/leveldb/comparer"/>
     <import path="hash/crc32"/>
     <import path="reflect"/>
     <import path="github.com/onsi/ginkgo/config"/>
+    <import path="github.com/onsi/gomega"/>
+    <import path="github.com/onsi/ginkgo"/>
     <import path="github.com/syndtr/gosnappy/snappy"/>
     <import path="syscall"/>
+    <import path="io/ioutil"/>
     <import path="math"/>
   </imports>
 </project>

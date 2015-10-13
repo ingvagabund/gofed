@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-googlecode-goauth2-0-0.10.hgb5adcc2.fc23">
+<project ipprefix="" commit="commit" nvr="golang-googlecode-goauth2-0-0.12.gitb5adcc2.fc24">
   <packages>
     <package importpath="code.google.com/p/goauth2/oauth/jwt">
       <types>
@@ -614,31 +614,27 @@
     </package>
   </packages>
   <imports>
-    <import path="io"/>
-    <import path="io/ioutil"/>
-    <import path="net/http"/>
-    <import path="net/http/httptest"/>
-    <import path="net/url"/>
-    <import path="os"/>
-    <import path="path/filepath"/>
-    <import path="runtime"/>
-    <import path="testing"/>
-    <import path="time"/>
     <import path="encoding/json"/>
     <import path="errors"/>
     <import path="fmt"/>
+    <import path="io"/>
+    <import path="io/ioutil"/>
     <import path="mime"/>
+    <import path="net/http"/>
+    <import path="net/url"/>
+    <import path="os"/>
     <import path="strconv"/>
     <import path="strings"/>
     <import path="sync"/>
+    <import path="time"/>
     <import path="bytes"/>
     <import path="crypto"/>
     <import path="crypto/rand"/>
     <import path="crypto/rsa"/>
     <import path="crypto/sha256"/>
     <import path="crypto/x509"/>
-    <import path="encoding/pem"/>
     <import path="encoding/base64"/>
+    <import path="encoding/pem"/>
     <import path="code.google.com/p/goauth2/oauth"/>
     <import path="flag"/>
     <import path="log"/>

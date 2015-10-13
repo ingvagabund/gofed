@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-hashicorp-go-msgpack-0-0.1.git71c2886.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-hashicorp-go-msgpack-0-0.1.git71c2886.fc24">
   <packages>
     <package importpath="github.com/hashicorp/go-msgpack/codec">
       <types>
@@ -697,10 +697,6 @@
     </package>
   </packages>
   <imports>
-    <import path="errors"/>
-    <import path="reflect"/>
-    <import path="flag"/>
-    <import path="testing"/>
     <import path="time"/>
     <import path="math"/>
     <import path="bufio"/>
@@ -708,23 +704,12 @@
     <import path="net/rpc"/>
     <import path="sync"/>
     <import path="fmt"/>
+    <import path="errors"/>
+    <import path="reflect"/>
     <import path="encoding/binary"/>
     <import path="sort"/>
     <import path="strings"/>
     <import path="unicode"/>
     <import path="unicode/utf8"/>
-    <import path="github.com/vmihailenco/msgpack"/>
-    <import path="labix.org/v2/mgo/bson"/>
-    <import path="bytes"/>
-    <import path="encoding/gob"/>
-    <import path="io/ioutil"/>
-    <import path="net"/>
-    <import path="os"/>
-    <import path="os/exec"/>
-    <import path="path/filepath"/>
-    <import path="runtime"/>
-    <import path="strconv"/>
-    <import path="sync/atomic"/>
-    <import path="encoding/json"/>
   </imports>
 </project>

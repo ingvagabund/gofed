@@ -163,3 +163,61 @@ For example, to check API of etcd between etcd-2.0.3 and etcd-2.0.4 versions (un
    ```
    
    Lines starting with the minus symbol ("-") are breaking backward compatibility. Lines starting with the plus symbol ("+") are new. Other lines reports other issues.
+
+#### gofed-web client
+
+To use gofed-web service, use "gofed client" command. You can query regularly
+updated database of APIdiffs to speed up APIdiff inspections.
+
+
+To see all available projects with APIdiff trend sorted alphabetically, use:
+
+   ```vim
+   $ gofed client -l --FMT "full_name:trend" | sort
+   ```
+
+   Output:
+
+   ```vim
+    cadvisor                                              165
+    docker-io                                             123
+    etcd                                                  219
+    fleet                                                   5
+    golang-bitbucket-kardianos-osext                       18
+    golang-bitbucket-ww-goautoneg                           0
+    ...
+   ```
+
+To see last two commits in project cadvisor and their API affection, use:
+
+   ```vim
+   $ gofed client -p cadvisor -m -q 2 -J 
+   ```
+
+   ```vim
+   [
+     {
+       "added": [],
+       "author": "Vish Kannan <vishh@users.noreply.github.com>",
+       "commit": "769738ba88e4568b47c1fe7fadfe9cb56cb4b19c",
+       "commit_msg": "Merge pull request #884 from hacpai/fixbug-issue-88",
+       "date": "2015-09-17 17:52:56+00:00",
+       "modified": [
+         {
+           "change": "function New: parameter count changed: 4 -> 5",
+           "package": "storage/elasticsearch"
+         }
+       ]
+     },
+     {
+       "added": [],
+       "author": "Vish Kannan <vishh@users.noreply.github.com>",
+       "commit": "7327cfe267570e73e0f419e66a97b1f0811d0034",
+       "commit_msg": "Merge pull request #885 from rjnagal/docke",
+       "date": "2015-09-15 18:49:53+00:00",
+       "modified": []
+     }
+   ]
+   ```
+See "gofed client --help" for more info and available commands.
+

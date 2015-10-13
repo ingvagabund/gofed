@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-openshift-go-json-rest-0-0.3.git7715b15.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-openshift-go-json-rest-0-0.4.git7715b15.fc24">
   <packages>
     <package importpath="github.com/openshift/go-json-rest/test">
       <types>
@@ -634,16 +634,13 @@
   <imports>
     <import path="net/http"/>
     <import path="time"/>
-    <import path="github.com/openshift/go-json-rest/test"/>
-    <import path="testing"/>
     <import path="fmt"/>
     <import path="os"/>
     <import path="sync"/>
-    <import path="net/url"/>
-    <import path="strings"/>
-    <import path="regexp"/>
     <import path="errors"/>
     <import path="github.com/openshift/go-json-rest/trie"/>
+    <import path="net/url"/>
+    <import path="strings"/>
     <import path="encoding/json"/>
     <import path="io/ioutil"/>
     <import path="log"/>
@@ -652,5 +649,6 @@
     <import path="runtime/debug"/>
     <import path="compress/gzip"/>
     <import path="net/http/httptest"/>
+    <import path="testing"/>
   </imports>
 </project>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-SeanDolphin-bqschema-0-0.3.git41d07ee.fc22">
+<project ipprefix="" commit="commit" nvr="golang-github-SeanDolphin-bqschema-0-0.6.git41d07ee.fc24">
   <packages>
     <package importpath="github.com/SeanDolphin/bqschema">
       <types/>
@@ -15,16 +15,16 @@
             </type>
             <type type="interface"/>
           </paramsList>
-          <returnsList>
+          <resultsList>
             <type type="ident" def="error"/>
-          </returnsList>
+          </resultsList>
         </function>
         <function name="ToSchema">
           <recvList/>
           <paramsList>
             <type type="interface"/>
           </paramsList>
-          <returnsList>
+          <resultsList>
             <type type="pointer">
               <type type="selector">
                 <prefix value="bigquery"/>
@@ -32,21 +32,21 @@
               </type>
             </type>
             <type type="ident" def="error"/>
-          </returnsList>
+          </resultsList>
         </function>
         <function name="MustToSchema">
           <recvList/>
           <paramsList>
             <type type="interface"/>
           </paramsList>
-          <returnsList>
+          <resultsList>
             <type type="pointer">
               <type type="selector">
                 <prefix value="bigquery"/>
                 <item value="TableSchema"/>
               </type>
             </type>
-          </returnsList>
+          </resultsList>
         </function>
       </functions>
       <names>
@@ -58,14 +58,10 @@
   </packages>
   <imports>
     <import path="code.google.com/p/google-api-go-client/bigquery/v2"/>
-    <import path="github.com/SeanDolphin/bqschema"/>
     <import path="reflect"/>
-    <import path="github.com/onsi/ginkgo"/>
-    <import path="github.com/onsi/gomega"/>
     <import path="strconv"/>
     <import path="strings"/>
-    <import path="time"/>
     <import path="errors"/>
-    <import path="testing"/>
+    <import path="time"/>
   </imports>
 </project>

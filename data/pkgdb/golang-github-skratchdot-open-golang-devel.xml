@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-skratchdot-open-golang-0-0.2.gitba570a1.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-skratchdot-open-golang-0-0.4.gitba570a1.fc24">
   <packages>
     <package importpath="github.com/skratchdot/open-golang/open">
       <types/>
@@ -47,7 +47,6 @@
     </package>
   </packages>
   <imports>
-    <import path="testing"/>
     <import path="os/exec"/>
     <import path="strings"/>
   </imports>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-kraman-libcontainer-0-0.3.gitd700e5b.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-kraman-libcontainer-0-0.4.gitd700e5b.fc24">
   <packages>
     <package importpath="github.com/kraman/libcontainer/utils">
       <types/>
@@ -427,7 +427,7 @@
     <import path="fmt"/>
     <import path="github.com/kraman/libcontainer"/>
     <import path="github.com/kraman/libcontainer/namespaces"/>
-    <import path="github.com/dotcloud/docker/pkg/netlink"/>
+    <import path="github.com/docker/docker/pkg/netlink"/>
     <import path="net"/>
     <import path="path/filepath"/>
     <import path="strconv"/>

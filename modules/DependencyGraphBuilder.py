@@ -33,7 +33,7 @@ class DependencyGraphBuilder(Base):
 		# load imported and provided paths
 		ipdb_obj = ImportPathDB(cache=self.cache)
 		if not ipdb_obj.load():
-			self.err = "Error: %s" % ipdb_obj.getErorr()
+			self.err = "Error: %s" % ipdb_obj.getError()
 			return False
 
 		ip_provides = ipdb_obj.getProvidedPaths()

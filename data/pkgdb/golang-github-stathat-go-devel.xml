@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-stathat-go-0-0.2.git01d012b.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-stathat-go-0-0.3.git01d012b.fc24">
   <packages>
     <package importpath="github.com/stathat/go">
       <types>
@@ -343,7 +343,6 @@
     </package>
   </packages>
   <imports>
-    <import path="testing"/>
     <import path="fmt"/>
     <import path="io/ioutil"/>
     <import path="log"/>
@@ -352,6 +351,5 @@
     <import path="strconv"/>
     <import path="sync"/>
     <import path="time"/>
-    <import path="github.com/stathat/go"/>
   </imports>
 </project>

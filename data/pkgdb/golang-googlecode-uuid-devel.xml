@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-googlecode-uuid-0-0.4.hg7dda39b2e7d5.fc23">
+<project ipprefix="" commit="commit" nvr="golang-googlecode-uuid-0-0.5.gitca53cad.fc24">
   <packages>
     <package importpath="code.google.com/p/go-uuid/uuid">
       <types>
@@ -140,6 +140,7 @@
           <paramsList/>
           <resultsList>
             <type type="ident" def="Time"/>
+            <type type="ident" def="uint16"/>
             <type type="ident" def="error"/>
           </resultsList>
         </function>
@@ -222,6 +223,33 @@
             <type type="slice">
               <elmtype type="ident" def="byte"/>
             </type>
+          </resultsList>
+        </function>
+        <function name="MarshalJSON">
+          <recvList>
+            <type type="ident" def="UUID"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="UnmarshalJSON">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="UUID"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
           </resultsList>
         </function>
         <function name="NewHash">
@@ -339,17 +367,17 @@
   <imports>
     <import path="encoding/binary"/>
     <import path="bytes"/>
-    <import path="fmt"/>
-    <import path="os"/>
-    <import path="strings"/>
-    <import path="testing"/>
-    <import path="time"/>
     <import path="crypto/rand"/>
+    <import path="fmt"/>
     <import path="io"/>
+    <import path="strings"/>
     <import path="sync"/>
+    <import path="time"/>
     <import path="net"/>
+    <import path="errors"/>
     <import path="crypto/md5"/>
     <import path="crypto/sha1"/>
     <import path="hash"/>
+    <import path="os"/>
   </imports>
 </project>

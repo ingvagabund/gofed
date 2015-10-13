@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-matttproud-golang_protobuf_extensions-0-0.4.gitfc2b8d3.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-matttproud-golang_protobuf_extensions-0-0.5.gitfc2b8d3.fc24">
   <packages>
     <package importpath="github.com/matttproud/golang_protobuf_extensions/ext">
       <types/>
@@ -66,16 +66,10 @@
     </package>
   </packages>
   <imports>
-    <import path="github.com/golang/protobuf/proto"/>
-    <import path="github.com/golang/protobuf/proto/testdata"/>
     <import path="encoding/binary"/>
     <import path="io"/>
+    <import path="github.com/golang/protobuf/proto"/>
     <import path="errors"/>
-    <import path="bytes"/>
-    <import path="math/rand"/>
     <import path="reflect"/>
-    <import path="testing"/>
-    <import path="testing/quick"/>
-    <import path="github.com/matttproud/golang_protobuf_extensions/pbtest"/>
   </imports>
 </project>

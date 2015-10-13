@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-miekg-dns-0-0.3.gitbb1103f.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-miekg-dns-0-0.4.gitbb1103f.fc24">
   <packages>
     <package importpath="github.com/miekg/dns">
       <types>
@@ -5146,7 +5146,6 @@
     <import path="os"/>
     <import path="bytes"/>
     <import path="fmt"/>
-    <import path="testing"/>
     <import path="time"/>
     <import path="syscall"/>
     <import path="crypto/hmac"/>
@@ -5164,20 +5163,15 @@
     <import path="crypto/ecdsa"/>
     <import path="crypto/rsa"/>
     <import path="math/big"/>
-    <import path="runtime"/>
     <import path="bufio"/>
     <import path="text/scanner"/>
-    <import path="github.com/miekg/dns"/>
+    <import path="encoding/base32"/>
     <import path="math/rand"/>
     <import path="reflect"/>
-    <import path="testing/quick"/>
-    <import path="encoding/base32"/>
     <import path="crypto/rand"/>
     <import path="crypto/elliptic"/>
     <import path="sort"/>
-    <import path="io/ioutil"/>
-    <import path="path/filepath"/>
+    <import path="github.com/miekg/dns"/>
     <import path="unicode"/>
-    <import path="github.com/miekg/dns/idn"/>
   </imports>
 </project>

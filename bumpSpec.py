@@ -1,5 +1,5 @@
 import optparse
-from modules.Utils import runCommand
+from modules.Utils import runCommand, RED, ENDC
 from modules.SpecParser import SpecParser
 
 from modules.RepositoryInfo import RepositoryInfo

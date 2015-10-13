@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-spf13-pflag-0-0.9.git5644820.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-spf13-pflag-0-0.10.git5644820.fc24">
   <packages>
     <package importpath="github.com/spf13/pflag">
       <types>
@@ -3197,14 +3197,11 @@
     <import path="strconv"/>
     <import path="net"/>
     <import path="bytes"/>
+    <import path="errors"/>
     <import path="io"/>
-    <import path="io/ioutil"/>
     <import path="os"/>
     <import path="sort"/>
     <import path="strings"/>
-    <import path="testing"/>
     <import path="time"/>
-    <import path="errors"/>
-    <import path="github.com/spf13/pflag"/>
   </imports>
 </project>

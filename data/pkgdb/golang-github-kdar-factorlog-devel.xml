@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-kdar-factorlog-0-0.3.git814d8f7.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-kdar-factorlog-0-0.4.git814d8f7.fc24">
   <packages>
     <package importpath="github.com/kdar/factorlog">
       <types>
@@ -2050,15 +2050,17 @@
     <import path="fmt"/>
     <import path="io/ioutil"/>
     <import path="runtime"/>
-    <import path="testing"/>
-    <import path="time"/>
     <import path="regexp"/>
     <import path="github.com/mgutz/ansi"/>
-    <import path="log"/>
-    <import path="strings"/>
+    <import path="time"/>
     <import path="io"/>
     <import path="os"/>
     <import path="sync"/>
     <import path="sync/atomic"/>
+    <import path="github.com/kdar/factorlog"/>
+    <import path="github.com/kdar/factorlog-contrib/glog"/>
+    <import path="net/http"/>
+    <import path="net/http/httptest"/>
+    <import path="github.com/kdar/factorlog-contrib/gelf"/>
   </imports>
 </project>

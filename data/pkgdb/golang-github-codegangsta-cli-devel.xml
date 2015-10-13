@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-codegangsta-cli-1.2.0-3.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-codegangsta-cli-1.2.0-4.fc24">
   <packages>
     <package importpath="github.com/codegangsta/cli">
       <types>
@@ -1024,16 +1024,13 @@
     </package>
   </packages>
   <imports>
-    <import path="reflect"/>
-    <import path="testing"/>
     <import path="fmt"/>
     <import path="os"/>
     <import path="text/tabwriter"/>
     <import path="text/template"/>
-    <import path="strings"/>
-    <import path="github.com/codegangsta/cli"/>
     <import path="flag"/>
     <import path="strconv"/>
+    <import path="strings"/>
     <import path="time"/>
     <import path="errors"/>
     <import path="io/ioutil"/>

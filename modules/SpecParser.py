@@ -292,7 +292,7 @@ class SpecParser(Base):
 					mfound = False
 					value += "%("
 					continue
-				if re.match('[a-zA-Z_]', c):
+				if re.match('[a-zA-Z0-9_]', c):
 					key += c
 				else:
 					if key not in macros:

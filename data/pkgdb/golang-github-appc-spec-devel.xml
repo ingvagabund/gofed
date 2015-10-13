@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-appc-spec-0.5.1-3.git37bef67.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-appc-spec-0.5.1-4.git37bef67.fc24">
   <packages>
     <package importpath="github.com/appc/spec/aci">
       <types>
@@ -2218,16 +2218,15 @@
   </packages>
   <imports>
     <import path="github.com/appc/spec/schema/types"/>
-    <import path="testing"/>
     <import path="encoding/json"/>
     <import path="errors"/>
     <import path="fmt"/>
-    <import path="reflect"/>
     <import path="net/url"/>
     <import path="path/filepath"/>
     <import path="strconv"/>
     <import path="strings"/>
     <import path="encoding/hex"/>
+    <import path="reflect"/>
     <import path="github.com/coreos/go-semver/semver"/>
     <import path="sort"/>
     <import path="github.com/GoogleCloudPlatform/kubernetes/pkg/api/resource"/>
@@ -2237,26 +2236,26 @@
     <import path="path"/>
     <import path="archive/tar"/>
     <import path="os"/>
-    <import path="io/ioutil"/>
-    <import path="syscall"/>
     <import path="C"/>
-    <import path="bytes"/>
+    <import path="syscall"/>
+    <import path="container/list"/>
     <import path="hash"/>
     <import path="io"/>
-    <import path="github.com/appc/spec/aci"/>
+    <import path="io/ioutil"/>
     <import path="github.com/appc/spec/schema"/>
-    <import path="container/list"/>
-    <import path="net/http"/>
     <import path="net"/>
+    <import path="net/http"/>
     <import path="golang.org/x/net/html"/>
     <import path="golang.org/x/net/html/atom"/>
     <import path="compress/bzip2"/>
     <import path="compress/gzip"/>
+    <import path="github.com/appc/spec/aci"/>
     <import path="flag"/>
     <import path="text/template"/>
     <import path="runtime"/>
     <import path="github.com/appc/spec/discovery"/>
     <import path="text/tabwriter"/>
+    <import path="bytes"/>
     <import path="log"/>
     <import path="os/exec"/>
     <import path="github.com/appc/spec/pkg/tarheader"/>

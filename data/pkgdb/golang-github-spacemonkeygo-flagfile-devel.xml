@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-spacemonkeygo-flagfile-0-0.1.git871ce56.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-spacemonkeygo-flagfile-0-0.2.git871ce56.fc24">
   <packages>
     <package importpath="github.com/spacemonkeygo/flagfile">
       <types/>
@@ -133,11 +133,9 @@
     <import path="fmt"/>
     <import path="strings"/>
     <import path="sync"/>
-    <import path="testing"/>
-    <import path="time"/>
-    <import path="github.com/spacemonkeygo/flagfile"/>
     <import path="reflect"/>
     <import path="strconv"/>
+    <import path="time"/>
     <import path="sort"/>
     <import path="bufio"/>
   </imports>

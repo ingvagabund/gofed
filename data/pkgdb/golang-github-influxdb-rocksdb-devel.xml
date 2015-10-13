@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-influxdb-rocksdb-0-0.2.git7adff3e.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-influxdb-rocksdb-0-0.3.git7adff3e.fc24">
   <packages>
     <package importpath="github.com/influxdb/rocksdb">
       <types>
@@ -912,13 +912,6 @@
     </package>
   </packages>
   <imports>
-    <import path="bytes"/>
-    <import path="fmt"/>
-    <import path="math/rand"/>
-    <import path="os"/>
-    <import path="path/filepath"/>
-    <import path="testing"/>
-    <import path="time"/>
     <import path="C"/>
     <import path="unsafe"/>
   </imports>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-armon-go-radix-0-0.1.git0bab926.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-armon-go-radix-0-0.2.git0bab926.fc24">
   <packages>
     <package importpath="github.com/armon/go-radix">
       <types>
@@ -230,11 +230,7 @@
     </package>
   </packages>
   <imports>
-    <import path="crypto/rand"/>
-    <import path="fmt"/>
-    <import path="reflect"/>
     <import path="sort"/>
-    <import path="testing"/>
     <import path="strings"/>
   </imports>
 </project>

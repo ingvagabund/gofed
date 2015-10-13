@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-google-go-querystring-0-0.1.git547ef5a.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-google-go-querystring-0-0.2.git547ef5a.fc24">
   <packages>
     <package importpath="github.com/google/go-querystring/query">
       <types>
@@ -50,13 +50,12 @@
     </package>
   </packages>
   <imports>
+    <import path="bytes"/>
     <import path="fmt"/>
     <import path="net/url"/>
     <import path="reflect"/>
-    <import path="testing"/>
-    <import path="time"/>
-    <import path="bytes"/>
     <import path="strconv"/>
     <import path="strings"/>
+    <import path="time"/>
   </imports>
 </project>

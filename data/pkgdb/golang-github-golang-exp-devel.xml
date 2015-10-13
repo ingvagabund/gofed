@@ -1,0 +1,1938 @@
+<?xml version='1.0' encoding='ASCII'?>
+<project ipprefix="" commit="commit" nvr="golang-googlecode-go-exp-0-0.8.gite1eb486.fc24">
+  <packages>
+    <package importpath="golang.org/x/exp/inotify">
+      <types>
+        <type type="struct" name="Event">
+          <field type="ident" def="uint32" name="Mask"/>
+          <field type="ident" def="uint32" name="Cookie"/>
+          <field type="ident" def="string" name="Name"/>
+        </type>
+        <type type="struct" name="Watcher">
+          <field type="selector" name="mu">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+          <field type="ident" def="int" name="fd"/>
+          <field type="map" name="watches">
+            <keytype type="ident" def="string"/>
+            <valtype type="pointer">
+              <type type="ident" def="watch"/>
+            </valtype>
+          </field>
+          <field type="map" name="paths">
+            <keytype type="ident" def="int"/>
+            <valtype type="ident" def="string"/>
+          </field>
+          <field type="channel" dir="3" name="Error">
+            <type type="ident" def="error"/>
+          </field>
+          <field type="channel" dir="3" name="Event">
+            <type type="pointer">
+              <type type="ident" def="Event"/>
+            </type>
+          </field>
+          <field type="channel" dir="3" name="done">
+            <type type="ident" def="bool"/>
+          </field>
+          <field type="ident" def="bool" name="isClosed"/>
+        </type>
+      </types>
+      <functions>
+        <function name="NewWatcher">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AddWatch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="uint32"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Watch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="RemoveWatch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Event"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names>
+        <name value="IN_DONT_FOLLOW"/>
+        <name value="IN_ONESHOT"/>
+        <name value="IN_ONLYDIR"/>
+        <name value="IN_ACCESS"/>
+        <name value="IN_ALL_EVENTS"/>
+        <name value="IN_ATTRIB"/>
+        <name value="IN_CLOSE"/>
+        <name value="IN_CLOSE_NOWRITE"/>
+        <name value="IN_CLOSE_WRITE"/>
+        <name value="IN_CREATE"/>
+        <name value="IN_DELETE"/>
+        <name value="IN_DELETE_SELF"/>
+        <name value="IN_MODIFY"/>
+        <name value="IN_MOVE"/>
+        <name value="IN_MOVED_FROM"/>
+        <name value="IN_MOVED_TO"/>
+        <name value="IN_MOVE_SELF"/>
+        <name value="IN_OPEN"/>
+        <name value="IN_ISDIR"/>
+        <name value="IN_IGNORED"/>
+        <name value="IN_Q_OVERFLOW"/>
+        <name value="IN_UNMOUNT"/>
+      </names>
+    </package>
+    <package importpath="golang.org/x/exp/locale/search">
+      <types>
+        <type name="Option" type="ident">
+          <type type="ident" def="int"/>
+        </type>
+        <type type="struct" name="Search">
+          <field type="selector" name="c">
+            <prefix value="colltab"/>
+            <item value="Weigher"/>
+          </field>
+        </type>
+        <type type="struct" name="Pattern">
+          <field type="pointer" name="s">
+            <type type="ident" def="Search"/>
+          </field>
+          <field type="slice" name="colelems">
+            <elmtype type="selector">
+              <prefix value="colltab"/>
+              <item value="Elem"/>
+            </elmtype>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="New">
+          <recvList/>
+          <paramsList>
+            <type type="selector">
+              <prefix value="language"/>
+              <item value="Tag"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="NewFromWeigher">
+          <recvList/>
+          <paramsList>
+            <type type="selector">
+              <prefix value="colltab"/>
+              <item value="Weigher"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="SetOptions">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="Option"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Match">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="MatchString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="HasPrefix">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="HasPrefixString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="HasSufix">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="HasSufixString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="CommonPrefix">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="CommonPrefixString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Find">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="int"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="FindString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="int"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="FindLast">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="int"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="FindLastString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="int"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="FindAll">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="slice">
+                <elmtype type="ident" def="int"/>
+              </elmtype>
+            </type>
+          </resultsList>
+        </function>
+        <function name="FindAllString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="slice">
+                <elmtype type="ident" def="int"/>
+              </elmtype>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Compile">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="CompileString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Search"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Match">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="MatchString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="CommonPrefix">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="CommonPrefixString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="HasPrefix">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="HasPrefixString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="HasSuffix">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="HasSuffixString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="Find">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="int"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="FindString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="int"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="FindLast">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="int"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="FindLastString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="int"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="FindAll">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="slice">
+                <elmtype type="ident" def="int"/>
+              </elmtype>
+            </type>
+          </resultsList>
+        </function>
+        <function name="FindAllString">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Pattern"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="slice">
+                <elmtype type="ident" def="int"/>
+              </elmtype>
+            </type>
+          </resultsList>
+        </function>
+      </functions>
+      <names>
+        <name value="IgnoreCase"/>
+        <name value="IgnoreDiacritics"/>
+        <name value="IgnoreWidth"/>
+        <name value="WholeWord"/>
+        <name value="Literal"/>
+        <name value="Loose"/>
+      </names>
+    </package>
+    <package importpath="golang.org/x/exp/ebnf">
+      <types>
+        <type name="Expression" type="interface">
+          <method name="Pos">
+            <paramsList/>
+            <resultsList>
+              <type type="selector">
+                <prefix value="scanner"/>
+                <item value="Position"/>
+              </type>
+            </resultsList>
+          </method>
+        </type>
+        <type name="Alternative" type="slice">
+          <elmtype type="ident" def="Expression"/>
+        </type>
+        <type name="Sequence" type="slice">
+          <elmtype type="ident" def="Expression"/>
+        </type>
+        <type type="struct" name="Name">
+          <field type="selector" name="StringPos">
+            <prefix value="scanner"/>
+            <item value="Position"/>
+          </field>
+          <field type="ident" def="string" name="String"/>
+        </type>
+        <type type="struct" name="Token">
+          <field type="selector" name="StringPos">
+            <prefix value="scanner"/>
+            <item value="Position"/>
+          </field>
+          <field type="ident" def="string" name="String"/>
+        </type>
+        <type type="struct" name="Range">
+          <field type="pointer" name="Begin">
+            <type type="ident" def="Token"/>
+          </field>
+          <field type="pointer" name="End">
+            <type type="ident" def="Token"/>
+          </field>
+        </type>
+        <type type="struct" name="Group">
+          <field type="selector" name="Lparen">
+            <prefix value="scanner"/>
+            <item value="Position"/>
+          </field>
+          <field type="ident" def="Expression" name="Body"/>
+        </type>
+        <type type="struct" name="Option">
+          <field type="selector" name="Lbrack">
+            <prefix value="scanner"/>
+            <item value="Position"/>
+          </field>
+          <field type="ident" def="Expression" name="Body"/>
+        </type>
+        <type type="struct" name="Repetition">
+          <field type="selector" name="Lbrace">
+            <prefix value="scanner"/>
+            <item value="Position"/>
+          </field>
+          <field type="ident" def="Expression" name="Body"/>
+        </type>
+        <type type="struct" name="Production">
+          <field type="pointer" name="Name">
+            <type type="ident" def="Name"/>
+          </field>
+          <field type="ident" def="Expression" name="Expr"/>
+        </type>
+        <type type="struct" name="Bad">
+          <field type="selector" name="TokPos">
+            <prefix value="scanner"/>
+            <item value="Position"/>
+          </field>
+          <field type="ident" def="string" name="Error"/>
+        </type>
+        <type name="Grammar" type="map">
+          <keytype type="ident" def="string"/>
+          <valtype type="pointer">
+            <type type="ident" def="Production"/>
+          </valtype>
+        </type>
+      </types>
+      <functions>
+        <function name="Parse">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="selector">
+              <prefix value="io"/>
+              <item value="Reader"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="Grammar"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Err">
+          <recvList>
+            <type type="ident" def="errorList"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Error">
+          <recvList>
+            <type type="ident" def="errorList"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Pos">
+          <recvList>
+            <type type="ident" def="Alternative"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="selector">
+              <prefix value="scanner"/>
+              <item value="Position"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Pos">
+          <recvList>
+            <type type="ident" def="Sequence"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="selector">
+              <prefix value="scanner"/>
+              <item value="Position"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Pos">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Name"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="selector">
+              <prefix value="scanner"/>
+              <item value="Position"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Pos">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Token"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="selector">
+              <prefix value="scanner"/>
+              <item value="Position"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Pos">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Range"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="selector">
+              <prefix value="scanner"/>
+              <item value="Position"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Pos">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Group"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="selector">
+              <prefix value="scanner"/>
+              <item value="Position"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Pos">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Option"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="selector">
+              <prefix value="scanner"/>
+              <item value="Position"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Pos">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Repetition"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="selector">
+              <prefix value="scanner"/>
+              <item value="Position"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Pos">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Production"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="selector">
+              <prefix value="scanner"/>
+              <item value="Position"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Pos">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Bad"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="selector">
+              <prefix value="scanner"/>
+              <item value="Position"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Verify">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="Grammar"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names/>
+    </package>
+    <package importpath="golang.org/x/exp/winfsnotify">
+      <types>
+        <type type="struct" name="Event">
+          <field type="ident" def="uint32" name="Mask"/>
+          <field type="ident" def="uint32" name="Cookie"/>
+          <field type="ident" def="string" name="Name"/>
+        </type>
+        <type type="struct" name="Watcher">
+          <field type="selector" name="port">
+            <prefix value="syscall"/>
+            <item value="Handle"/>
+          </field>
+          <field type="ident" def="watchMap" name="watches"/>
+          <field type="channel" dir="3" name="input">
+            <type type="pointer">
+              <type type="ident" def="input"/>
+            </type>
+          </field>
+          <field type="channel" dir="3" name="Event">
+            <type type="pointer">
+              <type type="ident" def="Event"/>
+            </type>
+          </field>
+          <field type="channel" dir="3" name="Error">
+            <type type="ident" def="error"/>
+          </field>
+          <field type="ident" def="bool" name="isClosed"/>
+          <field type="channel" dir="3" name="quit">
+            <type type="channel" dir="1">
+              <type type="ident" def="error"/>
+            </type>
+          </field>
+          <field type="ident" def="uint32" name="cookie"/>
+        </type>
+      </types>
+      <functions>
+        <function name="NewWatcher">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AddWatch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="uint32"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Watch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="RemoveWatch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Event"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names>
+        <name value="FS_ONESHOT"/>
+        <name value="FS_ONLYDIR"/>
+        <name value="FS_ACCESS"/>
+        <name value="FS_ALL_EVENTS"/>
+        <name value="FS_ATTRIB"/>
+        <name value="FS_CLOSE"/>
+        <name value="FS_CREATE"/>
+        <name value="FS_DELETE"/>
+        <name value="FS_DELETE_SELF"/>
+        <name value="FS_MODIFY"/>
+        <name value="FS_MOVE"/>
+        <name value="FS_MOVED_FROM"/>
+        <name value="FS_MOVED_TO"/>
+        <name value="FS_MOVE_SELF"/>
+        <name value="FS_IGNORED"/>
+        <name value="FS_Q_OVERFLOW"/>
+      </names>
+    </package>
+    <package importpath="golang.org/x/exp/utf8string">
+      <types>
+        <type type="struct" name="String">
+          <field type="ident" def="string" name="str"/>
+          <field type="ident" def="int" name="numRunes"/>
+          <field type="ident" def="int" name="width"/>
+          <field type="ident" def="int" name="bytePos"/>
+          <field type="ident" def="int" name="runePos"/>
+          <field type="ident" def="int" name="nonASCII"/>
+        </type>
+      </types>
+      <functions>
+        <function name="NewString">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="String"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Init">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="String"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="String"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="String"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="RuneCount">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="String"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="int"/>
+          </resultsList>
+        </function>
+        <function name="IsASCII">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="String"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="Slice">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="String"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="int"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="At">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="String"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="int"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="rune"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names/>
+    </package>
+    <package importpath="golang.org/x/exp/old/netchan">
+      <types>
+        <type type="struct" name="Importer">
+          <field type="pointer" name="">
+            <type type="ident" def="encDec"/>
+          </field>
+          <field type="selector" name="chanLock">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+          <field type="map" name="names">
+            <keytype type="ident" def="string"/>
+            <valtype type="pointer">
+              <type type="ident" def="netChan"/>
+            </valtype>
+          </field>
+          <field type="map" name="chans">
+            <keytype type="ident" def="int"/>
+            <valtype type="pointer">
+              <type type="ident" def="netChan"/>
+            </valtype>
+          </field>
+          <field type="channel" dir="3" name="errors">
+            <type type="ident" def="error"/>
+          </field>
+          <field type="ident" def="int" name="maxId"/>
+          <field type="selector" name="mu">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+          <field type="ident" def="int64" name="unacked"/>
+          <field type="selector" name="seqLock">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+        </type>
+        <type type="struct" name="Exporter">
+          <field type="pointer" name="">
+            <type type="ident" def="clientSet"/>
+          </field>
+        </type>
+        <type name="Dir" type="ident">
+          <type type="ident" def="int"/>
+        </type>
+      </types>
+      <functions>
+        <function name="NewImporter">
+          <recvList/>
+          <paramsList>
+            <type type="selector">
+              <prefix value="io"/>
+              <item value="ReadWriter"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Importer"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Import">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Importer"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Errors">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Importer"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="channel" dir="3">
+              <type type="ident" def="error"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Import">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Importer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="interface"/>
+            <type type="ident" def="Dir"/>
+            <type type="ident" def="int"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="ImportNValues">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Importer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="interface"/>
+            <type type="ident" def="Dir"/>
+            <type type="ident" def="int"/>
+            <type type="ident" def="int"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Hangup">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Importer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Drain">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Importer"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="int64"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Serve">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Exporter"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="selector">
+              <prefix value="net"/>
+              <item value="Listener"/>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="ServeConn">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Exporter"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="selector">
+              <prefix value="io"/>
+              <item value="ReadWriter"/>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="NewExporter">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Exporter"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="ListenAndServe">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Exporter"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Drain">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Exporter"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="selector">
+              <prefix value="time"/>
+              <item value="Duration"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Sync">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Exporter"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="selector">
+              <prefix value="time"/>
+              <item value="Duration"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Export">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Exporter"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="interface"/>
+            <type type="ident" def="Dir"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Hangup">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Exporter"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="ident" def="Dir"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names>
+        <name value="Recv"/>
+        <name value="Send"/>
+      </names>
+    </package>
+    <package importpath="golang.org/x/exp/fsnotify">
+      <types>
+        <type type="struct" name="FileEvent">
+          <field type="ident" def="uint32" name="mask"/>
+          <field type="ident" def="uint32" name="cookie"/>
+          <field type="ident" def="string" name="Name"/>
+        </type>
+        <type type="struct" name="Watcher">
+          <field type="selector" name="mu">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+          <field type="selector" name="port">
+            <prefix value="syscall"/>
+            <item value="Handle"/>
+          </field>
+          <field type="ident" def="watchMap" name="watches"/>
+          <field type="channel" dir="3" name="input">
+            <type type="pointer">
+              <type type="ident" def="input"/>
+            </type>
+          </field>
+          <field type="channel" dir="3" name="Event">
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </field>
+          <field type="channel" dir="3" name="Error">
+            <type type="ident" def="error"/>
+          </field>
+          <field type="ident" def="bool" name="isClosed"/>
+          <field type="channel" dir="3" name="quit">
+            <type type="channel" dir="1">
+              <type type="ident" def="error"/>
+            </type>
+          </field>
+          <field type="ident" def="uint32" name="cookie"/>
+        </type>
+        <type type="struct" name="FileEvent">
+          <field type="ident" def="uint32" name="mask"/>
+          <field type="ident" def="uint32" name="cookie"/>
+          <field type="ident" def="string" name="Name"/>
+        </type>
+        <type type="struct" name="Watcher">
+          <field type="selector" name="mu">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+          <field type="ident" def="int" name="fd"/>
+          <field type="map" name="watches">
+            <keytype type="ident" def="string"/>
+            <valtype type="pointer">
+              <type type="ident" def="watch"/>
+            </valtype>
+          </field>
+          <field type="map" name="paths">
+            <keytype type="ident" def="int"/>
+            <valtype type="ident" def="string"/>
+          </field>
+          <field type="channel" dir="3" name="Error">
+            <type type="ident" def="error"/>
+          </field>
+          <field type="channel" dir="3" name="Event">
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </field>
+          <field type="channel" dir="3" name="done">
+            <type type="ident" def="bool"/>
+          </field>
+          <field type="ident" def="bool" name="isClosed"/>
+        </type>
+        <type type="struct" name="FileEvent">
+          <field type="ident" def="uint32" name="mask"/>
+          <field type="ident" def="string" name="Name"/>
+          <field type="ident" def="bool" name="create"/>
+        </type>
+        <type type="struct" name="Watcher">
+          <field type="selector" name="mu">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+          <field type="ident" def="int" name="kq"/>
+          <field type="map" name="watches">
+            <keytype type="ident" def="string"/>
+            <valtype type="ident" def="int"/>
+          </field>
+          <field type="selector" name="wmut">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+          <field type="map" name="enFlags">
+            <keytype type="ident" def="string"/>
+            <valtype type="ident" def="uint32"/>
+          </field>
+          <field type="selector" name="enmut">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+          <field type="map" name="paths">
+            <keytype type="ident" def="int"/>
+            <valtype type="ident" def="string"/>
+          </field>
+          <field type="map" name="finfo">
+            <keytype type="ident" def="int"/>
+            <valtype type="selector">
+              <prefix value="os"/>
+              <item value="FileInfo"/>
+            </valtype>
+          </field>
+          <field type="selector" name="pmut">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+          <field type="map" name="fileExists">
+            <keytype type="ident" def="string"/>
+            <valtype type="ident" def="bool"/>
+          </field>
+          <field type="selector" name="femut">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+          <field type="map" name="externalWatches">
+            <keytype type="ident" def="string"/>
+            <valtype type="ident" def="bool"/>
+          </field>
+          <field type="selector" name="ewmut">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+          <field type="channel" dir="3" name="Error">
+            <type type="ident" def="error"/>
+          </field>
+          <field type="channel" dir="3" name="Event">
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </field>
+          <field type="channel" dir="3" name="done">
+            <type type="ident" def="bool"/>
+          </field>
+          <field type="ident" def="bool" name="isClosed"/>
+          <field type="array" name="kbuf">
+            <elmtype type="selector">
+              <prefix value="syscall"/>
+              <item value="Kevent_t"/>
+            </elmtype>
+          </field>
+          <field type="selector" name="bufmut">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="IsCreate">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="IsDelete">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="IsModify">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="IsRename">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="IsAttrib">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="NewWatcher">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AddWatch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="uint32"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="IsCreate">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="IsDelete">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="IsModify">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="IsRename">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="IsAttrib">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="NewWatcher">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="IsCreate">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="IsDelete">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="IsModify">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="IsRename">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="IsAttrib">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="NewWatcher">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Watch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="RemoveWatch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="FileEvent"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names/>
+    </package>
+  </packages>
+  <imports>
+    <import path="errors"/>
+    <import path="fmt"/>
+    <import path="os"/>
+    <import path="path/filepath"/>
+    <import path="runtime"/>
+    <import path="syscall"/>
+    <import path="unsafe"/>
+    <import path="unicode/utf8"/>
+    <import path="io"/>
+    <import path="log"/>
+    <import path="net"/>
+    <import path="reflect"/>
+    <import path="sync"/>
+    <import path="time"/>
+    <import path="strconv"/>
+    <import path="encoding/gob"/>
+    <import path="golang.org/x/text/collate/colltab"/>
+    <import path="golang.org/x/text/language"/>
+    <import path="strings"/>
+    <import path="io/ioutil"/>
+    <import path="bytes"/>
+    <import path="flag"/>
+    <import path="go/scanner"/>
+    <import path="go/token"/>
+    <import path="golang.org/x/exp/ebnf"/>
+    <import path="text/scanner"/>
+    <import path="unicode"/>
+  </imports>
+</project>

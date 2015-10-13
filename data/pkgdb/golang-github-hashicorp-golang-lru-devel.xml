@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-hashicorp-golang-lru-0-0.1.gitd85392d.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-hashicorp-golang-lru-0-0.2.gitd85392d.fc24">
   <packages>
     <package importpath="github.com/hashicorp/golang-lru">
       <types>
@@ -151,7 +151,6 @@
     </package>
   </packages>
   <imports>
-    <import path="testing"/>
     <import path="container/list"/>
     <import path="errors"/>
     <import path="sync"/>

@@ -1,0 +1,644 @@
+<?xml version='1.0' encoding='ASCII'?>
+<project ipprefix="" commit="commit" nvr="golang-github-mitchellh-mapstructure-0-0.5.git740c764.fc24">
+  <packages>
+    <package importpath="github.com/mitchellh/cli">
+      <types>
+        <type type="struct" name="UiWriter">
+          <field type="ident" def="Ui" name="Ui"/>
+        </type>
+        <type type="struct" name="MockUi">
+          <field type="selector" name="InputReader">
+            <prefix value="io"/>
+            <item value="Reader"/>
+          </field>
+          <field type="pointer" name="ErrorWriter">
+            <type type="selector">
+              <prefix value="bytes"/>
+              <item value="Buffer"/>
+            </type>
+          </field>
+          <field type="pointer" name="OutputWriter">
+            <type type="selector">
+              <prefix value="bytes"/>
+              <item value="Buffer"/>
+            </type>
+          </field>
+          <field type="selector" name="once">
+            <prefix value="sync"/>
+            <item value="Once"/>
+          </field>
+        </type>
+        <type type="struct" name="ConcurrentUi">
+          <field type="ident" def="Ui" name="Ui"/>
+          <field type="selector" name="l">
+            <prefix value="sync"/>
+            <item value="Mutex"/>
+          </field>
+        </type>
+        <type type="struct" name="UiColor">
+          <field type="ident" def="int" name="Code"/>
+          <field type="ident" def="bool" name="Bold"/>
+        </type>
+        <type type="struct" name="ColoredUi">
+          <field type="ident" def="UiColor" name="OutputColor"/>
+          <field type="ident" def="UiColor" name="InfoColor"/>
+          <field type="ident" def="UiColor" name="ErrorColor"/>
+          <field type="ident" def="UiColor" name="WarnColor"/>
+          <field type="ident" def="Ui" name="Ui"/>
+        </type>
+        <type name="Ui" type="interface">
+          <method name="Ask">
+            <paramsList>
+              <type type="ident" def="string"/>
+            </paramsList>
+            <resultsList>
+              <type type="ident" def="string"/>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+          <method name="Output">
+            <paramsList>
+              <type type="ident" def="string"/>
+            </paramsList>
+            <resultsList/>
+          </method>
+          <method name="Info">
+            <paramsList>
+              <type type="ident" def="string"/>
+            </paramsList>
+            <resultsList/>
+          </method>
+          <method name="Error">
+            <paramsList>
+              <type type="ident" def="string"/>
+            </paramsList>
+            <resultsList/>
+          </method>
+          <method name="Warn">
+            <paramsList>
+              <type type="ident" def="string"/>
+            </paramsList>
+            <resultsList/>
+          </method>
+        </type>
+        <type type="struct" name="BasicUi">
+          <field type="selector" name="Reader">
+            <prefix value="io"/>
+            <item value="Reader"/>
+          </field>
+          <field type="selector" name="Writer">
+            <prefix value="io"/>
+            <item value="Writer"/>
+          </field>
+          <field type="selector" name="ErrorWriter">
+            <prefix value="io"/>
+            <item value="Writer"/>
+          </field>
+        </type>
+        <type type="struct" name="PrefixedUi">
+          <field type="ident" def="string" name="AskPrefix"/>
+          <field type="ident" def="string" name="OutputPrefix"/>
+          <field type="ident" def="string" name="InfoPrefix"/>
+          <field type="ident" def="string" name="ErrorPrefix"/>
+          <field type="ident" def="string" name="WarnPrefix"/>
+          <field type="ident" def="Ui" name="Ui"/>
+        </type>
+        <type name="HelpFunc" type="func">
+          <paramsList>
+            <type type="map">
+              <keytype type="ident" def="string"/>
+              <valtype type="ident" def="CommandFactory"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </type>
+        <type type="struct" name="MockCommand">
+          <field type="ident" def="string" name="HelpText"/>
+          <field type="ident" def="int" name="RunResult"/>
+          <field type="ident" def="string" name="SynopsisText"/>
+          <field type="ident" def="bool" name="RunCalled"/>
+          <field type="slice" name="RunArgs">
+            <elmtype type="ident" def="string"/>
+          </field>
+        </type>
+        <type name="Command" type="interface">
+          <method name="Help">
+            <paramsList/>
+            <resultsList>
+              <type type="ident" def="string"/>
+            </resultsList>
+          </method>
+          <method name="Run">
+            <paramsList>
+              <type type="slice">
+                <elmtype type="ident" def="string"/>
+              </type>
+            </paramsList>
+            <resultsList>
+              <type type="ident" def="int"/>
+            </resultsList>
+          </method>
+          <method name="Synopsis">
+            <paramsList/>
+            <resultsList>
+              <type type="ident" def="string"/>
+            </resultsList>
+          </method>
+        </type>
+        <type name="CommandFactory" type="func">
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="Command"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </type>
+        <type type="struct" name="CLI">
+          <field type="slice" name="Args">
+            <elmtype type="ident" def="string"/>
+          </field>
+          <field type="map" name="Commands">
+            <keytype type="ident" def="string"/>
+            <valtype type="ident" def="CommandFactory"/>
+          </field>
+          <field type="ident" def="string" name="Name"/>
+          <field type="ident" def="string" name="Version"/>
+          <field type="ident" def="HelpFunc" name="HelpFunc"/>
+          <field type="selector" name="HelpWriter">
+            <prefix value="io"/>
+            <item value="Writer"/>
+          </field>
+          <field type="selector" name="once">
+            <prefix value="sync"/>
+            <item value="Once"/>
+          </field>
+          <field type="ident" def="bool" name="isHelp"/>
+          <field type="ident" def="string" name="subcommand"/>
+          <field type="slice" name="subcommandArgs">
+            <elmtype type="ident" def="string"/>
+          </field>
+          <field type="ident" def="bool" name="isVersion"/>
+        </type>
+      </types>
+      <functions>
+        <function name="Write">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="UiWriter"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Ask">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="MockUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Error">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="MockUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Info">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="MockUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Output">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="MockUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Warn">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="MockUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Ask">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ConcurrentUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Error">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ConcurrentUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Info">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ConcurrentUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Output">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ConcurrentUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Warn">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ConcurrentUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Ask">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ColoredUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Output">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ColoredUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Info">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ColoredUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Error">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ColoredUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Warn">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="ColoredUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Ask">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="BasicUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Error">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="BasicUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Info">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="BasicUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Output">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="BasicUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Warn">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="BasicUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Ask">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="PrefixedUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Error">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="PrefixedUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Info">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="PrefixedUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Output">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="PrefixedUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="Warn">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="PrefixedUi"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="BasicHelpFunc">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="HelpFunc"/>
+          </resultsList>
+        </function>
+        <function name="FilteredHelpFunc">
+          <recvList/>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="string"/>
+            </type>
+            <type type="ident" def="HelpFunc"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="HelpFunc"/>
+          </resultsList>
+        </function>
+        <function name="Help">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="MockCommand"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="Run">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="MockCommand"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="slice">
+              <elmtype type="ident" def="string"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="int"/>
+          </resultsList>
+        </function>
+        <function name="Synopsis">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="MockCommand"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="NewCLI">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="CLI"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="IsHelp">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="CLI"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="IsVersion">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="CLI"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="Run">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="CLI"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Subcommand">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="CLI"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="SubcommandArgs">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="CLI"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="string"/>
+            </type>
+          </resultsList>
+        </function>
+      </functions>
+      <names>
+        <name value="UiColorNone"/>
+        <name value="UiColorRed"/>
+        <name value="UiColorGreen"/>
+        <name value="UiColorYellow"/>
+        <name value="UiColorBlue"/>
+        <name value="UiColorMagenta"/>
+        <name value="UiColorCyan"/>
+      </names>
+    </package>
+  </packages>
+  <imports>
+    <import path="bytes"/>
+    <import path="fmt"/>
+    <import path="io"/>
+    <import path="sync"/>
+    <import path="bufio"/>
+    <import path="errors"/>
+    <import path="os"/>
+    <import path="os/signal"/>
+    <import path="strings"/>
+    <import path="log"/>
+    <import path="sort"/>
+  </imports>
+</project>

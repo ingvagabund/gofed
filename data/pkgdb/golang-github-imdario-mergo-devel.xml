@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-imdario-mergo-0-0.2.git6ce7536.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-imdario-mergo-0-0.3.git6ce7536.fc24">
   <packages>
     <package importpath="github.com/imdario/mergo">
       <types/>
@@ -35,11 +35,8 @@
     </package>
   </packages>
   <imports>
-    <import path="gopkg.in/yaml.v1"/>
-    <import path="io/ioutil"/>
-    <import path="reflect"/>
-    <import path="testing"/>
     <import path="errors"/>
+    <import path="reflect"/>
     <import path="fmt"/>
     <import path="unicode"/>
     <import path="unicode/utf8"/>

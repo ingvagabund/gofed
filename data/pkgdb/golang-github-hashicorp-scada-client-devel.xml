@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-hashicorp-scada-client-0-0.1.gitc26580c.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-hashicorp-scada-client-0-0.2.gitc26580c.fc24">
   <packages>
     <package importpath="github.com/hashicorp/scada-client">
       <types>
@@ -428,21 +428,18 @@
   </packages>
   <imports>
     <import path="time"/>
-    <import path="bytes"/>
     <import path="crypto/tls"/>
     <import path="fmt"/>
     <import path="io"/>
-    <import path="net"/>
-    <import path="net/rpc"/>
-    <import path="reflect"/>
-    <import path="testing"/>
-    <import path="github.com/hashicorp/net-rpc-msgpackrpc"/>
-    <import path="github.com/hashicorp/yamux"/>
     <import path="log"/>
     <import path="math/rand"/>
+    <import path="net"/>
+    <import path="net/rpc"/>
     <import path="os"/>
     <import path="strings"/>
     <import path="sync"/>
     <import path="github.com/armon/go-metrics"/>
+    <import path="github.com/hashicorp/net-rpc-msgpackrpc"/>
+    <import path="github.com/hashicorp/yamux"/>
   </imports>
 </project>

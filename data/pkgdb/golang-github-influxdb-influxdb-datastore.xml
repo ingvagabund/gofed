@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-influxdb-influxdb-0.8.5-0.2.git9485e99.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-influxdb-influxdb-0.8.5-0.4.git9485e99.fc24">
   <packages>
     <package importpath="github.com/influxdb/influxdb/datastore/storage">
       <types>
@@ -1929,21 +1929,19 @@
     <import path="math"/>
     <import path="time"/>
     <import path="github.com/influxdb/influxdb/common"/>
-    <import path="os"/>
-    <import path="github.com/influxdb/influxdb/configuration"/>
-    <import path="launchpad.net/gocheck"/>
     <import path="io/ioutil"/>
+    <import path="os"/>
     <import path="path"/>
     <import path="path/filepath"/>
     <import path="sync"/>
     <import path="github.com/BurntSushi/toml"/>
     <import path="github.com/influxdb/influxdb/cluster"/>
+    <import path="github.com/influxdb/influxdb/configuration"/>
     <import path="github.com/influxdb/influxdb/datastore/storage"/>
     <import path="github.com/influxdb/influxdb/metastore"/>
     <import path="errors"/>
     <import path="regexp"/>
     <import path="github.com/influxdb/influxdb/parser"/>
-    <import path="testing"/>
     <import path="runtime"/>
     <import path="github.com/influxdb/rocksdb"/>
     <import path="strings"/>

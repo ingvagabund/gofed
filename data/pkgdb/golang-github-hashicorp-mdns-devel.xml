@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-hashicorp-mdns-0-0.1.git2b439d3.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-hashicorp-mdns-0-0.3.git2b439d3.fc24">
   <packages>
     <package importpath="github.com/hashicorp/mdns">
       <types>
@@ -239,17 +239,14 @@
     </package>
   </packages>
   <imports>
-    <import path="bytes"/>
-    <import path="net"/>
-    <import path="reflect"/>
-    <import path="testing"/>
-    <import path="github.com/miekg/dns"/>
     <import path="fmt"/>
+    <import path="net"/>
     <import path="os"/>
     <import path="strings"/>
-    <import path="time"/>
+    <import path="github.com/miekg/dns"/>
     <import path="log"/>
     <import path="sync"/>
+    <import path="time"/>
     <import path="code.google.com/p/go.net/ipv4"/>
     <import path="code.google.com/p/go.net/ipv6"/>
   </imports>

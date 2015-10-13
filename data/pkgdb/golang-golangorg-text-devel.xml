@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-googlecode-text-0-0.4.hg5b2527008a4c.fc23">
+<project ipprefix="" commit="commit" nvr="golang-googlecode-text-0-0.6.hg5b2527008a4c.fc24">
   <packages>
     <package importpath="golang.org/x/text/internal/triegen">
       <types>

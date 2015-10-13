@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-googlecode-gomock-0-0.2.hge033c7513ca3.fc23">
+<project ipprefix="" commit="commit" nvr="golang-googlecode-gomock-0-0.4.gitd581abf.fc24">
   <packages>
     <package importpath="code.google.com/p/gomock/gomock/mock_matcher">
       <types>
@@ -1821,11 +1821,11 @@
           </recvList>
           <paramsList>
             <type type="selector">
-              <prefix value="template"/>
+              <prefix value="template0"/>
               <item value="CSS"/>
             </type>
             <type type="selector">
-              <prefix value="template0"/>
+              <prefix value="template"/>
               <item value="FuncMap"/>
             </type>
           </paramsList>
@@ -2075,11 +2075,6 @@
     </package>
   </packages>
   <imports>
-    <import path="testing"/>
-    <import path="code.google.com/p/gomock/gomock"/>
-    <import path="code.google.com/p/gomock/sample"/>
-    <import path="code.google.com/p/gomock/sample/imp1"/>
-    <import path="code.google.com/p/gomock/sample/mock_user"/>
     <import path="io"/>
     <import path="bytes"/>
     <import path="hash"/>
@@ -2088,10 +2083,12 @@
     <import path="net/http"/>
     <import path="html/template"/>
     <import path="text/template"/>
-    <import path="code.google.com/p/gomock/sample/imp2"/>
-    <import path="code.google.com/p/gomock/sample/imp3"/>
-    <import path="code.google.com/p/gomock/sample/imp4"/>
+    <import path="github.com/golang/mock/sample/imp1"/>
+    <import path="github.com/golang/mock/sample/imp2"/>
+    <import path="github.com/golang/mock/sample/imp3"/>
+    <import path="github.com/golang/mock/sample/imp4"/>
     <import path="bufio"/>
+    <import path="github.com/golang/mock/gomock"/>
     <import path="encoding/gob"/>
     <import path="flag"/>
     <import path="io/ioutil"/>
@@ -2099,7 +2096,7 @@
     <import path="os/exec"/>
     <import path="path/filepath"/>
     <import path="runtime"/>
-    <import path="code.google.com/p/gomock/mockgen/model"/>
+    <import path="github.com/golang/mock/mockgen/model"/>
     <import path="fmt"/>
     <import path="go/ast"/>
     <import path="go/parser"/>
@@ -2107,10 +2104,9 @@
     <import path="path"/>
     <import path="strconv"/>
     <import path="strings"/>
+    <import path="go/format"/>
     <import path="unicode"/>
     <import path="reflect"/>
-    <import path="errors"/>
-    <import path="code.google.com/p/gomock/gomock/mock_matcher"/>
     <import path="sync"/>
   </imports>
 </project>

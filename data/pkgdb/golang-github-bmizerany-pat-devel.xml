@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-bmizerany-pat-0-0.2.gitb8a3500.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-bmizerany-pat-0-0.3.gitb8a3500.fc24">
   <packages>
     <package importpath="github.com/bmizerany/pat/example/patexample">
       <types/>
@@ -188,12 +188,8 @@
   </packages>
   <imports>
     <import path="net/http"/>
-    <import path="net/http/httptest"/>
     <import path="net/url"/>
-    <import path="sort"/>
     <import path="strings"/>
-    <import path="testing"/>
-    <import path="github.com/bmizerany/assert"/>
     <import path="io"/>
     <import path="log"/>
     <import path="github.com/bmizerany/pat"/>

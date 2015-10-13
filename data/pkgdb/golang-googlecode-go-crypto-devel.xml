@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-googlecode-go-crypto-0-0.4.gitc57d4a7.fc23">
+<project ipprefix="" commit="commit" nvr="golang-googlecode-go-crypto-0-0.6.gitc57d4a7.fc24">
   <packages>
     <package importpath="code.google.com/p/go.crypto/openpgp/armor">
       <types>
@@ -10360,86 +10360,69 @@
     </package>
   </packages>
   <imports>
-    <import path="bytes"/>
-    <import path="crypto/aes"/>
-    <import path="encoding/hex"/>
-    <import path="testing"/>
     <import path="crypto/cipher"/>
     <import path="errors"/>
     <import path="strconv"/>
-    <import path="crypto/rand"/>
-    <import path="encoding/binary"/>
-    <import path="strings"/>
     <import path="bufio"/>
     <import path="io"/>
     <import path="fmt"/>
-    <import path="code.google.com/p/go.crypto/ssh/testdata"/>
     <import path="math/rand"/>
     <import path="net"/>
+    <import path="strings"/>
     <import path="sync"/>
     <import path="time"/>
+    <import path="bytes"/>
     <import path="io/ioutil"/>
-    <import path="code.google.com/p/go.crypto/ssh/terminal"/>
+    <import path="encoding/binary"/>
     <import path="log"/>
     <import path="sync/atomic"/>
     <import path="math/big"/>
     <import path="reflect"/>
-    <import path="testing/quick"/>
     <import path="crypto/hmac"/>
     <import path="crypto/sha1"/>
     <import path="hash"/>
+    <import path="crypto"/>
     <import path="crypto/dsa"/>
     <import path="crypto/ecdsa"/>
     <import path="crypto/elliptic"/>
     <import path="crypto/rsa"/>
-    <import path="encoding/base64"/>
-    <import path="crypto"/>
     <import path="crypto/x509"/>
     <import path="encoding/asn1"/>
+    <import path="encoding/base64"/>
     <import path="encoding/pem"/>
-    <import path="net/http"/>
-    <import path="code.google.com/p/go.crypto/ssh"/>
+    <import path="crypto/rand"/>
     <import path="crypto/sha256"/>
     <import path="crypto/sha512"/>
+    <import path="crypto/aes"/>
     <import path="crypto/rc4"/>
     <import path="crypto/subtle"/>
     <import path="sort"/>
-    <import path="os"/>
-    <import path="os/exec"/>
-    <import path="os/user"/>
-    <import path="path/filepath"/>
-    <import path="text/template"/>
-    <import path="code.google.com/p/go.crypto/ssh/agent"/>
     <import path="syscall"/>
     <import path="unsafe"/>
     <import path="unicode/utf8"/>
-    <import path="compress/flate"/>
-    <import path="encoding/json"/>
-    <import path="code.google.com/p/go.crypto/pbkdf2"/>
-    <import path="code.google.com/p/go.crypto/salsa20/salsa"/>
+    <import path="code.google.com/p/crypto/ssh"/>
+    <import path="code.google.com/p/crypto/pbkdf2"/>
+    <import path="code.google.com/p/crypto/salsa20/salsa"/>
     <import path="math"/>
-    <import path="code.google.com/p/go.crypto/openpgp/armor"/>
-    <import path="code.google.com/p/go.crypto/openpgp/errors"/>
-    <import path="code.google.com/p/go.crypto/openpgp/packet"/>
-    <import path="code.google.com/p/go.crypto/openpgp/s2k"/>
-    <import path="crypto/md5"/>
-    <import path="code.google.com/p/go.crypto/ripemd160"/>
-    <import path="image/color"/>
-    <import path="image/jpeg"/>
+    <import path="encoding/hex"/>
+    <import path="code.google.com/p/crypto/openpgp/armor"/>
+    <import path="code.google.com/p/crypto/openpgp/errors"/>
+    <import path="code.google.com/p/crypto/openpgp/packet"/>
+    <import path="code.google.com/p/crypto/openpgp/s2k"/>
     <import path="image"/>
-    <import path="code.google.com/p/go.crypto/openpgp/elgamal"/>
+    <import path="image/jpeg"/>
+    <import path="crypto/md5"/>
+    <import path="code.google.com/p/crypto/openpgp/elgamal"/>
     <import path="crypto/des"/>
-    <import path="code.google.com/p/go.crypto/cast5"/>
+    <import path="code.google.com/p/crypto/cast5"/>
     <import path="compress/bzip2"/>
+    <import path="compress/flate"/>
     <import path="compress/zlib"/>
-    <import path="code.google.com/p/go.crypto/openpgp"/>
     <import path="net/textproto"/>
-    <import path="hash/adler32"/>
     <import path="crypto/x509/pkix"/>
-    <import path="code.google.com/p/go.crypto/poly1305"/>
-    <import path="code.google.com/p/go.crypto/curve25519"/>
-    <import path="code.google.com/p/go.crypto/nacl/secretbox"/>
-    <import path="code.google.com/p/go.crypto/hkdf"/>
-    <import path="code.google.com/p/go.crypto/blowfish"/>
+    <import path="code.google.com/p/crypto/poly1305"/>
+    <import path="code.google.com/p/crypto/curve25519"/>
+    <import path="code.google.com/p/crypto/nacl/secretbox"/>
+    <import path="code.google.com/p/crypto/blowfish"/>
   </imports>
 </project>

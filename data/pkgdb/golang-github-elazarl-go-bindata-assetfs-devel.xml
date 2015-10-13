@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-elazarl-go-bindata-assetfs-0-0.2.gitae4665c.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-elazarl-go-bindata-assetfs-0-0.5.git3dcc965.fc24">
   <packages>
     <package importpath="github.com/elazarl/go-bindata-assetfs">
       <types>
@@ -163,6 +163,17 @@
             <type type="ident" def="error"/>
           </resultsList>
         </function>
+        <function name="Size">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="AssetFile"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="int64"/>
+          </resultsList>
+        </function>
         <function name="Stat">
           <recvList>
             <type type="pointer">
@@ -253,7 +264,6 @@
   <imports>
     <import path="bytes"/>
     <import path="errors"/>
-    <import path="fmt"/>
     <import path="io"/>
     <import path="io/ioutil"/>
     <import path="net/http"/>
@@ -261,5 +271,10 @@
     <import path="path"/>
     <import path="path/filepath"/>
     <import path="time"/>
+    <import path="bufio"/>
+    <import path="flag"/>
+    <import path="fmt"/>
+    <import path="os/exec"/>
+    <import path="strings"/>
   </imports>
 </project>

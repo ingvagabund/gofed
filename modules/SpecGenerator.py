@@ -49,26 +49,12 @@ class SpecGenerator:
 		self.file.write("%global debug_package   %{nil}\n")
 		self.file.write("%endif\n\n")
 
-		# license
-		self.file.write("%define copying() \\\n")
-		self.file.write("%if 0%{?fedora} >= 21 || 0%{?rhel} >= 7 \\\n")
-		self.file.write("%license %{*} \\\n")
-		self.file.write("%else \\\n")
-		self.file.write("%doc %{*} \\\n")
-		self.file.write("%endif\n\n")
-
 		# %gobuild macro default definition
 		if self.with_extra and self.with_build:
 			self.file.write("%if ! 0%{?gobuild:1}\n")
 			self.file.write("%define gobuild(o:) go build -ldflags \"${LDFLAGS:-} -B 0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \\\\n')\" -a -v -x %{?**};\n")
 			self.file.write("%endif\n")
 			self.file.write("\n")
-
-		# %gotest macro default definition
-		if self.with_extra:
-			self.file.write("%if ! 0%{?gotest:1}\n")
-			self.file.write("%define gotest() go test -ldflags \"${LDFLAGS:-}\" %{?**}\n")
-			self.file.write("%endif\n\n")
 
 	def generateGithubHeader(self, project, repository, url, provider_prefix, commit):
 		self.file.write("%global provider        github\n")
@@ -148,6 +134,8 @@ class SpecGenerator:
 	def generateHeaderPrologue(self, project, prefix):
 		self.file.write("# e.g. el6 has ppc64 arch without gcc-go, so EA tag is required\n")
 		self.file.write("ExclusiveArch:  %{?go_arches:%{go_arches}}%{!?go_arches:%{ix86} x86_64 %{arm}}\n")
+		# Once BuildRequires of the compiler is removed from the main package, put it back to unit-test subpackage.
+		# Otherwise %check section can not run 'go test' on tests package in the unit-test subpackage.
 		self.file.write("# If go_compiler is not set to 1, there is no virtual provide. Use golang instead.\n")
 		self.file.write("BuildRequires:  %{?go_compiler:compiler(go-compiler)}%{!?go_compiler:golang}\n\n")
 
@@ -238,8 +226,6 @@ class SpecGenerator:
 		self.file.write("%if 0%{?with_unit_test} && 0%{?with_devel}\n")
 		self.file.write("%package unit-test-devel\n")
 		self.file.write("Summary:         Unit tests for %{name} package\n")
-		self.file.write("# If go_compiler is not set to 1, there is no virtual provide. Use golang instead.\n")
-		self.file.write("BuildRequires:  %{?go_compiler:compiler(go-compiler)}%{!?go_compiler:golang}\n\n")
 		self.file.write("%if 0%{?with_check}\n")
 		self.file.write("#Here comes all BuildRequires: PACKAGE the unit tests\n#in %%check section need for running\n")
 		self.file.write("%endif\n")
@@ -282,7 +268,9 @@ class SpecGenerator:
 			self.file.write("\n")
 			self.file.write("#%gobuild -o bin/NAME %{import_path}/NAME\n")
 
-	def generateInstallSection(self, direct_go_files = False):
+	def generateInstallSection(self, prj_info, direct_go_files = False):
+		godeps_on = prj_info.godepsDirectoryExists()
+
 		self.file.write("%install\n")
 		if self.with_build:
 			self.file.write("install -d -p %{buildroot}%{_bindir}\n")
@@ -292,8 +280,12 @@ class SpecGenerator:
 		self.file.write("# source codes for building projects\n")
 		self.file.write("%if 0%{?with_devel}\n")
 		self.file.write("install -d -p %{buildroot}/%{gopath}/src/%{import_path}/\n")
+		self.file.write("echo \"%%dir %%{gopath}/src/%%{import_path}/.\" >> devel.file-list\n")
 		self.file.write("# find all *.go but no *_test.go files and generate devel.file-list\n")
-		self.file.write("for file in $(find . -iname \"*.go\" \! -iname \"*_test.go\") ; do\n")
+		if godeps_on:
+			self.file.write("for file in $(find . -iname \"*.go\" \! -iname \"*_test.go\" | grep -v \"./Godeps\") ; do\n")
+		else:
+			self.file.write("for file in $(find . -iname \"*.go\" \! -iname \"*_test.go\") ; do\n")
 		self.file.write("    echo \"%%dir %%{gopath}/src/%%{import_path}/$(dirname $file)\" >> devel.file-list\n")
 		self.file.write("    install -d -p %{buildroot}/%{gopath}/src/%{import_path}/$(dirname $file)\n")
 		self.file.write("    cp -pav $file %{buildroot}/%{gopath}/src/%{import_path}/$file\n")
@@ -305,7 +297,10 @@ class SpecGenerator:
 		self.file.write("%if 0%{?with_unit_test} && 0%{?with_devel}\n")
 		self.file.write("install -d -p %{buildroot}/%{gopath}/src/%{import_path}/\n")
 		self.file.write("# find all *_test.go files and generate unit-test-devel.file-list\n")
-		self.file.write("for file in $(find . -iname \"*_test.go\"); do\n")
+		if godeps_on:
+			self.file.write("for file in $(find . -iname \"*_test.go\" | grep -v \"./Godeps\"); do\n")
+		else:
+			self.file.write("for file in $(find . -iname \"*_test.go\"); do\n")
 		self.file.write("    echo \"%%dir %%{gopath}/src/%%{import_path}/$(dirname $file)\" >> devel.file-list\n")
 		self.file.write("    install -d -p %{buildroot}/%{gopath}/src/%{import_path}/$(dirname $file)\n")
 		self.file.write("    cp -pav $file %{buildroot}/%{gopath}/src/%{import_path}/$file\n")
@@ -324,7 +319,13 @@ class SpecGenerator:
 		self.file.write("export GOPATH=%{buildroot}/%{gopath}:%{gopath}\n")
 		self.file.write("%else\n")
 		self.file.write("export GOPATH=%{buildroot}/%{gopath}:$(pwd)/Godeps/_workspace:%{gopath}\n")
-		self.file.write("%endif\n")
+		self.file.write("%endif\n\n")
+
+		# %gotest macro default definition
+		if self.with_extra:
+			self.file.write("%if ! 0%{?gotest:1}\n")
+			self.file.write("%global gotest go test\n")
+			self.file.write("%endif\n\n")
 
 		sdirs = sorted(project.getTestDirectories())
                 for dir in sdirs:
@@ -351,10 +352,13 @@ class SpecGenerator:
 				else:
 					restdocs.append(doc)
 
+		self.file.write("#define license tag if not already defined\n")
+		self.file.write("%{!?_licensedir:%global license %doc}\n\n")
+
 		if self.with_build:
 			self.file.write("%files\n")
 			if license != []:
-				self.file.write("%%copying %s\n" % (" ".join(licenses)))
+				self.file.write("%%license %s\n" % (" ".join(licenses)))
 			if restdocs != []:
 				self.file.write("%%doc %s\n" % (" ".join(restdocs)))
 
@@ -366,7 +370,7 @@ class SpecGenerator:
 		self.file.write("%files devel -f devel.file-list\n")
 
 		if license != []:
-			self.file.write("%%copying %s\n" % (" ".join(licenses)))
+			self.file.write("%%license %s\n" % (" ".join(licenses)))
 		if restdocs != []:
 			self.file.write("%%doc %s\n" % (" ".join(restdocs)))
 
@@ -381,14 +385,13 @@ class SpecGenerator:
 			else:
 				self.file.write("%dir %{gopath}/src/%{provider}.%{provider_tld}/%{project}\n")
 
-		self.file.write("%dir %{gopath}/src/%{import_path}\n")
 		self.file.write("%endif\n\n")
 
 		self.file.write("%if 0%{?with_unit_test} && 0%{?with_devel}\n")
 		self.file.write("%files unit-test-devel -f unit-test-devel.file-list\n")
 
 		if license != []:
-			self.file.write("%%copying %s\n" % (" ".join(licenses)))
+			self.file.write("%%license %s\n" % (" ".join(licenses)))
 		if restdocs != []:
 			self.file.write("%%doc %s\n" % (" ".join(restdocs)))
 
@@ -454,7 +457,7 @@ class SpecGenerator:
 		if "." in prj_info.getProvidedPackages():
 			direct_go_files = True
 
-		self.generateInstallSection(direct_go_files)
+		self.generateInstallSection(prj_info, direct_go_files)
 		self.file.write("\n")
 
 		# generate check section

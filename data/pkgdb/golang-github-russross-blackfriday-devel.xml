@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-russross-blackfriday-1.2-7.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-russross-blackfriday-1.2-9.fc24">
   <packages>
     <package importpath="github.com/russross/blackfriday">
       <types>
@@ -1898,15 +1898,12 @@
     </package>
   </packages>
   <imports>
-    <import path="io/ioutil"/>
-    <import path="path/filepath"/>
-    <import path="testing"/>
     <import path="bytes"/>
     <import path="unicode/utf8"/>
     <import path="regexp"/>
-    <import path="strings"/>
     <import path="strconv"/>
     <import path="fmt"/>
+    <import path="strings"/>
     <import path="github.com/shurcooL/sanitized_anchor_name"/>
   </imports>
 </project>

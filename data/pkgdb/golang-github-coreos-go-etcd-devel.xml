@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-coreos-go-etcd-2.0.0-0.2.git0424b5f.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-coreos-go-etcd-2.0.0-0.3.git4cceaf7.fc24">
   <packages>
     <package importpath="github.com/coreos/go-etcd/etcd">
       <types>
@@ -481,6 +481,162 @@
           <paramsList>
             <type type="ident" def="int"/>
             <type type="ident" def="int"/>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="CodecEncodeSelf">
+          <recvList>
+            <type type="ident" def="responseType"/>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="codec1978"/>
+                <item value="Encoder"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="CodecDecodeSelf">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="responseType"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="codec1978"/>
+                <item value="Decoder"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="CodecEncodeSelf">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="RawResponse"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="codec1978"/>
+                <item value="Encoder"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="CodecDecodeSelf">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="RawResponse"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="codec1978"/>
+                <item value="Decoder"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="CodecEncodeSelf">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Response"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="codec1978"/>
+                <item value="Encoder"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="CodecDecodeSelf">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Response"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="codec1978"/>
+                <item value="Decoder"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="CodecEncodeSelf">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Node"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="codec1978"/>
+                <item value="Encoder"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="CodecDecodeSelf">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Node"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="codec1978"/>
+                <item value="Decoder"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="CodecEncodeSelf">
+          <recvList>
+            <type type="ident" def="Nodes"/>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="codec1978"/>
+                <item value="Encoder"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList/>
+        </function>
+        <function name="CodecDecodeSelf">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Nodes"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="codec1978"/>
+                <item value="Decoder"/>
+              </type>
+            </type>
           </paramsList>
           <resultsList/>
         </function>
@@ -1112,26 +1268,26 @@
     </package>
   </packages>
   <imports>
-    <import path="fmt"/>
-    <import path="runtime"/>
-    <import path="testing"/>
-    <import path="time"/>
     <import path="errors"/>
-    <import path="encoding/json"/>
     <import path="net/http"/>
     <import path="strconv"/>
+    <import path="time"/>
+    <import path="github.com/ugorji/go/codec"/>
+    <import path="fmt"/>
+    <import path="reflect"/>
+    <import path="runtime"/>
     <import path="io"/>
     <import path="io/ioutil"/>
     <import path="net/url"/>
     <import path="path"/>
     <import path="strings"/>
     <import path="sync"/>
-    <import path="reflect"/>
+    <import path="encoding/json"/>
     <import path="log"/>
     <import path="math/rand"/>
-    <import path="net"/>
-    <import path="os"/>
     <import path="crypto/tls"/>
     <import path="crypto/x509"/>
+    <import path="net"/>
+    <import path="os"/>
   </imports>
 </project>

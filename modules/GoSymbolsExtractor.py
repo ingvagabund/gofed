@@ -21,6 +21,13 @@ class GoSymbolsExtractor(Base):
 		# occurences of imported paths in packages
 		self.package_imports_occurence = {}
 		self.test_directories = []
+		# main packages
+		self.main_packages = []
+		# Godeps directory is present
+		self.godeps_on = False
+
+	def godepsDirectoryExists(self):
+		return self.godeps_on
 
 	def getSymbols(self):
 		return self.symbols
@@ -36,6 +43,9 @@ class GoSymbolsExtractor(Base):
 
 	def getPackageImportsOccurences(self):
 		return self.package_imports_occurence
+
+	def getMainPackages(self):
+		return self.main_packages
 
 	def getTestDirectories(self):
 		return self.test_directories
@@ -108,8 +118,12 @@ class GoSymbolsExtractor(Base):
 		test_directories = []
 		ip_used = []
 		package_imports = {}
+		main_packages = []
 
 		for dir_info in self.getGoFiles(self.directory):
+			if dir_info["dir"].startswith("Godeps"):
+				self.godeps_on = True
+
 			#if sufix == ".":
 			#	sufix = bname
 			pkg_name = ""
@@ -179,6 +193,10 @@ class GoSymbolsExtractor(Base):
 
 				# skip all main packages
 				if pname == "main":
+					if dir_info['dir'] == ".":
+						main_packages.append(go_file,)
+					else:
+						main_packages.append("%s/%s" % (dir_info['dir'], go_file))
 					continue
 
 				# all files in a directory must define the same package
@@ -220,6 +238,7 @@ class GoSymbolsExtractor(Base):
 		self.package_imports = package_imports
 		self.imported_packages = ip_used
 		self.test_directories = list(set(test_directories))
+		self.main_packages = main_packages
 
 		return True
 

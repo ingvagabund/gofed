@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-spacemonkeygo-spacelog-0-0.1.gitae95ccc.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-spacemonkeygo-spacelog-0-0.1.gitae95ccc.fc24">
   <packages>
     <package importpath="github.com/spacemonkeygo/spacelog">
       <types>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-hashicorp-go-syslog-0-0.1.git42a2b57.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-hashicorp-go-syslog-0-0.2.git42a2b57.fc24">
   <packages>
     <package importpath="github.com/hashicorp/go-syslog">
       <types>

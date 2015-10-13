@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-hashicorp-logutils-0-0.1.git367a65d.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-hashicorp-logutils-0-0.2.git367a65d.fc24">
   <packages>
     <package importpath="github.com/hashicorp/logutils">
       <types>
@@ -75,9 +75,6 @@
   <imports>
     <import path="bytes"/>
     <import path="io"/>
-    <import path="log"/>
-    <import path="testing"/>
-    <import path="io/ioutil"/>
     <import path="sync"/>
   </imports>
 </project>

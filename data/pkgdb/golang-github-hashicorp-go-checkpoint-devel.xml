@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-hashicorp-go-checkpoint-0-0.1.git88326f6.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-hashicorp-go-checkpoint-0-0.2.git88326f6.fc24">
   <packages>
     <package importpath="github.com/hashicorp/go-checkpoint">
       <types>
@@ -84,21 +84,20 @@
     </package>
   </packages>
   <imports>
-    <import path="io/ioutil"/>
-    <import path="os"/>
-    <import path="path/filepath"/>
-    <import path="reflect"/>
-    <import path="testing"/>
-    <import path="time"/>
     <import path="crypto/rand"/>
     <import path="encoding/binary"/>
     <import path="encoding/json"/>
     <import path="fmt"/>
     <import path="io"/>
+    <import path="io/ioutil"/>
     <import path="math/rand"/>
     <import path="net/http"/>
     <import path="net/url"/>
+    <import path="os"/>
+    <import path="path/filepath"/>
+    <import path="reflect"/>
     <import path="runtime"/>
     <import path="strings"/>
+    <import path="time"/>
   </imports>
 </project>

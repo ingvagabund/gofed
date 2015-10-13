@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-syndtr-gocapability-0-0.10.git8e4cdcb.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-syndtr-gocapability-0-0.11.git8e4cdcb.fc24">
   <packages>
     <package importpath="github.com/syndtr/gocapability/capability">
       <types>
@@ -601,7 +601,6 @@
   <imports>
     <import path="syscall"/>
     <import path="unsafe"/>
-    <import path="testing"/>
     <import path="errors"/>
     <import path="bufio"/>
     <import path="fmt"/>

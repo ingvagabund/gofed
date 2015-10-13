@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-armon-gomdb-0-0.2.git151f2e0.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-armon-gomdb-0-0.3.git151f2e0.fc24">
   <packages>
     <package importpath="github.com/armon/gomdb">
       <types>
@@ -619,12 +619,6 @@
     <import path="math"/>
     <import path="runtime"/>
     <import path="unsafe"/>
-    <import path="bytes"/>
-    <import path="encoding/gob"/>
-    <import path="fmt"/>
-    <import path="io/ioutil"/>
-    <import path="os"/>
-    <import path="testing"/>
     <import path="errors"/>
   </imports>
 </project>

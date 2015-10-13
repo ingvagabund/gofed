@@ -54,6 +54,26 @@ if __name__ == "__main__":
 	    help = "use all branches except listed ones"
 	)
 
+	parser.add_option(
+	    "", "", "--endwithscratch", dest="endscratch", action = "store_true", default = False,
+	    help = "stop wizard after scratch phase"
+	)
+
+	parser.add_option(
+	    "", "", "--endwithpush", dest="endpush", action = "store_true", default = False,
+	    help = "stop wizard after push phase"
+	)
+
+	parser.add_option(
+	    "", "", "--endwithbuild", dest="endbuild", action = "store_true", default = False,
+	    help = "stop wizard after build phase"
+	)
+
+	parser.add_option(
+	    "", "", "--endwithupdate", dest="endupdate", action = "store_true", default = False,
+	    help = "stop wizard after update phase"
+	)
+
 	options, args = parser.parse_args()
 
 	pm = PhaseMethods(dry=options.dry, debug=options.debug)
@@ -89,6 +109,15 @@ if __name__ == "__main__":
 	else:
 		print "Missing options, run --help."
 		exit(1)
+
+	if options.endscratch:
+		pm.stopWithScratchBuild()
+	elif options.endpush:
+		pm.stopWithPush()
+	elif options.endbuild:
+		pm.stopWithBuild()
+	elif options.endupdate:
+		pm.stopWithUpdate()
 
 	pm.run()
 

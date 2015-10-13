@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-stretchr-objx-0-0.3.gitcbeaeb1.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-stretchr-objx-0-0.4.gitcbeaeb1.fc24">
   <packages>
     <package importpath="github.com/stretchr/objx">
       <types>
@@ -4314,9 +4314,6 @@
     </package>
   </packages>
   <imports>
-    <import path="fmt"/>
-    <import path="github.com/stretchr/testify/assert"/>
-    <import path="testing"/>
     <import path="crypto/sha1"/>
     <import path="encoding/hex"/>
     <import path="encoding/base64"/>
@@ -4326,6 +4323,7 @@
     <import path="net/url"/>
     <import path="strings"/>
     <import path="bytes"/>
+    <import path="fmt"/>
     <import path="regexp"/>
     <import path="strconv"/>
   </imports>

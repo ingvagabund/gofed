@@ -69,6 +69,11 @@ if __name__ == "__main__":
             help = "Skip all errors during Go symbol parsing"
         )
 
+	parser.add_option(
+            "", "-m", "--main-packages", dest="mainpackages", action = "store_true", default = False,
+            help = "Show main packages"
+        )
+
 	options, args = parser.parse_args()
 
 	path = "."
@@ -147,5 +152,8 @@ if __name__ == "__main__":
 		sdirs = sorted(list(set(sdirs)))
 		for dir in sdirs:
 			print dir
+	elif options.mainpackages:
+		for pkg in gse_obj.getMainPackages():
+			print pkg
 	else:
 		print "Usage: prog [-p] [-d] [-t] [directory]"

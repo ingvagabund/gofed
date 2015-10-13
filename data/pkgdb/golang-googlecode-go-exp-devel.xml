@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-googlecode-go-exp-0-0.5.hg77a5f324d8f5.fc23">
+<project ipprefix="" commit="commit" nvr="golang-googlecode-go-exp-0-0.8.gite1eb486.fc24">
   <packages>
     <package importpath="code.google.com/p/go.exp/locale/search">
       <types>
@@ -1242,6 +1242,134 @@
         <name value="IN_UNMOUNT"/>
       </names>
     </package>
+    <package importpath="code.google.com/p/go.exp/winfsnotify">
+      <types>
+        <type type="struct" name="Event">
+          <field type="ident" def="uint32" name="Mask"/>
+          <field type="ident" def="uint32" name="Cookie"/>
+          <field type="ident" def="string" name="Name"/>
+        </type>
+        <type type="struct" name="Watcher">
+          <field type="selector" name="port">
+            <prefix value="syscall"/>
+            <item value="Handle"/>
+          </field>
+          <field type="ident" def="watchMap" name="watches"/>
+          <field type="channel" dir="3" name="input">
+            <type type="pointer">
+              <type type="ident" def="input"/>
+            </type>
+          </field>
+          <field type="channel" dir="3" name="Event">
+            <type type="pointer">
+              <type type="ident" def="Event"/>
+            </type>
+          </field>
+          <field type="channel" dir="3" name="Error">
+            <type type="ident" def="error"/>
+          </field>
+          <field type="ident" def="bool" name="isClosed"/>
+          <field type="channel" dir="3" name="quit">
+            <type type="channel" dir="1">
+              <type type="ident" def="error"/>
+            </type>
+          </field>
+          <field type="ident" def="uint32" name="cookie"/>
+        </type>
+      </types>
+      <functions>
+        <function name="NewWatcher">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AddWatch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="uint32"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Watch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="RemoveWatch">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Watcher"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Event"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names>
+        <name value="FS_ONESHOT"/>
+        <name value="FS_ONLYDIR"/>
+        <name value="FS_ACCESS"/>
+        <name value="FS_ALL_EVENTS"/>
+        <name value="FS_ATTRIB"/>
+        <name value="FS_CLOSE"/>
+        <name value="FS_CREATE"/>
+        <name value="FS_DELETE"/>
+        <name value="FS_DELETE_SELF"/>
+        <name value="FS_MODIFY"/>
+        <name value="FS_MOVE"/>
+        <name value="FS_MOVED_FROM"/>
+        <name value="FS_MOVED_TO"/>
+        <name value="FS_MOVE_SELF"/>
+        <name value="FS_IGNORED"/>
+        <name value="FS_Q_OVERFLOW"/>
+      </names>
+    </package>
     <package importpath="code.google.com/p/go.exp/ebnf">
       <types>
         <type name="Expression" type="interface">
@@ -1779,32 +1907,26 @@
     </package>
   </packages>
   <imports>
-    <import path="math/rand"/>
-    <import path="testing"/>
-    <import path="unicode/utf8"/>
     <import path="errors"/>
-    <import path="net"/>
-    <import path="strings"/>
-    <import path="time"/>
+    <import path="fmt"/>
+    <import path="os"/>
+    <import path="path/filepath"/>
+    <import path="runtime"/>
+    <import path="syscall"/>
+    <import path="unsafe"/>
+    <import path="unicode/utf8"/>
     <import path="io"/>
     <import path="log"/>
+    <import path="net"/>
     <import path="reflect"/>
     <import path="sync"/>
+    <import path="time"/>
     <import path="strconv"/>
     <import path="encoding/gob"/>
     <import path="code.google.com/p/go.text/collate/colltab"/>
     <import path="code.google.com/p/go.text/language"/>
-    <import path="fmt"/>
-    <import path="code.google.com/p/go.exp/locale/search"/>
+    <import path="strings"/>
     <import path="io/ioutil"/>
-    <import path="os"/>
-    <import path="sync/atomic"/>
-    <import path="syscall"/>
-    <import path="unsafe"/>
-    <import path="path/filepath"/>
-    <import path="runtime"/>
-    <import path="os/exec"/>
-    <import path="code.google.com/p/go.exp/fsnotify"/>
     <import path="bytes"/>
     <import path="flag"/>
     <import path="go/scanner"/>

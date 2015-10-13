@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-go-tomb-tomb-0-0.1.git14b3d72.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-go-tomb-tomb-0-0.2.git14b3d72.fc24">
   <packages>
     <package importpath="gopkg.in/v2/tomb">
       <types>
@@ -256,9 +256,6 @@
   </packages>
   <imports>
     <import path="errors"/>
-    <import path="gopkg.in/tomb.v2"/>
-    <import path="reflect"/>
-    <import path="testing"/>
     <import path="fmt"/>
     <import path="sync"/>
   </imports>

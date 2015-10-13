@@ -62,6 +62,14 @@ that can be used for package maitainance.
 
 The commands support running one command on multiple branches at once.
 
+%package client
+Summary: Set of commands for quering gofed-web server
+Requires: %{name} = %{version}-%{release}
+BuildArch: noarch
+
+%description client
+Subpackage providing commands for quering gofed-web server.
+
 %prep
 %setup -q -n %{repo}-%{commit}
 
@@ -143,6 +151,10 @@ getent passwd gofed >/dev/null || useradd -r -g gofed -d / -s /sbin/nologin \
 %{_sysconfdir}/bash_completion.d/gofed-build_bash_completion
 /usr/share/%{name}/plugins/gofed-build.json
 
+%files client
+%{_sysconfdir}/bash_completion.d/gofed-client_bash_completion
+/usr/share/%{name}/plugins/gofed-client.json
+
 %check
 export GOFED_TEST_CONFIG_FILE="1"
 function gofed { %{buildroot}/usr/share/%{name}/%{name} "$@" --dry; }
@@ -159,6 +171,9 @@ gofed tools --waitbbo --dry test
 gofed wizard --scratch --dry
 
 %changelog
+* Fri Sep 18 2015 fpokorny <fpokorny@redhat.com> - 0.0.8-0.1.git2a3a173
+- Added client subpackage
+
 * Thu Aug 20 2015 jchaloup <jchaloup@redhat.com> - 0.0.8-0.1.git2a3a173
 - Bump to upstream 2a3a173bd9c964efa848d6563b2aebe0f68d7e58
 

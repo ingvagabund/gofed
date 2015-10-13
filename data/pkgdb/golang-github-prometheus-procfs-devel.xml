@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-prometheus-procfs-0-0.4.git490cc6e.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-prometheus-procfs-0-0.6.gitc91d8ee.fc24">
   <packages>
     <package importpath="github.com/prometheus/procfs">
       <types>
@@ -50,12 +50,44 @@
           <field type="ident" def="int" name="RealtimePriority"/>
           <field type="ident" def="int" name="RealtimeTimeout"/>
         </type>
+        <type type="struct" name="ProcIO">
+          <field type="ident" def="uint64" name="RChar"/>
+          <field type="ident" def="uint64" name="WChar"/>
+          <field type="ident" def="uint64" name="SyscR"/>
+          <field type="ident" def="uint64" name="SyscW"/>
+          <field type="ident" def="uint64" name="ReadBytes"/>
+          <field type="ident" def="uint64" name="WriteBytes"/>
+          <field type="ident" def="int64" name="CancelledWriteBytes"/>
+        </type>
         <type type="struct" name="Proc">
           <field type="ident" def="int" name="PID"/>
           <field type="ident" def="FS" name="fs"/>
         </type>
         <type name="Procs" type="slice">
           <elmtype type="ident" def="Proc"/>
+        </type>
+        <type type="struct" name="IPVSStats">
+          <field type="ident" def="uint64" name="Connections"/>
+          <field type="ident" def="uint64" name="IncomingPackets"/>
+          <field type="ident" def="uint64" name="OutgoingPackets"/>
+          <field type="ident" def="uint64" name="IncomingBytes"/>
+          <field type="ident" def="uint64" name="OutgoingBytes"/>
+        </type>
+        <type type="struct" name="IPVSBackendStatus">
+          <field type="selector" name="LocalAddress">
+            <prefix value="net"/>
+            <item value="IP"/>
+          </field>
+          <field type="ident" def="uint16" name="LocalPort"/>
+          <field type="ident" def="string" name="Proto"/>
+          <field type="selector" name="RemoteAddress">
+            <prefix value="net"/>
+            <item value="IP"/>
+          </field>
+          <field type="ident" def="uint16" name="RemotePort"/>
+          <field type="ident" def="uint64" name="ActiveConn"/>
+          <field type="ident" def="uint64" name="InactConn"/>
+          <field type="ident" def="uint64" name="Weight"/>
         </type>
         <type name="FS" type="ident">
           <type type="ident" def="string"/>
@@ -134,6 +166,16 @@
           <paramsList/>
           <resultsList>
             <type type="ident" def="ProcLimits"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="NewIO">
+          <recvList>
+            <type type="ident" def="Proc"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="ProcIO"/>
             <type type="ident" def="error"/>
           </resultsList>
         </function>
@@ -228,6 +270,16 @@
             <type type="ident" def="error"/>
           </resultsList>
         </function>
+        <function name="Executable">
+          <recvList>
+            <type type="ident" def="Proc"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
         <function name="FileDescriptors">
           <recvList>
             <type type="ident" def="Proc"/>
@@ -240,6 +292,18 @@
             <type type="ident" def="error"/>
           </resultsList>
         </function>
+        <function name="FileDescriptorTargets">
+          <recvList>
+            <type type="ident" def="Proc"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="string"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
         <function name="FileDescriptorsLen">
           <recvList>
             <type type="ident" def="Proc"/>
@@ -247,6 +311,46 @@
           <paramsList/>
           <resultsList>
             <type type="ident" def="int"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="NewIPVSStats">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="IPVSStats"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="NewIPVSStats">
+          <recvList>
+            <type type="ident" def="FS"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="IPVSStats"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="NewIPVSBackendStatus">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="IPVSBackendStatus"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="NewIPVSBackendStatus">
+          <recvList>
+            <type type="ident" def="FS"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="ident" def="IPVSBackendStatus"/>
+            </type>
             <type type="ident" def="error"/>
           </resultsList>
         </function>
@@ -267,17 +371,18 @@
     </package>
   </packages>
   <imports>
-    <import path="testing"/>
     <import path="bufio"/>
     <import path="fmt"/>
     <import path="strconv"/>
     <import path="strings"/>
-    <import path="os"/>
-    <import path="reflect"/>
-    <import path="sort"/>
     <import path="bytes"/>
     <import path="io/ioutil"/>
+    <import path="os"/>
     <import path="regexp"/>
     <import path="path"/>
+    <import path="encoding/hex"/>
+    <import path="errors"/>
+    <import path="io"/>
+    <import path="net"/>
   </imports>
 </project>

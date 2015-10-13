@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="flannel-0.4.1-3.fc23">
+<project ipprefix="" commit="commit" nvr="flannel-0.5.3-2.fc24">
   <packages>
     <package importpath="github.com/coreos/flannel/backend/hostgw">
       <types>
@@ -21,7 +21,7 @@
               <item value="Interface"/>
             </type>
           </field>
-          <field type="selector" name="extIP">
+          <field type="selector" name="extIaddr">
             <prefix value="net"/>
             <item value="IP"/>
           </field>
@@ -74,6 +74,10 @@
                 <prefix value="net"/>
                 <item value="Interface"/>
               </type>
+            </type>
+            <type type="selector">
+              <prefix value="net"/>
+              <item value="IP"/>
             </type>
             <type type="selector">
               <prefix value="net"/>
@@ -194,6 +198,10 @@
                 <prefix value="net"/>
                 <item value="Interface"/>
               </type>
+            </type>
+            <type type="selector">
+              <prefix value="net"/>
+              <item value="IP"/>
             </type>
             <type type="selector">
               <prefix value="net"/>
@@ -324,6 +332,10 @@
               <prefix value="net"/>
               <item value="IP"/>
             </type>
+            <type type="selector">
+              <prefix value="net"/>
+              <item value="IP"/>
+            </type>
           </paramsList>
           <resultsList>
             <type type="pointer">
@@ -441,6 +453,75 @@
             <type type="ident" def="int"/>
           </resultsList>
         </function>
+        <function name="GetL2List">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="vxlanDevice"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="slice">
+              <elmtype type="selector">
+                <prefix value="netlink"/>
+                <item value="Neigh"/>
+              </elmtype>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AddL2">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="vxlanDevice"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="neigh"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="DelL2">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="vxlanDevice"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="neigh"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="AddL3">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="vxlanDevice"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="neigh"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="DelL3">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="vxlanDevice"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="neigh"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
         <function name="MonitorMisses">
           <recvList>
             <type type="pointer">
@@ -458,66 +539,6 @@
             </type>
           </paramsList>
           <resultsList/>
-        </function>
-        <function name="AddL2">
-          <recvList>
-            <type type="pointer">
-              <type type="ident" def="vxlanDevice"/>
-            </type>
-          </recvList>
-          <paramsList>
-            <type type="selector">
-              <prefix value="net"/>
-              <item value="HardwareAddr"/>
-            </type>
-            <type type="selector">
-              <prefix value="net"/>
-              <item value="IP"/>
-            </type>
-          </paramsList>
-          <resultsList>
-            <type type="ident" def="error"/>
-          </resultsList>
-        </function>
-        <function name="DelL2">
-          <recvList>
-            <type type="pointer">
-              <type type="ident" def="vxlanDevice"/>
-            </type>
-          </recvList>
-          <paramsList>
-            <type type="selector">
-              <prefix value="net"/>
-              <item value="HardwareAddr"/>
-            </type>
-            <type type="selector">
-              <prefix value="net"/>
-              <item value="IP"/>
-            </type>
-          </paramsList>
-          <resultsList>
-            <type type="ident" def="error"/>
-          </resultsList>
-        </function>
-        <function name="AddL3">
-          <recvList>
-            <type type="pointer">
-              <type type="ident" def="vxlanDevice"/>
-            </type>
-          </recvList>
-          <paramsList>
-            <type type="selector">
-              <prefix value="net"/>
-              <item value="IP"/>
-            </type>
-            <type type="selector">
-              <prefix value="net"/>
-              <item value="HardwareAddr"/>
-            </type>
-          </paramsList>
-          <resultsList>
-            <type type="ident" def="error"/>
-          </resultsList>
         </function>
       </functions>
       <names/>
@@ -674,7 +695,10 @@
               <type type="ident" def="string"/>
               <type type="ident" def="string"/>
               <type type="ident" def="string"/>
-              <type type="ident" def="uint64"/>
+              <type type="selector">
+                <prefix value="time"/>
+                <item value="Duration"/>
+              </type>
             </paramsList>
             <resultsList>
               <type type="pointer">
@@ -695,7 +719,29 @@
               <type type="ident" def="string"/>
               <type type="ident" def="string"/>
               <type type="ident" def="string"/>
-              <type type="ident" def="uint64"/>
+              <type type="selector">
+                <prefix value="time"/>
+                <item value="Duration"/>
+              </type>
+            </paramsList>
+            <resultsList>
+              <type type="pointer">
+                <type type="selector">
+                  <prefix value="etcd"/>
+                  <item value="Response"/>
+                </type>
+              </type>
+              <type type="ident" def="error"/>
+            </resultsList>
+          </method>
+          <method name="deleteSubnet">
+            <paramsList>
+              <type type="selector">
+                <prefix value="context"/>
+                <item value="Context"/>
+              </type>
+              <type type="ident" def="string"/>
+              <type type="ident" def="string"/>
             </paramsList>
             <resultsList>
               <type type="pointer">
@@ -769,6 +815,9 @@
             </type>
             <type type="ident" def="Manager"/>
             <type type="ident" def="string"/>
+            <type type="pointer">
+              <type type="ident" def="Lease"/>
+            </type>
             <type type="channel" dir="3">
               <type type="slice">
                 <elmtype type="ident" def="Event"/>
@@ -833,11 +882,23 @@
         <function name="NewMockManager">
           <recvList/>
           <paramsList>
-            <type type="ident" def="uint64"/>
+            <type type="selector">
+              <prefix value="time"/>
+              <item value="Duration"/>
+            </type>
             <type type="ident" def="string"/>
           </paramsList>
           <resultsList>
             <type type="ident" def="Manager"/>
+          </resultsList>
+        </function>
+        <function name="String">
+          <recvList>
+            <type type="ident" def="watchCursor"/>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
           </resultsList>
         </function>
         <function name="NewEtcdManager">
@@ -952,6 +1013,146 @@
         <name value="SubnetRemoved"/>
       </names>
     </package>
+    <package importpath="github.com/coreos/flannel/backend/gce">
+      <types>
+        <type type="struct" name="GCEBackend">
+          <field type="ident" def="string" name="network"/>
+          <field type="ident" def="string" name="project"/>
+          <field type="selector" name="sm">
+            <prefix value="subnet"/>
+            <item value="Manager"/>
+          </field>
+          <field type="pointer" name="config">
+            <type type="selector">
+              <prefix value="subnet"/>
+              <item value="Config"/>
+            </type>
+          </field>
+          <field type="pointer" name="lease">
+            <type type="selector">
+              <prefix value="subnet"/>
+              <item value="Lease"/>
+            </type>
+          </field>
+          <field type="selector" name="ctx">
+            <prefix value="context"/>
+            <item value="Context"/>
+          </field>
+          <field type="selector" name="cancel">
+            <prefix value="context"/>
+            <item value="CancelFunc"/>
+          </field>
+          <field type="selector" name="wg">
+            <prefix value="sync"/>
+            <item value="WaitGroup"/>
+          </field>
+          <field type="pointer" name="computeService">
+            <type type="selector">
+              <prefix value="compute"/>
+              <item value="Service"/>
+            </type>
+          </field>
+          <field type="pointer" name="gceNetwork">
+            <type type="selector">
+              <prefix value="compute"/>
+              <item value="Network"/>
+            </type>
+          </field>
+          <field type="pointer" name="gceInstance">
+            <type type="selector">
+              <prefix value="compute"/>
+              <item value="Instance"/>
+            </type>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="New">
+          <recvList/>
+          <paramsList>
+            <type type="selector">
+              <prefix value="subnet"/>
+              <item value="Manager"/>
+            </type>
+            <type type="ident" def="string"/>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="subnet"/>
+                <item value="Config"/>
+              </type>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="selector">
+              <prefix value="backend"/>
+              <item value="Backend"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="Init">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="GCEBackend"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="net"/>
+                <item value="Interface"/>
+              </type>
+            </type>
+            <type type="selector">
+              <prefix value="net"/>
+              <item value="IP"/>
+            </type>
+            <type type="selector">
+              <prefix value="net"/>
+              <item value="IP"/>
+            </type>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="backend"/>
+                <item value="SubnetDef"/>
+              </type>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Run">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="GCEBackend"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+        <function name="Stop">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="GCEBackend"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
+        <function name="Name">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="GCEBackend"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names/>
+    </package>
     <package importpath="github.com/coreos/flannel/backend/udp">
       <types>
         <type type="struct" name="UdpBackend">
@@ -1058,6 +1259,10 @@
               <prefix value="net"/>
               <item value="IP"/>
             </type>
+            <type type="selector">
+              <prefix value="net"/>
+              <item value="IP"/>
+            </type>
           </paramsList>
           <resultsList>
             <type type="pointer">
@@ -1123,6 +1328,10 @@
                 <prefix value="net"/>
                 <item value="IP"/>
               </type>
+              <type type="selector">
+                <prefix value="net"/>
+                <item value="IP"/>
+              </type>
             </paramsList>
             <resultsList>
               <type type="pointer">
@@ -1152,9 +1361,6 @@
     </package>
     <package importpath="github.com/coreos/flannel/pkg/ip">
       <types>
-        <type type="struct" name="IPTables">
-          <field type="ident" def="string" name="path"/>
-        </type>
         <type name="IP4" type="ident">
           <type type="ident" def="uint32"/>
         </type>
@@ -1177,79 +1383,6 @@
               </type>
             </type>
             <type type="ident" def="string"/>
-            <type type="ident" def="error"/>
-          </resultsList>
-        </function>
-        <function name="NewIPTables">
-          <recvList/>
-          <paramsList/>
-          <resultsList>
-            <type type="pointer">
-              <type type="ident" def="IPTables"/>
-            </type>
-            <type type="ident" def="error"/>
-          </resultsList>
-        </function>
-        <function name="Exists">
-          <recvList>
-            <type type="pointer">
-              <type type="ident" def="IPTables"/>
-            </type>
-          </recvList>
-          <paramsList>
-            <type type="ident" def="string"/>
-            <type type="ellipsis">
-              <type type="ident" def="string"/>
-            </type>
-          </paramsList>
-          <resultsList>
-            <type type="ident" def="bool"/>
-            <type type="ident" def="error"/>
-          </resultsList>
-        </function>
-        <function name="Append">
-          <recvList>
-            <type type="pointer">
-              <type type="ident" def="IPTables"/>
-            </type>
-          </recvList>
-          <paramsList>
-            <type type="ident" def="string"/>
-            <type type="ellipsis">
-              <type type="ident" def="string"/>
-            </type>
-          </paramsList>
-          <resultsList>
-            <type type="ident" def="error"/>
-          </resultsList>
-        </function>
-        <function name="AppendUnique">
-          <recvList>
-            <type type="pointer">
-              <type type="ident" def="IPTables"/>
-            </type>
-          </recvList>
-          <paramsList>
-            <type type="ident" def="string"/>
-            <type type="ellipsis">
-              <type type="ident" def="string"/>
-            </type>
-          </paramsList>
-          <resultsList>
-            <type type="ident" def="error"/>
-          </resultsList>
-        </function>
-        <function name="ClearChain">
-          <recvList>
-            <type type="pointer">
-              <type type="ident" def="IPTables"/>
-            </type>
-          </recvList>
-          <paramsList>
-            <type type="ident" def="string"/>
-            <type type="ident" def="string"/>
-          </paramsList>
-          <resultsList>
             <type type="ident" def="error"/>
           </resultsList>
         </function>
@@ -1639,6 +1772,10 @@
               <prefix value="net"/>
               <item value="IP"/>
             </type>
+            <type type="selector">
+              <prefix value="net"/>
+              <item value="IP"/>
+            </type>
           </paramsList>
           <resultsList>
             <type type="pointer">
@@ -1691,28 +1828,32 @@
     <import path="fmt"/>
     <import path="reflect"/>
     <import path="testing"/>
-    <import path="github.com/coreos/go-etcd/etcd"/>
+    <import path="github.com/coreos/etcd/client"/>
     <import path="github.com/coreos/flannel/pkg/ip"/>
     <import path="errors"/>
-    <import path="log"/>
-    <import path="os"/>
     <import path="path"/>
     <import path="sync"/>
+    <import path="github.com/coreos/etcd/pkg/transport"/>
     <import path="math/rand"/>
     <import path="net"/>
     <import path="regexp"/>
     <import path="strconv"/>
     <import path="bytes"/>
+    <import path="os"/>
     <import path="syscall"/>
     <import path="unsafe"/>
-    <import path="os/exec"/>
-    <import path="strings"/>
     <import path="github.com/vishvananda/netlink"/>
     <import path="encoding/binary"/>
     <import path="github.com/coreos/flannel/backend"/>
     <import path="github.com/coreos/flannel/subnet"/>
     <import path="github.com/vishvananda/netlink/nl"/>
     <import path="C"/>
+    <import path="io/ioutil"/>
+    <import path="net/http"/>
+    <import path="strings"/>
+    <import path="code.google.com/p/goauth2/compute/serviceaccount"/>
+    <import path="code.google.com/p/google-api-go-client/compute/v1"/>
+    <import path="code.google.com/p/google-api-go-client/googleapi"/>
     <import path="github.com/mitchellh/goamz/aws"/>
     <import path="github.com/mitchellh/goamz/ec2"/>
   </imports>

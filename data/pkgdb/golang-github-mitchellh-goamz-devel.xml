@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-mitchellh-goamz-0-0.6.gitcaaaea8.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-mitchellh-goamz-0-0.7.gitcaaaea8.fc24">
   <packages>
     <package importpath="github.com/mitchellh/goamz/testutil">
       <types>
@@ -7382,41 +7382,29 @@
     <import path="net/url"/>
     <import path="os"/>
     <import path="time"/>
-    <import path="github.com/mitchellh/goamz/s3"/>
     <import path="crypto/hmac"/>
     <import path="crypto/sha1"/>
     <import path="encoding/base64"/>
     <import path="log"/>
     <import path="sort"/>
     <import path="strings"/>
-    <import path="github.com/mitchellh/goamz/s3/s3test"/>
     <import path="crypto/md5"/>
-    <import path="github.com/mitchellh/goamz/testutil"/>
-    <import path="testing"/>
     <import path="encoding/xml"/>
     <import path="io"/>
     <import path="net/http/httputil"/>
     <import path="strconv"/>
     <import path="encoding/hex"/>
     <import path="errors"/>
+    <import path="github.com/mitchellh/goamz/s3"/>
     <import path="regexp"/>
     <import path="sync"/>
     <import path="crypto/sha256"/>
     <import path="reflect"/>
-    <import path="github.com/mitchellh/goamz/rds"/>
-    <import path="github.com/mitchellh/goamz/iam"/>
-    <import path="github.com/mitchellh/goamz/iam/iamtest"/>
     <import path="encoding/json"/>
-    <import path="github.com/mitchellh/goamz/exp/sns"/>
-    <import path="github.com/mitchellh/goamz/exp/sdb"/>
-    <import path="github.com/mitchellh/goamz/exp/mturk"/>
-    <import path="github.com/mitchellh/goamz/elb"/>
-    <import path="github.com/mitchellh/goamz/ec2"/>
-    <import path="github.com/mitchellh/goamz/ec2/ec2test"/>
+    <import path="github.com/mitchellh/goamz/iam"/>
     <import path="crypto/rand"/>
-    <import path="net/http/httptest"/>
+    <import path="github.com/mitchellh/goamz/ec2"/>
     <import path="math"/>
     <import path="github.com/vaughan0/go-ini"/>
-    <import path="github.com/mitchellh/goamz/autoscaling"/>
   </imports>
 </project>

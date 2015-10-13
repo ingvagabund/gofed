@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-glacjay-goini-0-0.2.git5261baf.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-glacjay-goini-0-0.3.git5261baf.fc24">
   <packages>
     <package importpath="github.com/rakyll/goini">
       <types>
@@ -389,11 +389,10 @@
     </package>
   </packages>
   <imports>
-    <import path="io/ioutil"/>
-    <import path="testing"/>
     <import path="bufio"/>
     <import path="bytes"/>
     <import path="fmt"/>
+    <import path="io/ioutil"/>
     <import path="os"/>
     <import path="regexp"/>
     <import path="strconv"/>

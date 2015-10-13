@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-gorilla-websocket-0-0.3.gitecff5aa.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-gorilla-websocket-0-0.4.gitecff5aa.fc24">
   <packages>
     <package importpath="github.com/gorilla/websocket">
       <types>
@@ -698,30 +698,23 @@
     </package>
   </packages>
   <imports>
-    <import path="net/http"/>
-    <import path="testing"/>
     <import path="crypto/rand"/>
     <import path="crypto/sha1"/>
     <import path="encoding/base64"/>
     <import path="io"/>
+    <import path="net/http"/>
     <import path="strings"/>
-    <import path="reflect"/>
     <import path="bufio"/>
     <import path="errors"/>
     <import path="net"/>
     <import path="net/url"/>
     <import path="time"/>
-    <import path="bytes"/>
     <import path="encoding/json"/>
-    <import path="fmt"/>
-    <import path="io/ioutil"/>
-    <import path="testing/iotest"/>
     <import path="encoding/binary"/>
+    <import path="io/ioutil"/>
     <import path="math/rand"/>
     <import path="strconv"/>
     <import path="crypto/tls"/>
-    <import path="crypto/x509"/>
-    <import path="net/http/httptest"/>
     <import path="flag"/>
     <import path="log"/>
     <import path="os"/>

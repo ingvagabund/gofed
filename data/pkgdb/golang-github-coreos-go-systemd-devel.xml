@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-coreos-go-systemd-2-7.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-coreos-go-systemd-3-2.fc24">
   <packages>
     <package importpath="github.com/coreos/go-systemd/daemon">
       <types/>
@@ -17,6 +17,19 @@
       <names>
         <name value="SdNotifyNoSocket"/>
       </names>
+    </package>
+    <package importpath="github.com/coreos/go-systemd/util">
+      <types/>
+      <functions>
+        <function name="IsRunningSystemd">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names/>
     </package>
     <package importpath="github.com/coreos/go-systemd/unit">
       <types>
@@ -40,6 +53,19 @@
             <type type="selector">
               <prefix value="io"/>
               <item value="Reader"/>
+            </type>
+          </resultsList>
+        </function>
+        <function name="NewUnitOption">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="UnitOption"/>
             </type>
           </resultsList>
         </function>
@@ -85,6 +111,42 @@
           </paramsList>
           <resultsList>
             <type type="ident" def="bool"/>
+          </resultsList>
+        </function>
+        <function name="UnitNameEscape">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="UnitNameUnescape">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="UnitNamePathEscape">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+          </resultsList>
+        </function>
+        <function name="UnitNamePathUnescape">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
           </resultsList>
         </function>
         <function name="Deserialize">
@@ -241,6 +303,57 @@
         <name value="PriDebug"/>
       </names>
     </package>
+    <package importpath="github.com/coreos/go-systemd/machine1">
+      <types>
+        <type type="struct" name="Conn">
+          <field type="pointer" name="conn">
+            <type type="selector">
+              <prefix value="dbus"/>
+              <item value="Conn"/>
+            </type>
+          </field>
+          <field type="pointer" name="object">
+            <type type="selector">
+              <prefix value="dbus"/>
+              <item value="Object"/>
+            </type>
+          </field>
+        </type>
+      </types>
+      <functions>
+        <function name="New">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Conn"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="RegisterMachine">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Conn"/>
+            </type>
+          </recvList>
+          <paramsList>
+            <type type="ident" def="string"/>
+            <type type="slice">
+              <elmtype type="ident" def="byte"/>
+            </type>
+            <type type="ident" def="string"/>
+            <type type="ident" def="string"/>
+            <type type="ident" def="int"/>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names/>
+    </package>
     <package importpath="github.com/coreos/go-systemd/dbus">
       <types>
         <type type="struct" name="SubscriptionSet">
@@ -330,7 +443,7 @@
                 <prefix value="dbus"/>
                 <item value="ObjectPath"/>
               </keytype>
-              <valtype type="channel" dir="3">
+              <valtype type="channel" dir="1">
                 <type type="ident" def="string"/>
               </valtype>
             </field>
@@ -828,9 +941,12 @@
           <paramsList>
             <type type="ident" def="string"/>
             <type type="ident" def="string"/>
+            <type type="channel" dir="1">
+              <type type="ident" def="string"/>
+            </type>
           </paramsList>
           <resultsList>
-            <type type="ident" def="string"/>
+            <type type="ident" def="int"/>
             <type type="ident" def="error"/>
           </resultsList>
         </function>
@@ -843,9 +959,12 @@
           <paramsList>
             <type type="ident" def="string"/>
             <type type="ident" def="string"/>
+            <type type="channel" dir="1">
+              <type type="ident" def="string"/>
+            </type>
           </paramsList>
           <resultsList>
-            <type type="ident" def="string"/>
+            <type type="ident" def="int"/>
             <type type="ident" def="error"/>
           </resultsList>
         </function>
@@ -858,9 +977,12 @@
           <paramsList>
             <type type="ident" def="string"/>
             <type type="ident" def="string"/>
+            <type type="channel" dir="1">
+              <type type="ident" def="string"/>
+            </type>
           </paramsList>
           <resultsList>
-            <type type="ident" def="string"/>
+            <type type="ident" def="int"/>
             <type type="ident" def="error"/>
           </resultsList>
         </function>
@@ -873,9 +995,12 @@
           <paramsList>
             <type type="ident" def="string"/>
             <type type="ident" def="string"/>
+            <type type="channel" dir="1">
+              <type type="ident" def="string"/>
+            </type>
           </paramsList>
           <resultsList>
-            <type type="ident" def="string"/>
+            <type type="ident" def="int"/>
             <type type="ident" def="error"/>
           </resultsList>
         </function>
@@ -888,9 +1013,12 @@
           <paramsList>
             <type type="ident" def="string"/>
             <type type="ident" def="string"/>
+            <type type="channel" dir="1">
+              <type type="ident" def="string"/>
+            </type>
           </paramsList>
           <resultsList>
-            <type type="ident" def="string"/>
+            <type type="ident" def="int"/>
             <type type="ident" def="error"/>
           </resultsList>
         </function>
@@ -903,9 +1031,12 @@
           <paramsList>
             <type type="ident" def="string"/>
             <type type="ident" def="string"/>
+            <type type="channel" dir="1">
+              <type type="ident" def="string"/>
+            </type>
           </paramsList>
           <resultsList>
-            <type type="ident" def="string"/>
+            <type type="ident" def="int"/>
             <type type="ident" def="error"/>
           </resultsList>
         </function>
@@ -918,9 +1049,12 @@
           <paramsList>
             <type type="ident" def="string"/>
             <type type="ident" def="string"/>
+            <type type="channel" dir="1">
+              <type type="ident" def="string"/>
+            </type>
           </paramsList>
           <resultsList>
-            <type type="ident" def="string"/>
+            <type type="ident" def="int"/>
             <type type="ident" def="error"/>
           </resultsList>
         </function>
@@ -933,12 +1067,15 @@
           <paramsList>
             <type type="ident" def="string"/>
             <type type="ident" def="string"/>
-            <type type="ellipsis">
-              <type type="ident" def="Property"/>
+            <type type="slice">
+              <elmtype type="ident" def="Property"/>
+            </type>
+            <type type="channel" dir="1">
+              <type type="ident" def="string"/>
             </type>
           </paramsList>
           <resultsList>
-            <type type="ident" def="string"/>
+            <type type="ident" def="int"/>
             <type type="ident" def="error"/>
           </resultsList>
         </function>
@@ -1168,33 +1305,48 @@
             <type type="ident" def="error"/>
           </resultsList>
         </function>
+        <function name="NewSystemdConnection">
+          <recvList/>
+          <paramsList/>
+          <resultsList>
+            <type type="pointer">
+              <type type="ident" def="Conn"/>
+            </type>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="Close">
+          <recvList>
+            <type type="pointer">
+              <type type="ident" def="Conn"/>
+            </type>
+          </recvList>
+          <paramsList/>
+          <resultsList/>
+        </function>
       </functions>
       <names/>
     </package>
   </packages>
   <imports>
-    <import path="io/ioutil"/>
-    <import path="testing"/>
+    <import path="os"/>
     <import path="bytes"/>
     <import path="io"/>
     <import path="fmt"/>
-    <import path="reflect"/>
+    <import path="strconv"/>
+    <import path="strings"/>
     <import path="bufio"/>
     <import path="errors"/>
-    <import path="strings"/>
     <import path="unicode"/>
-    <import path="os"/>
-    <import path="strconv"/>
     <import path="github.com/godbus/dbus"/>
     <import path="encoding/binary"/>
+    <import path="io/ioutil"/>
     <import path="net"/>
     <import path="syscall"/>
     <import path="github.com/coreos/go-systemd/activation"/>
     <import path="net/http"/>
     <import path="time"/>
-    <import path="math/rand"/>
-    <import path="path/filepath"/>
+    <import path="path"/>
     <import path="sync"/>
-    <import path="os/exec"/>
   </imports>
 </project>

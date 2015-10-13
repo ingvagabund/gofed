@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-docker-libtrust-0-0.3.git6b78349.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-docker-libtrust-0-0.4.git6b78349.fc24">
   <packages>
     <package importpath="github.com/docker/libtrust/trustgraph">
       <types>
@@ -1487,9 +1487,6 @@
     </package>
   </packages>
   <imports>
-    <import path="encoding/pem"/>
-    <import path="reflect"/>
-    <import path="testing"/>
     <import path="bytes"/>
     <import path="crypto"/>
     <import path="crypto/elliptic"/>
@@ -1497,28 +1494,30 @@
     <import path="encoding/base32"/>
     <import path="encoding/base64"/>
     <import path="encoding/binary"/>
+    <import path="encoding/pem"/>
     <import path="errors"/>
     <import path="fmt"/>
     <import path="math/big"/>
     <import path="strings"/>
-    <import path="encoding/json"/>
-    <import path="log"/>
     <import path="crypto/rand"/>
     <import path="crypto/rsa"/>
+    <import path="encoding/json"/>
     <import path="io"/>
     <import path="io/ioutil"/>
     <import path="os"/>
     <import path="crypto/ecdsa"/>
-    <import path="github.com/docker/libtrust/testutil"/>
     <import path="time"/>
     <import path="unicode"/>
     <import path="crypto/sha256"/>
     <import path="crypto/sha512"/>
     <import path="path/filepath"/>
-    <import path="net"/>
-    <import path="path"/>
     <import path="crypto/x509/pkix"/>
-    <import path="github.com/docker/libtrust"/>
+    <import path="net"/>
     <import path="sort"/>
+    <import path="github.com/docker/libtrust"/>
+    <import path="crypto/tls"/>
+    <import path="html"/>
+    <import path="log"/>
+    <import path="net/http"/>
   </imports>
 </project>

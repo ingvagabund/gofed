@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-armon-circbuf-0-0.1.gitf092b4f.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-armon-circbuf-0-0.2.gitf092b4f.fc24">
   <packages>
     <package importpath="github.com/armon/circbuf">
       <types>
@@ -92,9 +92,6 @@
     </package>
   </packages>
   <imports>
-    <import path="bytes"/>
-    <import path="io"/>
-    <import path="testing"/>
     <import path="fmt"/>
   </imports>
 </project>

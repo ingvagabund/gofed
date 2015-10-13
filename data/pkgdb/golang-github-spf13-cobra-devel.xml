@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-spf13-cobra-0-0.10.git8f5946c.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-spf13-cobra-0-0.12.git8f5946c.fc24">
   <packages>
     <package importpath="github.com/spf13/cobra">
       <types>
@@ -1121,14 +1121,12 @@
     <import path="bytes"/>
     <import path="fmt"/>
     <import path="os"/>
-    <import path="strings"/>
-    <import path="testing"/>
     <import path="sort"/>
+    <import path="strings"/>
     <import path="time"/>
-    <import path="reflect"/>
     <import path="io"/>
     <import path="github.com/spf13/pflag"/>
-    <import path="runtime"/>
+    <import path="reflect"/>
     <import path="strconv"/>
     <import path="text/template"/>
   </imports>

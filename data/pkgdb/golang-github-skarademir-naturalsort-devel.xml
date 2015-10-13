@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-skarademir-naturalsort-0-0.1.gitf5bc184.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-skarademir-naturalsort-0-0.2.gitf5bc184.fc24">
   <packages>
     <package importpath="github.com/skarademir/naturalsort">
       <types>
@@ -44,9 +44,6 @@
     </package>
   </packages>
   <imports>
-    <import path="reflect"/>
-    <import path="sort"/>
-    <import path="testing"/>
     <import path="regexp"/>
     <import path="strconv"/>
     <import path="strings"/>

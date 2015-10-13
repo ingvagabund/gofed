@@ -46,11 +46,11 @@ class Config:
 
 	def getBranches(self):
 		branches = self.getValueFromDb('branches').split(" ")
-		return filter(lambda b: b != "", branches) 
+		return filter(lambda b: b != "", branches)
 
 	def getUpdates(self):
 		branches = self.getValueFromDb('updates').split(" ")
-		return filter(lambda b: b != "", branches) 
+		return filter(lambda b: b != "", branches)
 
 	def getOverrides(self):
 		branches = self.getValueFromDb('overrides').split(" ")
@@ -58,7 +58,7 @@ class Config:
 
 	def getImportPathDb(self):
 		return self.getValueFromDb('import_path_db')
-		
+
 	def getRepoPathPrefix(self):
 		return self.getValueFromDb('repo_path_prefix')
 
@@ -67,11 +67,11 @@ class Config:
 
 	def getSkippedDirectories(self):
 		branches = self.getValueFromDb('skipped_directories').split(" ")
-		return filter(lambda b: b != "", branches) 
+		return filter(lambda b: b != "", branches)
 
 	def getSkippedProvidesWithPrefix(self):
 		branches = self.getValueFromDb('skipped_provides_with_prefix').split(" ")
-		return filter(lambda b: b != "", branches) 
+		return filter(lambda b: b != "", branches)
 
 	def makePathAbsolute(self, cpath):
 		if cpath == "":
@@ -125,6 +125,14 @@ class Config:
 	def getGolangPlugins(self):
 		path = self.getValueFromDb('golang_plugins')
 		return self.makePathAbsolute(path)
+
+	def getGofedWebUrl(self):
+		url = self.getValueFromDb('golang_gofed_web_url')
+		return url
+
+	def getGofedWebDepth(self):
+		depth = self.getValueFromDb('golang_gofed_web_depth')
+		return int(depth)
 
 if __name__ == "__main__":
 	cfg = Config()

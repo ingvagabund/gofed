@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-emicklei-go-restful-1.1.3-0.5.gitbdfb7d4.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-emicklei-go-restful-1.1.3-0.6.gitbdfb7d4.fc24">
   <packages>
     <package importpath="github.com/emicklei/go-restful">
       <types>
@@ -2582,8 +2582,6 @@
   </packages>
   <imports>
     <import path="net/http"/>
-    <import path="net/http/httptest"/>
-    <import path="testing"/>
     <import path="os"/>
     <import path="github.com/emicklei/go-restful/log"/>
     <import path="fmt"/>
@@ -2591,24 +2589,23 @@
     <import path="runtime"/>
     <import path="strings"/>
     <import path="bytes"/>
-    <import path="errors"/>
     <import path="encoding/json"/>
     <import path="encoding/xml"/>
-    <import path="net/url"/>
-    <import path="strconv"/>
     <import path="io"/>
     <import path="io/ioutil"/>
     <import path="regexp"/>
+    <import path="errors"/>
     <import path="sort"/>
+    <import path="strconv"/>
     <import path="compress/gzip"/>
     <import path="compress/zlib"/>
     <import path="github.com/emicklei/go-restful"/>
-    <import path="time"/>
     <import path="log"/>
     <import path="github.com/emicklei/go-restful/swagger"/>
     <import path="path"/>
     <import path="text/template"/>
     <import path="github.com/gorilla/schema"/>
+    <import path="time"/>
     <import path="runtime/pprof"/>
     <import path="appengine"/>
     <import path="appengine/memcache"/>

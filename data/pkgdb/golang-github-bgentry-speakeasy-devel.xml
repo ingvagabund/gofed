@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='ASCII'?>
+<project ipprefix="" commit="commit" nvr="golang-github-bgentry-speakeasy-0-0.2.git36e9cfd.fc24">
+  <packages>
+    <package importpath="github.com/bgentry/speakeasy">
+      <types/>
+      <functions>
+        <function name="Ask">
+          <recvList/>
+          <paramsList>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+        <function name="FAsk">
+          <recvList/>
+          <paramsList>
+            <type type="pointer">
+              <type type="selector">
+                <prefix value="os"/>
+                <item value="File"/>
+              </type>
+            </type>
+            <type type="ident" def="string"/>
+          </paramsList>
+          <resultsList>
+            <type type="ident" def="string"/>
+            <type type="ident" def="error"/>
+          </resultsList>
+        </function>
+      </functions>
+      <names>
+        <name value="ENABLE_ECHO_INPUT"/>
+      </names>
+    </package>
+  </packages>
+  <imports>
+    <import path="os"/>
+    <import path="syscall"/>
+    <import path="fmt"/>
+    <import path="os/signal"/>
+    <import path="strings"/>
+    <import path="io"/>
+    <import path="github.com/bgentry/speakeasy"/>
+  </imports>
+</project>

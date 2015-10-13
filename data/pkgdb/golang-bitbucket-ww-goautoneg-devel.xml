@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-bitbucket-ww-goautoneg-0-0.3.git75cd24fc2f2c.fc23">
+<project ipprefix="" commit="commit" nvr="golang-bitbucket-ww-goautoneg-0-0.4.git75cd24fc2f2c.fc24">
   <packages>
     <package importpath="bitbucket.org/ww/goautoneg">
       <types>
@@ -73,7 +73,6 @@
     </package>
   </packages>
   <imports>
-    <import path="testing"/>
     <import path="sort"/>
     <import path="strconv"/>
     <import path="strings"/>

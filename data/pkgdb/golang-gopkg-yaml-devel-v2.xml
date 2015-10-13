@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-gopkg-yaml-1-6.fc23">
+<project ipprefix="" commit="commit" nvr="golang-gopkg-yaml-1-8.fc24">
   <packages>
     <package importpath="gopkg.in/v2/yaml">
       <types>
@@ -267,20 +267,16 @@
     <import path="reflect"/>
     <import path="strings"/>
     <import path="sync"/>
-    <import path="gopkg.in/check.v1"/>
-    <import path="testing"/>
     <import path="unicode"/>
     <import path="bytes"/>
     <import path="encoding/base64"/>
     <import path="math"/>
     <import path="strconv"/>
     <import path="unicode/utf8"/>
-    <import path="time"/>
-    <import path="gopkg.in/yaml.v2"/>
-    <import path="net"/>
     <import path="encoding"/>
     <import path="regexp"/>
     <import path="sort"/>
+    <import path="time"/>
     <import path="os"/>
   </imports>
 </project>

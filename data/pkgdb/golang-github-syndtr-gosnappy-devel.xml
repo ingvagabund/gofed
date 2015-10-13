@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-syndtr-gosnappy-0-0.3.git156a073.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-syndtr-gosnappy-0-0.4.git156a073.fc24">
   <packages>
     <package importpath="github.com/syndtr/gosnappy/snappy">
       <types>
@@ -186,19 +186,9 @@
     </package>
   </packages>
   <imports>
-    <import path="bytes"/>
-    <import path="flag"/>
-    <import path="fmt"/>
-    <import path="io"/>
-    <import path="io/ioutil"/>
-    <import path="math/rand"/>
-    <import path="net/http"/>
-    <import path="os"/>
-    <import path="path/filepath"/>
-    <import path="strings"/>
-    <import path="testing"/>
     <import path="hash/crc32"/>
     <import path="encoding/binary"/>
+    <import path="io"/>
     <import path="errors"/>
   </imports>
 </project>

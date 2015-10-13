@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-onsi-ginkgo-1.1.0-3.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-onsi-ginkgo-1.1.0-4.fc24">
   <packages>
     <package importpath="github.com/onsi/ginkgo/integration/_fixtures/failing_ginkgo_tests">
       <types/>
@@ -6024,15 +6024,10 @@
     <import path="github.com/onsi/ginkgo/reporters"/>
     <import path="github.com/onsi/ginkgo/reporters/stenographer"/>
     <import path="github.com/onsi/ginkgo/types"/>
-    <import path="github.com/onsi/ginkgo"/>
-    <import path="github.com/onsi/gomega"/>
-    <import path="testing"/>
     <import path="encoding/json"/>
-    <import path="bytes"/>
     <import path="encoding/xml"/>
-    <import path="io/ioutil"/>
     <import path="sync"/>
-    <import path="github.com/onsi/gomega/gbytes"/>
+    <import path="bytes"/>
     <import path="math/rand"/>
     <import path="github.com/onsi/ginkgo/internal/containernode"/>
     <import path="github.com/onsi/ginkgo/internal/leafnodes"/>
@@ -6043,34 +6038,23 @@
     <import path="crypto/rand"/>
     <import path="regexp"/>
     <import path="sort"/>
+    <import path="io/ioutil"/>
     <import path="net"/>
     <import path="errors"/>
-    <import path="github.com/onsi/gomega/ghttp"/>
     <import path="reflect"/>
-    <import path="runtime"/>
     <import path="math"/>
+    <import path="runtime"/>
     <import path="runtime/debug"/>
-    <import path="path/filepath"/>
-    <import path="github.com/onsi/gomega/gexec"/>
-    <import path="os/exec"/>
-    <import path="github.com/onsi/ginkgo/integration/_fixtures/watch_fixtures/C"/>
     <import path="github.com/onsi/C"/>
-    <import path="github.com/onsi/ginkgo/integration/_fixtures/watch_fixtures/B"/>
-    <import path="github.com/onsi/ginkgo/integration/_fixtures/watch_fixtures/A"/>
     <import path="github.com/onsi/B"/>
-    <import path="github.com/onsi/ginkgo/integration/_fixtures/passing_ginkgo_tests"/>
-    <import path="github.com/onsi/ginkgo/integration/_fixtures/more_ginkgo_tests"/>
-    <import path="github.com/onsi/ginkgo/integration/_fixtures/flags_tests"/>
-    <import path="github.com/onsi/ginkgo/integration/_fixtures/failing_ginkgo_tests"/>
-    <import path="github.com/onsi/ginkgo/integration/_fixtures/does_not_compile"/>
-    <import path="github.com/onsi/ginkgo/integration/_fixtures/coverage_fixture"/>
-    <import path="github.com/onsi/ginkgo/integration/_fixtures/coverage_fixture/external_coverage_fixture"/>
     <import path="github.com/onsi/ginkgo/ginkgo/interrupthandler"/>
     <import path="github.com/onsi/ginkgo/ginkgo/testrunner"/>
     <import path="github.com/onsi/ginkgo/ginkgo/testsuite"/>
     <import path="github.com/onsi/ginkgo/ginkgo/watch"/>
+    <import path="os/exec"/>
     <import path="bufio"/>
     <import path="github.com/onsi/ginkgo/ginkgo/nodot"/>
+    <import path="path/filepath"/>
     <import path="text/template"/>
     <import path="github.com/onsi/ginkgo/ginkgo/convert"/>
     <import path="go/build"/>

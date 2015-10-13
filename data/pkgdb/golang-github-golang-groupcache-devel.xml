@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-golang-groupcache-0-0.2.git604ed57.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-golang-groupcache-0-0.3.git604ed57.fc24">
   <packages>
     <package importpath="github.com/golang/groupcache/consistenthash">
       <types>
@@ -1710,33 +1710,23 @@
     <import path="errors"/>
     <import path="github.com/golang/protobuf/proto"/>
     <import path="github.com/golang/groupcache/groupcachepb"/>
-    <import path="flag"/>
-    <import path="log"/>
-    <import path="net"/>
-    <import path="net/http"/>
-    <import path="os"/>
-    <import path="os/exec"/>
-    <import path="strconv"/>
-    <import path="strings"/>
-    <import path="sync"/>
-    <import path="testing"/>
-    <import path="time"/>
     <import path="bytes"/>
     <import path="fmt"/>
     <import path="io"/>
+    <import path="net/http"/>
     <import path="net/url"/>
+    <import path="strings"/>
+    <import path="sync"/>
     <import path="github.com/golang/groupcache/consistenthash"/>
-    <import path="hash/crc32"/>
     <import path="math/rand"/>
-    <import path="reflect"/>
-    <import path="github.com/golang/groupcache/testpb"/>
+    <import path="strconv"/>
     <import path="sync/atomic"/>
     <import path="github.com/golang/groupcache/lru"/>
     <import path="github.com/golang/groupcache/singleflight"/>
-    <import path="io/ioutil"/>
     <import path="encoding/json"/>
     <import path="math"/>
     <import path="container/list"/>
+    <import path="hash/crc32"/>
     <import path="sort"/>
   </imports>
 </project>

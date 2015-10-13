@@ -14,6 +14,7 @@ class ProjectInfo:
 		self.provided_packages = []
 		self.docs = []
 		self.noGodeps = noGodeps
+		self.godeps_on = False
 
 	def getError(self):
 		return self.err
@@ -48,6 +49,9 @@ class ProjectInfo:
 
 		return docs
 
+	def godepsDirectoryExists(self):
+		return self.godeps_on
+
 	def retrieve(self, directory, skip_errors = False):
 		"""
 		Retrieve information about project from directory
@@ -62,6 +66,7 @@ class ProjectInfo:
 			self.err = gse_obj.getError()
 			return False
 
+		self.godeps_on = gse_obj.godepsDirectoryExists()
 		ip_used = gse_obj.getImportedPackages()
 		self.package_imports_occurence = gse_obj.getPackageImportsOccurences()
 		packages = gse_obj.getSymbolsPosition()

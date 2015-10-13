@@ -12,7 +12,10 @@ golang.org/x/sys		github.com/golang/sys
 google.golang.org/appengine	github.com/golang/appengine
 google.golang.org/cloud		github.com/GoogleCloudPlatform/gcloud-golang
 google.golang.org/grpc		github.com/grpc/grpc-go
+gopkg.in/asn1-ber.v1		github.com/go-asn1-ber/asn1-ber
 gopkg.in/check.v1		github.com/go-check/check
+gopkg.in/fsnotify.v1		github.com/go-fsnotify/fsnotify
 gopkg.in/mgo.v2			github.com/go-mgo/mgo
 gopkg.in/tomb.v2		github.com/go-tomb/tomb
 gopkg.in/gcfg.v1		github.com/go-gcfg/gcfg
+k8s.io/heapster			github.com/kubernetes/heapster

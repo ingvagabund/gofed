@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-hashicorp-hcl-0-0.1.git513e04c.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-hashicorp-hcl-0-0.2.git513e04c.fc24">
   <packages>
     <package importpath="github.com/hashicorp/hcl/json">
       <types/>
@@ -283,12 +283,9 @@
     <import path="fmt"/>
     <import path="github.com/hashicorp/hcl/hcl"/>
     <import path="github.com/hashicorp/hcl/json"/>
-    <import path="testing"/>
     <import path="unicode"/>
-    <import path="io/ioutil"/>
-    <import path="path/filepath"/>
-    <import path="reflect"/>
     <import path="errors"/>
+    <import path="reflect"/>
     <import path="sort"/>
     <import path="strconv"/>
     <import path="strings"/>

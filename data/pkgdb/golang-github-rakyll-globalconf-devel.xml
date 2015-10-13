@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-rakyll-globalconf-0-0.2.git415abc3.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-rakyll-globalconf-0-0.3.git415abc3.fc24">
   <packages>
     <package importpath="github.com/rakyll/globalconf">
       <types>
@@ -134,7 +134,6 @@
     <import path="flag"/>
     <import path="io/ioutil"/>
     <import path="os"/>
-    <import path="testing"/>
     <import path="os/user"/>
     <import path="path"/>
     <import path="strings"/>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-golang-glog-0-0.5.git44145f0.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-golang-glog-0-0.6.git44145f0.fc24">
   <packages>
     <package importpath="github.com/golang/glog">
       <types>
@@ -471,22 +471,21 @@
     </package>
   </packages>
   <imports>
-    <import path="bytes"/>
-    <import path="fmt"/>
-    <import path="log"/>
-    <import path="path/filepath"/>
-    <import path="runtime"/>
-    <import path="strconv"/>
-    <import path="strings"/>
-    <import path="testing"/>
-    <import path="time"/>
     <import path="errors"/>
     <import path="flag"/>
+    <import path="fmt"/>
     <import path="os"/>
     <import path="os/user"/>
+    <import path="path/filepath"/>
+    <import path="strings"/>
     <import path="sync"/>
+    <import path="time"/>
     <import path="bufio"/>
+    <import path="bytes"/>
     <import path="io"/>
+    <import path="log"/>
+    <import path="runtime"/>
+    <import path="strconv"/>
     <import path="sync/atomic"/>
   </imports>
 </project>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-smartystreets-go-aws-auth-0-0.1.git1f0db8c.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-smartystreets-go-aws-auth-0-0.2.git1f0db8c.fc24">
   <packages>
     <package importpath="github.com/smartystreets/go-aws-auth">
       <types>
@@ -155,16 +155,13 @@
     </package>
   </packages>
   <imports>
-    <import path="net/http"/>
-    <import path="net/url"/>
-    <import path="strings"/>
-    <import path="testing"/>
-    <import path="github.com/smartystreets/goconvey/convey"/>
     <import path="encoding/hex"/>
+    <import path="net/http"/>
     <import path="sort"/>
-    <import path="time"/>
+    <import path="strings"/>
     <import path="encoding/base64"/>
-    <import path="fmt"/>
+    <import path="time"/>
+    <import path="net/url"/>
     <import path="strconv"/>
     <import path="bufio"/>
     <import path="bytes"/>
@@ -173,6 +170,7 @@
     <import path="crypto/sha1"/>
     <import path="crypto/sha256"/>
     <import path="encoding/json"/>
+    <import path="fmt"/>
     <import path="io/ioutil"/>
     <import path="net"/>
     <import path="os"/>

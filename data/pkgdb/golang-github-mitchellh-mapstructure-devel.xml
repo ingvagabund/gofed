@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-mitchellh-mapstructure-0-0.2.git740c764.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-mitchellh-mapstructure-0-0.5.git740c764.fc24">
   <packages>
     <package importpath="github.com/mitchellh/mapstructure">
       <types>
@@ -151,11 +151,10 @@
     </package>
   </packages>
   <imports>
+    <import path="errors"/>
+    <import path="fmt"/>
     <import path="reflect"/>
     <import path="sort"/>
-    <import path="testing"/>
-    <import path="fmt"/>
-    <import path="errors"/>
     <import path="strconv"/>
     <import path="strings"/>
   </imports>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<project url="" commit="commit" nvr="golang-github-bmizerany-assert-0-0.2.gite17e998.fc23">
+<project ipprefix="" commit="commit" nvr="golang-github-bmizerany-assert-0-0.3.gite17e998.fc24">
   <packages>
     <package importpath="github.com/bmizerany/assert/example">
       <types>
@@ -121,11 +121,10 @@
     </package>
   </packages>
   <imports>
-    <import path="testing"/>
     <import path="github.com/kr/pretty"/>
     <import path="reflect"/>
+    <import path="testing"/>
     <import path="runtime"/>
     <import path="fmt"/>
-    <import path="assert"/>
   </imports>
 </project>
