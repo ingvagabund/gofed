@@ -1,6 +1,6 @@
 from ImportPath import ImportPath
 from ImportPath import UNKNOWN, GITHUB, GOOGLECODE, GOLANGORG, GOPKG, BITBUCKET, GOOGLEGOLANGORG
-import urllib
+import urllib2
 import json
 import httplib
 import sys
@@ -154,11 +154,11 @@ class RepositoryInfo:
 	def getGithubLatestCommit(self, project, repo):
 		link = "https://api.github.com/repos/%s/%s/commits" % (project, repo)
 		try:
-			f = urllib.urlopen(link)
-		except urllib.HTTPError, e:
+			f = urllib2.urlopen(link)
+		except urllib2.HTTPError, e:
 			sys.stderr.write('HTTPError = %s\n' % str(e.code))
 			return ""
-		except urllib.URLError, e:
+		except urllib2.URLError, e:
 			sys.stderr.write('URLError = %s\n' % str(e.reason))
 			return ""
 		except httplib.HTTPException, e:
@@ -187,11 +187,11 @@ class RepositoryInfo:
 	def getBitbucketLatestCommit(self, project, repo):
 		link = "https://bitbucket.org/api/1.0/repositories/%s/%s/changesets?limit=1" % (project, repo)
 		try:
-			f = urllib.urlopen(link)
-		except urllib.HTTPError, e:
+			f = urllib2.urlopen(link)
+		except urllib2.HTTPError, e:
 			sys.stderr.write('HTTPError = %s\n' % str(e.code))
 			return ""
-		except urllib.URLError, e:
+		except urllib2.URLError, e:
 			sys.stderr.write('URLError = %s\n' % str(e.reason))
 			return ""
 		except httplib.HTTPException, e:
@@ -222,11 +222,11 @@ class RepositoryInfo:
 	def getGithubReleases(self, project, repo):
 		link = "https://api.github.com/repos/%s/%s/releases" % (project, repo)
 		try:
-			f = urllib.urlopen(link)
-		except urllib.HTTPError, e:
+			f = urllib2.urlopen(link)
+		except urllib2.HTTPError, e:
 			sys.stderr.write('HTTPError = %s\n' % str(e.code))
 			return ""
-		except urllib.URLError, e:
+		except urllib2.URLError, e:
 			sys.stderr.write('URLError = %s\n' % str(e.reason))
 			return ""
 		except httplib.HTTPException, e:
@@ -247,11 +247,11 @@ class RepositoryInfo:
 	def getGithubTags(self, project, repo):
 		link = "https://api.github.com/repos/%s/%s/tags" % (project, repo)
 		try:
-			f = urllib.urlopen(link)
-		except urllib.HTTPError, e:
+			f = urllib2.urlopen(link)
+		except urllib2.HTTPError, e:
 			sys.stderr.write('HTTPError = %s\n' % str(e.code))
 			return ""
-		except urllib.URLError, e:
+		except urllib2.URLError, e:
 			sys.stderr.write('URLError = %s\n' % str(e.reason))
 			return ""
 		except httplib.HTTPException, e:

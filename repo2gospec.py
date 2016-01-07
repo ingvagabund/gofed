@@ -276,7 +276,7 @@ if __name__ == "__main__":
 	downloadTarball(archive_url)
 	so, se, rc = runCommand("tar -xf %s" % archive)
 	if rc != 0:
-		fmt_obj.printErr("Unable to extract %s" % archive)
+		fmt_obj.printError("Unable to extract %s" % archive)
 		exit(1)
 
 	# generate spec file
@@ -293,24 +293,24 @@ if __name__ == "__main__":
 		file = open("%s" % specfile, "w")
 		spec.setOutputFile(file)
 		if not spec.generate():
-			fmt_obj.printErr("Unable to generate spec file: %s" % spec.getError())
+			fmt_obj.printError("Unable to generate spec file: %s" % spec.getError())
 			exit(1)
 	except IOError:
-		fmt_obj.printErr("Error: can\'t open %s file" % specfile)
+		fmt_obj.printError("Error: can\'t open %s file" % specfile)
 		exit(1)
 
 	file.close()
 
 	so, se, rc = runCommand("rpmdev-bumpspec %s -c \"First package for Fedora\"" % specfile)
 	if rc != 0:
-		fmt_obj.printErr("Unable to bump spec file: %s" % se)
+		fmt_obj.printError("Unable to bump spec file: %s" % se)
 		exit(1)
 
 	fmt_obj.printProgress("(4/%s) Discovering golang dependencies" % total)
 
 	prj_info = pkg_obj.getProjectInfo()
 	if prj_info == None:
-		fmt_obj.printErr("Unable to bump spec file: %s" % se)
+		fmt_obj.printError("Unable to bump spec file: %s" % se)
 		exit(1)
 
 	ip_used = prj_info.getImportedPackages()
@@ -318,7 +318,7 @@ if __name__ == "__main__":
 
 	ipd = ImportPathsDecomposer(ip_used)
 	if not ipd.decompose():
-		fmt_obj.printErr(ipd.getError())
+		fmt_obj.printError(ipd.getError())
 		exit(1)
 
 	warn = ipd.getWarning()

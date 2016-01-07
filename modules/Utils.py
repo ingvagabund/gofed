@@ -81,7 +81,7 @@ def runCommand(cmd):
 	return stdout, stderr, rt
 
 def execCommand(command):
-	call(command, shell=True)
+	return call(command, shell=True)
 
 def inverseMap(mfnc):
 	"""inverse mapping of multifunction
