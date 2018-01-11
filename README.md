@@ -33,12 +33,14 @@
 ```sh
 $ git clone https://github.com/gofed/gofed; cd gofed
 $ sudo dnf install python-pip python-devel redhat-rpm-config
-$ sudo pip install -r requirements.txt
-$ sudo dnf install -y graphviz koji rpm-build rpmdevtools
+$ pip install --user -r requirements.txt
+$ sudo dnf install -y graphviz koji rpm-build rpmdevtools go-compilers-golang-compiler
 $ ./hack/prep.sh
 $ alias gofed=$(realpath ./hack/gofed.sh)
 $ gofed
 ```
+
+Note: gofed currently requires python2, so pip2 should be used to install the required packages.
 
 Or if you prefer a containerized solution, you can run:
 
