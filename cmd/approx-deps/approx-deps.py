@@ -2,6 +2,7 @@ from gofedinfra.system.models.snapshots.reconstructor import SnapshotReconstruct
 from gofedlib.go.importpath.parserbuilder import ImportPathParserBuilder
 import json
 import optparse
+import os
 import sys
 import logging
 
