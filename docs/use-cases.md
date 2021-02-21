@@ -23,7 +23,7 @@ Client writes the returned spec representation to a file.
 
 ### Compare two commits
 
-For two commits of the same project I would like to compare its API to see
+For two commits of the same project we would like to compare its API to see
 what has changed.
 User specifies a project and two commits. Client asks for API of the corresponding
 commits. The data are retrieved from downloaded tarballs or from another storage.
@@ -34,8 +34,8 @@ Clients writes the difference to a file.
 
 For a given package name and a commit check if the package is packaged in a distribution
 and the commit is out-dated, up-to-date or newer.
-This is usefull when I want to package a golang project and I am not sure
-if a distribution already fulfill my needs.
+This is usefull when we want to package a golang project and we are not sure
+if a distribution already fulfill our needs.
 
 ### Check deps
 
@@ -69,31 +69,32 @@ differencies in API, etc.). Return a requested resource.
 ### Analysis of deps for a given project
 
 Each project has non-empty set of dependencies on other projects (at least on standard golang library).
-These dependencies can change over time. I would like to know how much. E.g. how many
+These dependencies can change over time. We would like to know how much. E.g. how many
 new packages occurs, frequence of changes of commits of each imported package, etc.)
 
 ### Comparision of projects
 Some projects are forked from other. Sometimes this is hard to detect by eye.
-For that, I would like to run a comparisions between commits and projects to discover,
+For that, we would like to run a comparisons between commits and projects to discover,
 if there are projects that are very similar and can be merged into one.
 This can be run on both upstream repositories and on projects packaged in a distribution.
 
 ### Spec file translator
-For a given spec file I would like to modify its parts based on requested modifications.
-E.g. reformat lists of deps, remove multiple empty lines, add new lines where necesary,
+For a given spec file we would like to modify its parts based on requested modifications.
+E.g. reformat lists of deps, remove multiple empty lines, add new lines where necessary,
 remove a devel subpackage (for migration between distributions and branches if reasonable).
 
 ### Multi spec file generator
-For a given project I would like not to just generate a spec file for it. I would like to
-generate a spec file for all its dependencies (direct and indirect). Based on a configuraiton
-only projects not yet packages in a distribution can be generated. At first, a dependency
-graph is constructed (based on a deps file). Then all nodes are checked and corresponding
-spec files generated (if requested). If requested, only metadata can be returned or scan
-run (without genereating spec files, just analysis of APIs)
+For a given project we would like not to just generate a spec file for it. We
+would also like to generate a spec file for all its dependencies (direct and
+indirect). Based on a configuraiton only projects not yet packages in a
+distribution can be generated. At first, a dependency graph is constructed
+(based on a deps file). Then all nodes are checked and corresponding spec files
+generated (if requested). If requested, only metadata can be returned or scan
+run (without genereating spec files, just analysis of APIs).
 
 ### Minimize API breakage of golang projects
 In a loop analysis all projects packaged in a distribution and check for API breakages.
-As a result I would like to get a list of projects that have broken dependencies. I.e.
+As a result we would like to get a list of projects that have broken dependencies. I.e.
 missing symbols, changed symbols (different number or type of arguments than expected), etc.
 
 ### Guided update
