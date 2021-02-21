@@ -4,7 +4,7 @@
 
 For a given golang project generate corresponding spec file.
 User specifies project (repository-project pair or import path, commit).
-A client downloads a tarball (after contructing the correct download url) or
+A client downloads a tarball (after constructing the correct download URL) or
 user specifies a tarball. Client then sends the tarball to symbol extractor.
 Extractor returns a data set (or its subset based on a correct extractor).
 Client then sends the data to a [Specker](https://github.com/gofed/specker),
@@ -34,7 +34,7 @@ Clients writes the difference to a file.
 
 For a given package name and a commit check if the package is packaged in a distribution
 and the commit is out-dated, up-to-date or newer.
-This is usefull when we want to package a golang project and we are not sure
+This is useful when we want to package a golang project and we are not sure
 if a distribution already fulfill our needs.
 
 ### Check deps
@@ -46,7 +46,7 @@ All items are checked and information about its state is reported.
 
 ### Inspect tarball
 
-For a given source code tarball run various inspection/extractions and return requested metada or data (list of dependencies, list of provides, list of tests, etc.). Or generate a list of bundled deps, list of provides with epoch, etc.
+For a given source code tarball run various inspection/extractions and return requested metadata or data (list of dependencies, list of provides, list of tests, etc.). Or generate a list of bundled deps, list of provides with epoch, etc.
 
 ### Review a spec file
 
@@ -64,15 +64,15 @@ list of cyclic dependencies, list of unused packages, etc.).
 ### Scan upstream repositories
 
 For a given upstream repository run an analysis on a list of commits (compare two commits,
-differencies in API, etc.). Return a requested resource.
+differences in API, etc.). Return a requested resource.
 
 ### Analysis of deps for a given project
 
 Each project has non-empty set of dependencies on other projects (at least on standard golang library).
 These dependencies can change over time. We would like to know how much. E.g. how many
-new packages occurs, frequence of changes of commits of each imported package, etc.)
+new packages occurs, frequency of changes of commits of each imported package, etc.)
 
-### Comparision of projects
+### Comparison of projects
 Some projects are forked from other. Sometimes this is hard to detect by eye.
 For that, we would like to run a comparisons between commits and projects to discover,
 if there are projects that are very similar and can be merged into one.
@@ -86,11 +86,11 @@ remove a devel subpackage (for migration between distributions and branches if r
 ### Multi spec file generator
 For a given project we would like not to just generate a spec file for it. We
 would also like to generate a spec file for all its dependencies (direct and
-indirect). Based on a configuraiton only projects not yet packages in a
+indirect). Based on a configuration only projects not yet packages in a
 distribution can be generated. At first, a dependency graph is constructed
 (based on a deps file). Then all nodes are checked and corresponding spec files
 generated (if requested). If requested, only metadata can be returned or scan
-run (without genereating spec files, just analysis of APIs).
+run (without generating spec files, just analysis of APIs).
 
 ### Minimize API breakage of golang projects
 In a loop analysis all projects packaged in a distribution and check for API breakages.
@@ -104,13 +104,13 @@ If requested, check all [B]R, Provides, list of tests, building scripts (if impl
 
 ### Automatically update a list of deps/provides/tests
 For a given spec file and tarball, run analysis of the tarball and update a list of dependencies
-of provides accordingaly. Other lists or parts of the spec file can be updated if requested.
+of provides accordingly. Other lists or parts of the spec file can be updated if requested.
 
 ### Generate self-standing devel subpackages
 In order to minimize an amount of source code installed, a list of devel subpackage
 in a spec file can be reorganized (add/remove devel subpackages).
 At first a local dependency graph (project scope) is constructed. Potential devel subpackages
-are detected (usually one subpackage per list and per inner node). The graph can be minized
+are detected (usually one subpackage per list and per inner node). The graph can be minimized
 before detection (merge strongly connected components, merge nodes (of they are not
 big enough based on some node evaluation function or heuristics).
 
@@ -127,13 +127,13 @@ From a given data source (tarball, spec file, json, etc.) generate a spec file.
 - Client can communicate with local libraries or send requests to server. This should be transparent to a user (just choose the correct receiver).
 - Client should not be aware of spec model and manipulations with it. Responsibility of the Specker is to deal with translation of spec representation to a model and manipulation with it. Client gets a list of permitted operations that can be applied on the spec representation. Each operation is abstract and requires only data that are used/required for a change.
 
-- Specker will provide a minimal set of plugins (data inputs for various formats as json, xml, specfile, ... a.k.a input parsers) that can be used to provide package specification data. Each plugin (json_parser, specfile_parser, ...) will talk to spec model writer which will create an abstract spec model. Based on a use case the model get updated (transformed based on requested changes) or renderred (to requested representation). Or constructed model can be used for various analysis (validation, statistics, metadata extraction, etc.).
+- Specker will provide a minimal set of plugins (data inputs for various formats as json, xml, specfile, ... a.k.a input parsers) that can be used to provide package specification data. Each plugin (json_parser, specfile_parser, ...) will talk to spec model writer which will create an abstract spec model. Based on a use case the model get updated (transformed based on requested changes) or rendered (to requested representation). Or constructed model can be used for various analysis (validation, statistics, metadata extraction, etc.).
 
-- from another point of view, GoSymbolExtractor will return extracted data. Go client aware of golang specifics (specification of an abstract client) will transform the data into specker supported format (json most likely). When instantiating the specker, the client will set a language orientation. The specker will store language orientation as spec model metadata. The orientation is then used to call the correct language renderrer (if needed). Again, the abstract spec model is meant to be as assumption free as possible. Or there could be one model for each language or in general for model orientation. If this will be the case, what methods should be in model transformation API? Maybe there could be some general transformation interfaces classes and some customized classes which inherits from general/default ones.
+- From another point of view, GoSymbolExtractor will return extracted data. Go client aware of golang specifics (specification of an abstract client) will transform the data into specker supported format (json most likely). When instantiating the specker, the client will set a language orientation. The specker will store language orientation as spec model metadata. The orientation is then used to call the correct language renderer (if needed). Again, the abstract spec model is meant to be as assumption free as possible. Or there could be one model for each language or in general for model orientation. If this will be the case, what methods should be in model transformation API? Maybe there could be some general transformation interfaces classes and some customized classes which inherits from general/default ones.
 
 - So there will be another repository called "go-clients" and its corresponding class which will inherit from a general class client. (thanks for pvalena for brainstorming)
 
-- Add suport for various formats of deps file (Godeps.json, vendor, glade.yml, etc.)
+- Add support for various formats of deps file (Godeps.json, vendor, glade.yml, etc.)
 - When checking for a list of deps, local database, local repositories or remote database/repositories can be used. This should be configurable and in most cases transparent to a user.
-- keep snapshots of actual state of golang projects packaged in a distribution. E.g. list of provided API in a given time (or automatically store the API with each new commit/build).
-- a deps file is in a tarball (or can be generated from the tarball). So this will be built over SymbolExtractor.
+- Keep snapshots of actual state of golang projects packaged in a distribution. E.g. list of provided API in a given time (or automatically store the API with each new commit/build).
+- A deps file is in a tarball (or can be generated from the tarball). So this will be built over SymbolExtractor.
