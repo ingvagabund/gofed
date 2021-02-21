@@ -179,7 +179,7 @@ To show only dependencies that are not packaged in PkgDB, run the command withou
 When running ``gofed ggi`` without any options, list of all dependencies of devel part as shown:
 
 ```vim
-   $ gofed ggi
+$ gofed ggi
 	github.com/russross/blackfriday
 ```
 
