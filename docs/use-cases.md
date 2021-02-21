@@ -7,9 +7,9 @@ User specifies project (repository-project pair or import path, commit).
 A client downloads a tarball (after contructing the correct download url) or
 user specifies a tarball. Client then sends the tarball to symbol extractor.
 Extractor returns a data set (or its subset based on a correct extractor).
-Client then sends the data to a specker [link to specker], sets its output
-format. Specker responses with requested output format.
-Client writes output to a file.
+Client then sends the data to a [Specker](https://github.com/gofed/specker),
+sets its output format. Specker responses with requested output format.  Client
+writes output to a file.
 
 ### Regenerate spec representation
 
