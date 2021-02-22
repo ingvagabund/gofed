@@ -228,7 +228,7 @@ export GOPATH=$(pwd){% for path in gopaths %}:$(pwd)/{{ path }}{% endfor %}:%{go
 %endif
 
 {% for package in main["dirs"] -%}
-#%gobuild -o bin/{{ package }} %{import_path}/{{ package }}
+%gobuild -o bin/{{ package }} %{import_path}/{{ package }}
 {% endfor -%}
 {%- endif %}
 %install
