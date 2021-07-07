@@ -166,7 +166,12 @@ if __name__ == "__main__":
 
 	# commit
 	if options.directory == "" and commit == "":
-		commit = RepositoryClientBuilder().buildWithRemoteClient(repository_signature).latestCommit()["hexsha"]
+		try:
+			repo = RepositoryClientBuilder().buildWithRemoteClient(repository_signature,lazy=True)
+                except KeyError as err:
+			logging.error(err)
+			exit(1)
+		commit = repo.latestCommit()["hexsha"]
 
 	# print basic information
 	printBasicInfo(repository_prefix, commit, name, options.format)
